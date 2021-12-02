@@ -1,0 +1,60 @@
+.screen {
+    background-color: #3e73dd;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: top;
+    font-size: 20px;
+    color: white;
+    padding-bottom: 3%;
+  }
+
+  .main-section {
+    background-color: #8db0f7;
+    border-radius: 20px;
+    padding-left: 3%;
+    padding-bottom: 3%;
+    /* min-height: 90vh; */
+    position: relative;
+    width: 75%;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    /* justify-content: center; */
+    font-size: 16px;
+    color: black;
+  }
+  
+  .next-button{
+      background-color: #003bb1;
+      margin-top: 2%;
+      width: 20%;
+      border-radius: 20px;
+      text-align: center;
+      padding: 1% 2%;
+      font-size:xx-large;
+      text-decoration: none;
+      color: white;
+  }
+
+  .back-button, .help-button{
+    background-color: black;
+    display: block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    margin-top: 2%;
+    border-radius: 50%;
+    text-align: center;
+    padding: 2%;
+    font-size:xx-large;
+    text-decoration: none;
+    color: white;
+}
+
+.buttons-section{
+    width: 50%;
+    justify-content: space-between;
+}
