@@ -1,60 +1,100 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
 .screen {
-    background-color: #3e73dd;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: top;
-    font-size: 20px;
-    color: white;
-    padding-bottom: 3%;
-  }
+  background-color: #3e73dd;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: top; */
+  font-size: 1.75em;
+  color: white;
+  /* padding-bottom: 3%; */
+  font-family: 'Open Sans';
+}
 
-  .main-section {
-    background-color: #8db0f7;
-    border-radius: 20px;
-    padding-left: 3%;
-    padding-bottom: 3%;
-    /* min-height: 90vh; */
-    position: relative;
-    width: 75%;
-    min-height: 70vh;
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    /* justify-content: center; */
-    font-size: 16px;
-    color: black;
-  }
-  
-  .next-button{
-      background-color: #003bb1;
-      margin-top: 2%;
-      width: 20%;
-      border-radius: 20px;
-      text-align: center;
-      padding: 1% 2%;
-      font-size:xx-large;
-      text-decoration: none;
-      color: white;
-  }
+.details{
+  font-size: 0.85em;
+}
 
-  .back-button, .help-button{
-    background-color: black;
-    display: block;
-    width: 20px;
-    height: 20px;
-    line-height: 20px;
-    margin-top: 2%;
-    border-radius: 50%;
-    text-align: center;
-    padding: 2%;
-    font-size:xx-large;
-    text-decoration: none;
-    color: white;
+.main-section {
+  background-color: #8db0f7;
+  border-radius: 50px;
+  padding-left: 3em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  /* min-height: 90vh; */
+  /* position: relative; */
+  width: 75%;
+  min-height: 20em;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  /* justify-content: center; */
+  font-size: 0.5em;
+  color: black;
 }
 
 .buttons-section{
-    width: 50%;
-    justify-content: space-between;
+  width: 95%;
+  display: flex;
+}
+
+.space-between { 
+  justify-content: space-between; 
+} 
+
+.back-button, .help-button{
+  background-color: black;
+  display:inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  line-height: 1.5em;
+  margin-top: 0.25em;
+  margin-bottom: 1em;
+  border-radius: 50%;
+  text-align: center;
+  padding: 1.5%;
+  font-size:1.5em;
+  text-decoration: none;
+  color: white;
+}
+
+.title{
+  font-size:1.8em;
+  text-align: center;
+  margin-bottom: 0.4em;
+  margin-top:  0.4em;
+}
+
+.subtitle{
+  font-size:2.75em;
+  text-align: left;
+  font-weight:bolder;
+  margin-bottom: 0.5em;
+  margin-top:  0.5em;
+}
+
+input[type=radio]{
+  height: 2em;
+  width: 2em;
+  margin-right: 1em;
+  margin-bottom: 2.5em;
+}
+
+.radio-button-label{
+  font-size: 2em;
+}
+
+.next-button{
+  background-color: #003bb1;
+  margin-top: 1em;
+  width: 10em;
+  height: 2em;
+  border-radius: 20px;
+  text-align: center;
+  padding-top: 2%;
+  font-size: 1.25em;
+  text-decoration: none;
+  color: white;
 }
