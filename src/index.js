@@ -11,8 +11,8 @@ ReactDOM.render(
   <React.StrictMode>
     <App />
     {/* <TemplatePage /> */}
-    {/* <GripStrength />
-    <GripStrength2 /> */}
+    {/* <GripStrength /> */}
+    {/* <GripStrength2 /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );
