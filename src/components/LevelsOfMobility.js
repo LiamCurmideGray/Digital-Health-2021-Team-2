@@ -35,9 +35,9 @@ function LevelsOfMobility() {
                 </tr>
             </table>
             <div className="buttons-section space-between">
-                <a href="#" className="back-button">&lt;</a>
+                <a href="/" className="back-button">&lt;</a>
                 <label className="title">Levels of Mobility</label>
-                <a href="#" className="help-button" style={{ backgroundColor: 'green' }}>?</a>
+                <a href="" className="help-button" style={{ backgroundColor: 'green' }}>?</a>
             </div>
 
             <div className="main-section">
@@ -100,7 +100,7 @@ function LevelsOfMobility() {
                     </form>
                 </form>
             </div>
-            <a href="#" className="next-button">Next</a>
+            <a href="/ListOfEquipment" className="next-button">Next</a>
         </div>
     );
 }

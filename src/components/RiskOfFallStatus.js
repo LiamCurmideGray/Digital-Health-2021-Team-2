@@ -33,9 +33,9 @@ function RiskOfFallStatus() {
                 </tr>
             </table>
             <div className="buttons-section space-between">
-                <a href="#" className="back-button">&lt;</a>
+                <a href="/Instructions" className="back-button">&lt;</a>
                 <label className="title">Timed Up and Go Test</label>
-                <a href="#" className="help-button" style={{ backgroundColor: 'green' }}>?</a>
+                <a href="" className="help-button" style={{ backgroundColor: 'green' }}>?</a>
             </div>
 
             <div className="main-section">
@@ -78,7 +78,7 @@ function RiskOfFallStatus() {
                     </table>
                 </div>
             </div>
-            <a href="#" className="next-button">Next</a>
+            <a href="/ReviewQuestion" className="next-button">Next</a>
         </div>
     );
 }
