@@ -2,13 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import GripStrength from './components/GripStrength'
+import GripStrength2 from './components/GripStrength2'
 import TemplatePage from './components/common/TemplatePage';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <App /> */}
-    <TemplatePage />
+    <App />
+    {/* <TemplatePage /> */}
+    {/* <GripStrength /> */}
+    {/* <GripStrength2 /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );
