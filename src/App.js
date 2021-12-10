@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import TemplatePage from './components/common/TemplatePage';
 import GripStrength from './components/GripStrength';
