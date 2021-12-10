@@ -33,9 +33,9 @@ function GripStrength2() {
                 </tr>
             </table>
             <div className="buttons-section space-between">
-                <a href="#" className="back-button">&lt;</a>
+                <a href="/GripStrength" className="back-button">&lt;</a>
                 <label className="title">Grip Strength Test</label>
-                <a href="#" className="help-button" style={{backgroundColor:'green'}}>?</a>
+                <a href="" className="help-button" style={{backgroundColor:'green'}}>?</a>
             </div>
             <div className="main-section">
                 <label className="subtitle">Test Questions</label>
@@ -87,7 +87,7 @@ function GripStrength2() {
                 </ol>
                 
             </div>
-            <a href="#" className="next-button">Next</a>
+            <a href="" className="next-button">Next</a>
         </div>
     );
 }
