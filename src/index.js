@@ -3,12 +3,22 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import TemplatePage from './components/common/TemplatePage';
+import LevelsOfMobility from './components/tugtest/LevelsOfMobility';
+import ListOfEquipment from './components/tugtest/ListOfEquipment';
+import Instructions from './components/tugtest/Instructions';
+import RiskOfFallStatus from './components/tugtest/RiskOfFallStatus';
+import ReviewQuestion from './components/tugtest/ReviewQuestion';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
     {/* <App /> */}
-    <TemplatePage />
+    {/* <TemplatePage /> */}
+    {/* <LevelsOfMobility/> */}
+    {/* <ListOfEquipment/> */}
+    {/* <Instructions/> */}
+    {/* <RiskOfFallStatus/> */}
+    <ReviewQuestion/>
   </React.StrictMode>,
   document.getElementById('root')
 );
