@@ -3,6 +3,7 @@ import './App.css';
 import TemplatePage from './components/common/TemplatePage';
 import GripStrength from './components/GripStrength';
 import GripStrength2 from './components/GripStrength2';
+import HomePage from './components/HomePage';
 
 function App() {
   function getPages(){
@@ -13,7 +14,10 @@ function App() {
     else if (route === "/GripStrength2"){
       return <GripStrength2/>;
     }
-    return <TemplatePage/>;
+    else if (route === "/TemplatePage"){
+      return <TemplatePage/>;
+    }
+    return <HomePage/>;
   };
   return getPages();
 }
