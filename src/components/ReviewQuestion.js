@@ -36,9 +36,9 @@ function ReviewQuestion() {
                 </tr>
             </table>
             <div className="buttons-section space-between">
-                <a href="#" className="back-button">&lt;</a>
+                <a href="/RiskOfFallStatus" className="back-button">&lt;</a>
                 <label className="title">Timed Up and Go Test</label>
-                <a href="#" className="help-button" style={{ backgroundColor: 'green' }}>?</a>
+                <a href="" className="help-button" style={{ backgroundColor: 'green' }}>?</a>
             </div>
 
             <div className="main-section">
@@ -76,7 +76,7 @@ function ReviewQuestion() {
                     </form>
                 </form>
             </div>
-            <a href="#" className="next-button">Complete TUG Test</a>
+            <a href="/" className="next-button">Complete TUG Test</a>
         </div>
     );
 }
