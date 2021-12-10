@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import TemplatePage from './components/common/TemplatePage';
-import LevelsOfMobility from './components/tugtest/LevelsOfMobility';
-import ListOfEquipment from './components/tugtest/ListOfEquipment';
-import Instructions from './components/tugtest/Instructions';
-import RiskOfFallStatus from './components/tugtest/RiskOfFallStatus';
-import ReviewQuestion from './components/tugtest/ReviewQuestion';
+import LevelsOfMobility from './components/LevelsOfMobility';
+import ListOfEquipment from './components/ListOfEquipment';
+import Instructions from './components/Instructions';
+import RiskOfFallStatus from './components/RiskOfFallStatus';
+import ReviewQuestion from './components/ReviewQuestion';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(

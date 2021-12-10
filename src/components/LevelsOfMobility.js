@@ -1,4 +1,4 @@
-import 'C:\\Users\\Owner\\OneDrive\\Documents\\GitHub\\Digital-Health-2021-Team-2\\src\\components\\common\\TemplatePage.css';
+import './common/TemplatePage.css';
 
 var group;
 

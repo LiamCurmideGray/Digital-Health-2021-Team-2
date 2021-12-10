@@ -1,4 +1,4 @@
-import 'C:\\Users\\Owner\\OneDrive\\Documents\\GitHub\\Digital-Health-2021-Team-2\\src\\components\\common\\TemplatePage.css';
+import '../App.css';
 
 function Instructions() {
     return (
@@ -59,7 +59,7 @@ function Instructions() {
                     </ol>
                 </div>
             </div>
-            <a href="#" className="next-button">Next</a>
+            <a href="" className="next-button">Next</a>
         </div>
     );
 }
