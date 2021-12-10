@@ -12,13 +12,7 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <App /> */}
-    {/* <TemplatePage /> */}
-    {/* <LevelsOfMobility/> */}
-    {/* <ListOfEquipment/> */}
-    {/* <Instructions/> */}
-    {/* <RiskOfFallStatus/> */}
-    <ReviewQuestion/>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
