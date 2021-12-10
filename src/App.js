@@ -1,26 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
+import TemplatePage from './components/common/TemplatePage';
+import GripStrength from './components/GripStrength';
+import GripStrength2 from './components/GripStrength2';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <h1>Hello World Motherfuckers Liam</h1>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  function getPages(){
+    const route = window.location.pathname;
+    if (route === "/GripStrength"){
+      return <GripStrength/>;
+    }
+    else if (route === "/GripStrength2"){
+      return <GripStrength2/>;
+    }
+    return <TemplatePage/>;
+  };
+  return getPages();
 }
 
 export default App;
