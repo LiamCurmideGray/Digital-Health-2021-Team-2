@@ -143,3 +143,19 @@ td.style{
   border-collapse: collapse;
   height: 2em;
 }
+
+.circle {
+  display: flex;
+  width: 100px;
+  height: 100px;
+  background-color: green;
+  border-radius: 50%;
+  align-items: center;
+  text-align: center;
+  text-size-adjust: 20;
+}
+
+.TimerLayout{
+  align-items: center;
+  padding-left: 45%;
+}

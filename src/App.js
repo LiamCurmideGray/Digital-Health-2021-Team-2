@@ -8,6 +8,7 @@ import LevelsOfMobility from './components/LevelsOfMobility';
 import ListOfEquipment from './components/ListOfEquipment';
 import ReviewQuestion from './components/ReviewQuestion';
 import RiskOfFallStatus from './components/RiskOfFallStatus';
+import Timer from './components/Timer';
 
 function App() {
   function getPages(){
@@ -35,6 +36,9 @@ function App() {
     }
     else if (route === "/ReviewQuestion"){
       return <ReviewQuestion/>;
+    }
+    else if (route === "/Timer"){
+      return <Timer/>;
     }
     return <HomePage/>;
   };

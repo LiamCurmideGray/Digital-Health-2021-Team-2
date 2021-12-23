@@ -16,6 +16,7 @@ function HomePage(){
             <a href='/ListOfEquipment' className='page-button'>List Of Equipment</a>
             <a href='/Instructions' className='page-button'>Instructions</a>
             <a href='/RiskOfFallStatus' className='page-button'>Risk Of Fall Status</a>
+            <a href='/Timer' className='page-button'>Timer</a>
             <a href='/ReviewQuestion' className='page-button'>Review Question</a>
           </header>
         </div>

@@ -78,7 +78,7 @@ function RiskOfFallStatus() {
                     </table>
                 </div>
             </div>
-            <a href="/ReviewQuestion" className="next-button">Next</a>
+            <a href="/Timer" className="next-button">Next</a>
         </div>
     );
 }
