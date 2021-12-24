@@ -91,6 +91,12 @@ input[type=radio]{
   margin-bottom: 2.5em;
 }
 
+input[type=text]{
+  height: 2em;
+  width: 30em;
+  margin-right: 1em;
+}
+
 .radio-button-label{
   font-size: 2em;
 }

@@ -2,6 +2,7 @@ import './App.css';
 import TemplatePage from './components/common/TemplatePage';
 import GripStrength from './components/GripStrength';
 import GripStrength2 from './components/GripStrength2';
+import GripStrength3 from './components/GripStrength3';
 import HomePage from './components/HomePage';
 import Instructions from './components/Instructions';
 import LevelsOfMobility from './components/LevelsOfMobility';
@@ -17,6 +18,9 @@ function App() {
     }
     else if (route === "/GripStrength2"){
       return <GripStrength2/>;
+    }
+    else if (route === "/GripStrength3"){
+      return <GripStrength3/>;
     }
     else if (route === "/TemplatePage"){
       return <TemplatePage/>;
