@@ -144,18 +144,52 @@ td.style{
   height: 2em;
 }
 
-.circle {
-  display: flex;
-  width: 100px;
-  height: 100px;
-  background-color: green;
-  border-radius: 50%;
-  align-items: center;
+.TimerLayoutBtnStart{
+  padding: 32px 40px;
+  display: inline-block;
+  background-color: #4CAF50;
+  font-size: 24px;
+  width: 10em;
+  height: 2em;
+  border-radius: 20px;
   text-align: center;
-  text-size-adjust: 20;
+  padding-top: 2%;
+  text-decoration: none;
+  margin-bottom: 1em;
 }
 
-.TimerLayout{
+.TimerLayoutBtnStop{
+  padding: 32px 40px;
+  display: inline-block;
+  background-color: #c76147;
+  font-size: 24px;
+  width: 10em;
+  height: 2em;
+  border-radius: 20px;
+  text-align: center;
+  padding-top: 2%;
+  text-decoration: none;
+  margin-bottom: 1em;
+}
+
+.TimerLayoutBtnReset{
+  padding: 32px 40px;
+  display: inline-block;
+  font-size: 24px;
+  width: 10em;
+  height: 2em;
+  border-radius: 20px;
+  text-align: center;
+  padding-top: 2%;
+  text-decoration: none;
+  margin-bottom: 1em;
+}
+
+.TimerLayoutWords{
+  font-size: 2cm;
   align-items: center;
-  padding-left: 45%;
+}
+
+.TimerDiv{
+  padding-left: 30%;
 }

@@ -16,14 +16,16 @@ class Timer extends Component {
 
  timer=()=>{
    this.f=setInterval(this.onStart,1000);
-   document.getElementById('btn').disabled=true;
+    document.getElementById('timer-btn').disabled=true;
+    console.log(this.state);
  }
+
  stopTimer=()=>{
      clearInterval(this.f);
  }
  clear=()=>{
      clearInterval(this.f);
-     document.getElementById('btn').disabled=false;
+     document.getElementById('timer-btn').disabled=false;
      this.setState({seconds:0})
  }
 
@@ -65,19 +67,18 @@ render(){
           </div>
           <div className="main-section">
               <label className="subtitle">Timer</label>
-              <div class="TimerLayout">
-                  
+                  <li>Press the Start button when you are ready to being the test and the Stop button when you wish to terminate the test</li>
                     <div>
-                    <div class="circle">
-                    <h1 style={{ textAlignHorizontal: "center",textAlign: "center",}}>{this.state.seconds}</h1>
-                    </div>
-
-                    <button id='btn' onClick={this.timer}>Start</button>
-                    <button onClick={this.stopTimer}>Stop</button>
-                    <button onClick={this.clear}>Reset</button>
-                    </div>
-              </div>
-          </div>
+                        <div class="TimerLayoutWords">
+                            <h1 style={{ textAlignHorizontal: "center",textAlign: "center",}}>{this.state.seconds}</h1>
+                        </div>
+                        <div class='TimerDiv'>
+                            <button class='TimerLayoutBtnStart' id='timer-btn' onClick={this.timer}>Start</button>
+                            <button class='TimerLayoutBtnStop' onClick={this.stopTimer}>Stop</button>
+                            <button class='TimerLayoutBtnReset' onClick={this.clear}>Reset</button>
+                        </div>
+                     </div>
+            </div>
           <a href="/ReviewQuestion" className="next-button">Next</a>
      </div>
       
