@@ -1,8 +1,6 @@
 import './common/TemplatePage.css';
-import React from 'react';
 
-function GripStrength3() {
-    const [disable, setDisable] = React.useState(true);
+function GripStrength5() {
     return (
         <div className="screen">
             <table style={{ width: '75%' }}>
@@ -35,7 +33,7 @@ function GripStrength3() {
                 </tr>
             </table>
             <div className="buttons-section space-between">
-                <a href="/GripStrength2" className="back-button">&lt;</a>
+                <a href="/GripStrength4" className="back-button">&lt;</a>
                 <label className="title">Grip Strength Test</label>
                 <a href="" className="help-button" style={{ backgroundColor: 'green' }}>?</a>
             </div>
@@ -148,4 +146,4 @@ function validateForm() {
     //     console.log("AAAAAAAAAA");
     // }
 }
-export default GripStrength3;
+export default GripStrength5;
