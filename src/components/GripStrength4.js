@@ -45,7 +45,7 @@ function LeftResultInputs() {
         </tr>
       </table>
       <div className="buttons-section space-between">
-        <a href="/GripStrength2" className="back-button">
+        <a href="/GripStrength3" className="back-button">
           &lt;
         </a>
         <label className="title">Results Entry</label>
