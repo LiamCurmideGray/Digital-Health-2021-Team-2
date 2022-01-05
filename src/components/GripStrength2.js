@@ -118,7 +118,7 @@ function GripStrength2() {
                     </ol>
                 </form>
             </div>
-            <a href="" className="next-button" onclick={validateForm()}>Next</a>
+            <a href="/GripStrength3" className="next-button" onclick={validateForm()}>Next</a>
         </div>
     );
 }
