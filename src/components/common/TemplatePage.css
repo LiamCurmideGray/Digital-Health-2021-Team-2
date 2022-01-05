@@ -157,3 +157,59 @@ td.style{
   border-collapse: collapse;
   height: 2em;
 }
+
+.TimerLayoutBtnStart{
+  padding: 32px 40px;
+  display: inline-block;
+  background-color: #4CAF50;
+  font-size: 24px;
+  width: 10em;
+  height: 2em;
+  border-radius: 20px;
+  text-align: center;
+  padding-top: 2%;
+  text-decoration: none;
+  margin-bottom: 1em;
+}
+
+.TimerLayoutBtnStop{
+  padding: 32px 40px;
+  display: inline-block;
+  background-color: #c76147;
+  font-size: 24px;
+  width: 10em;
+  height: 2em;
+  border-radius: 20px;
+  text-align: center;
+  padding-top: 2%;
+  text-decoration: none;
+  margin-bottom: 1em;
+}
+
+.TimerLayoutBtnReset{
+  padding: 32px 40px;
+  display: inline-block;
+  font-size: 24px;
+  width: 10em;
+  height: 2em;
+  border-radius: 20px;
+  text-align: center;
+  padding-top: 2%;
+  text-decoration: none;
+  margin-bottom: 1em;
+}
+
+.TimerLayoutWords{
+  font-size: 2cm;
+  align-items: center;
+}
+
+.TimerDiv{
+  padding-left: 30%;
+}
+
+.gripInputs{
+  width: 100%;
+  color:aliceblue;
+  
+}
