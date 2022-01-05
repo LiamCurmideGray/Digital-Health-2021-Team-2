@@ -14,6 +14,7 @@ function HomePage(){
             <a href='/GripStrength2' className='page-button'>Grip Strength 2</a>
             <a href='/GripStrength3' className='page-button'>Grip Strength 3</a>
             <a href='/GripStrength4' className='page-button'>Grip Strength 4</a>
+            <a href='/GripStrength5' className='page-button'>Grip Strength 5</a>
             <a href='/LevelsOfMobility' className='page-button'>Levels Of Mobility</a>
             <a href='/ListOfEquipment' className='page-button'>List Of Equipment</a>
             <a href='/Instructions' className='page-button'>Instructions</a>

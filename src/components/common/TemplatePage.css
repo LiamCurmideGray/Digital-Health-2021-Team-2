@@ -84,11 +84,25 @@ li{
   margin-top:  0.5em;
 }
 
+fieldset{
+  border: transparent;
+  padding: 0%;
+}
+
 input[type=radio]{
   height: 2em;
   width: 2em;
   margin-right: 1em;
   margin-bottom: 2.5em;
+}
+
+input[type=text]{
+  height: 2em;
+  width: 20em;
+  margin-right: 1em;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #000000;
 }
 
 .radio-button-label{
