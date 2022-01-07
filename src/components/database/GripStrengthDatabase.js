@@ -29,7 +29,7 @@ export function GripStrengthDatabaseProvider({ children }) {
       AnsGripQuestion2 = GripQuestion2;
       AnsGripQuestion3 = GripQuestion3;
 
-      addnewGripEntry();
+      // addnewGripEntry();
     }
     //1234 can be changed accordingly via patientID
     async function addnewGripEntry() {
