@@ -38,11 +38,8 @@ const GripStrength2 = () => {
             document.getElementById("question2-alert").innerHTML = "";
         }
         if (question1 == "") {
-            // console.log("Not all choices have been filled");
-            // alert("Not all choices have been filled");
             document.getElementById("question1-alert").innerHTML = "Please select an option!";
             document.getElementById("question1Form").scrollIntoView();
-            // navigate("/GripStrength2")
         }
         else{
             document.getElementById("question1-alert").innerHTML = "";

@@ -31,6 +31,13 @@ export function GripStrengthDatabaseProvider({ children }) {
 
       // addnewGripEntry();
     }
+
+    function GripStrengthResults5(GripQuestion1,GripQuestion2){
+      AnsGripQuestion1 = GripQuestion1;
+      AnsGripQuestion2 = GripQuestion2;
+
+      // addnewGripEntry();
+    }
     //1234 can be changed accordingly via patientID
     async function addnewGripEntry() {
       console.log("Wasalt fil method ta add new Grip Entry");
@@ -46,7 +53,7 @@ export function GripStrengthDatabaseProvider({ children }) {
     };
 
   return (
-    <gripStrengthContext.Provider value={{GripStrengthResults2, addnewGripEntry}}>
+    <gripStrengthContext.Provider value={{GripStrengthResults2, GripStrengthResults5, addnewGripEntry}}>
       {children}
     </gripStrengthContext.Provider>
   );
