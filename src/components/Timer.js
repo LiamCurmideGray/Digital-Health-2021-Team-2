@@ -3,6 +3,28 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Component } from "react/cjs/react.production.min";
 import './common/TemplatePage.css';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import TemplatePage from "./common/TemplatePage";
+
+var status="";
+
+
+function getStatusBackgroundColor(statusText){
+    var background = "";
+
+    if (statusText === 'Low Risk'){ 
+        background= "#00FF00";
+    }
+    else if (statusText === 'Medium Risk'){ 
+        background= "#FFFF00";
+    }
+    else if (statusText === 'High Risk') {
+        background= "#FF0000";
+    }
+
+    console.log(background);
+}
 
 class Timer extends Component {
   constructor(props){
@@ -17,17 +39,44 @@ class Timer extends Component {
  timer=()=>{
    this.f=setInterval(this.onStart,1000);
     document.getElementById('timer-btn').disabled=true;
-    console.log(this.state);
+    console.log(this.state.seconds);
  }
 
  stopTimer=()=>{
      clearInterval(this.f);
+     var background="";
+     var time = this.state.seconds;
+     console.log(time);
+
+    
+     if(time<=10&&time!==0){
+        //Low Risk
+        document.getElementById("RiskStatus").innerHTML = "Low Risk";
+        status="Low Risk";
+        background= "#00FF00";
+     }
+     if(time>=11 &&time<=14){
+        //medium Risk
+        document.getElementById("RiskStatus").innerHTML = "Medium Risk";
+        status="Medium Risk";
+        background= "#FFFF00";
+    }
+     if(time>14){
+        //high risk
+        document.getElementById("RiskStatus").innerHTML = "High Risk";
+        status="High Risk";
+        background= "'#FF0000'";
+    }
+    console.log(status);
+    //background = getStatusBackgroundColor(status);
  }
  clear=()=>{
      clearInterval(this.f);
      document.getElementById('timer-btn').disabled=false;
      this.setState({seconds:0})
  }
+
+  
 
 render(){
     return(
@@ -67,15 +116,18 @@ render(){
           </div>
           <div className="main-section">
               <label className="subtitle">Timer</label>
-                  <li>Press the Start button when you are ready to being the test and the Stop button when you wish to terminate the test</li>
+                  <li>Press the START button when you are ready to being the test and the STOP button when you wish to terminate the test</li>
                     <div>
                         <div class="TimerLayoutWords">
                             <h1 style={{ textAlignHorizontal: "center",textAlign: "center",}}>{this.state.seconds}</h1>
+                            <Box class="status Display">
+                                <h3 id="RiskStatus"  className="statusDisplay"></h3>
+                            </Box> 
                         </div>
                         <div class='TimerDiv'>
-                            <button class='TimerLayoutBtnStart' id='timer-btn' onClick={this.timer}>Start</button>
-                            <button class='TimerLayoutBtnStop' onClick={this.stopTimer}>Stop</button>
-                            <button class='TimerLayoutBtnReset' onClick={this.clear}>Reset</button>
+                            <Button class='TimerLayoutBtnStart' id='timer-btn' onClick={this.timer}>Start</Button>
+                            <Button class='TimerLayoutBtnStop' onClick={this.stopTimer}>Stop</Button>
+                            <Button class='TimerLayoutBtnReset' onClick={this.clear}>Reset</Button>
                         </div>
                      </div>
             </div>
