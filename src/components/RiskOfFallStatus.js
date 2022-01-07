@@ -33,7 +33,7 @@ function RiskOfFallStatus() {
                 </tr>
             </table>
             <div className="buttons-section space-between">
-                <a href="/Instructions" className="back-button">&lt;</a>
+                <a href="/timer" className="back-button">&lt;</a>
                 <label className="title">Timed Up and Go Test</label>
                 <a href="" className="help-button" style={{ backgroundColor: 'green' }}>?</a>
             </div>
@@ -45,40 +45,24 @@ function RiskOfFallStatus() {
                     <table className="style">
                         <tr>
                             <th className="style">
-                                Risk of Falls
+                                Risk Status
                             </th>
                             <th className="style">
-                                Normative Reference Value
+                                Patient Time
                             </th>
                         </tr>
                         <tr>
                             <td className="style">
-                                Low Risk
+                                
                             </td>
                             <td className="style">
-                                &lt;10 seconds
-                            </td>
-                        </tr>
-                        <tr>
-                            <td className="style">
-                                Medium Risk
-                            </td>
-                            <td className="style">
-                                10-14 seconds
-                            </td>
-                        </tr>
-                        <tr>
-                            <td className="style">
-                                High Risk
-                            </td>
-                            <td className="style">
-                                &gt;14 seconds
+                        
                             </td>
                         </tr>
                     </table>
                 </div>
             </div>
-            <a href="/Timer" className="next-button">Next</a>
+            <a href="/reviewquestion" className="next-button">Next</a>
         </div>
     );
 }
