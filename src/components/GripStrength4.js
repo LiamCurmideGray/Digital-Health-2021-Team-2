@@ -186,6 +186,7 @@ const GripStrength4 = () => {
                                 <input type="radio" id="gst-question2-radio6" name="question2-sub-questions" value="refused" onClick={function () {
                                     document.getElementById("right-hand-text-box").disabled = true;
                                 }} onChange={(e) => setAnswerQuestion2({ name: e.target.name, value: e.target.value })} style={{ marginLeft: "7.5em" }} />
+
                                 <label className="radio-button-label" for="gst-question2-radio6">Refused</label>
                                 <br />
                                 <input type="radio" id="gst-question2-radio7" name="question2-sub-questions" onClick={function () {

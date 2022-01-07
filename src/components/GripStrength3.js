@@ -143,6 +143,96 @@ function LeftResultInputs() {
               ></td>
             </tr>
           </table>
+
+          <h1 className="subtitle">Right Hand Results</h1>      
+
+         <table style={{ width: "100%" }}>
+            <tr>
+              <td
+                style={{
+                  textAlign: "left",
+                  width: "33%",
+                }}
+              >
+                  <label>1st Reading</label>
+                <TextField
+                  fullWidth
+                  id="FirstReading"
+                  className="gripInputs"
+                  label="Required"
+                  type="number"
+                  variant="filled"
+                  onChange={(event) => setInput1(event.target.value)}
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">kg</InputAdornment>
+                    ),
+                    inputMode: 'numeric',
+                  }}
+                />
+              </td>
+              <td
+                style={{
+                  textAlign: "center",
+                  width: "33%",
+                }}
+              ></td>
+              <td
+                style={{
+                  textAlign: "right",
+                  width: "33%",
+                }}
+              >
+                  <label>2nd Reading</label>
+                <TextField
+                  id="Second Reading"
+                  className="gripInputs"
+                  label="Required"
+                  type="number"
+                  variant="filled"
+                  onChange={(event) => setInput2(event.target.value)}
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">kg</InputAdornment>
+                    ),
+                    inputMode: 'numeric',
+                  }}
+                />
+              </td>
+            </tr>
+          </table>
+          
+          <table style={{ width: "100%" }}>
+            <tr>
+              <td
+                style={{
+                  textAlign: "left",
+                  width: "33%",
+                }}
+              ></td>
+              <td
+                style={{
+                  textAlign: "center",
+                  width: "33%",
+                }}
+              >
+                <Button
+                  variant="contained"
+                  onClick={() => {
+                    maxVal(input1, input2);
+                  }}
+                >
+                  Save Maximum Value
+                </Button>
+              </td>
+              <td
+                style={{
+                  textAlign: "right",
+                  width: "33%",
+                }}
+              ></td>
+            </tr>
+          </table>
         </form>
       </div>
       <a href="/GripStrength4" className="next-button">

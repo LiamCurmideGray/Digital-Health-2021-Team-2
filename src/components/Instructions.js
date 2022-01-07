@@ -59,7 +59,7 @@ function Instructions() {
                     </ol>
                 </div>
             </div>
-            <a href="/RiskOfFallStatus" className="next-button">Next</a>
+            <a href="/Timer" className="next-button">Next</a>
         </div>
     );
 }

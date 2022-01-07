@@ -61,7 +61,7 @@ render(){
                 </tr>
         </table>
           <div className="buttons-section space-between">
-              <a href="/RiskOfFallStatus" className="back-button">&lt;</a>
+              <a href="/Instructions" className="back-button">&lt;</a>
               <label className="title">Timed Up and Go Test</label>
               <a href="" className="help-button" style={{ backgroundColor: 'green' }}>?</a>
           </div>
@@ -79,7 +79,7 @@ render(){
                         </div>
                      </div>
             </div>
-          <a href="/ReviewQuestion" className="next-button">Next</a>
+          <a href="/RiskOfFallStatus" className="next-button">Next</a>
      </div>
       
     )
