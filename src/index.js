@@ -2,17 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import TemplatePage from './components/common/TemplatePage';
-import LevelsOfMobility from './components/LevelsOfMobility';
-import ListOfEquipment from './components/ListOfEquipment';
-import Instructions from './components/Instructions';
-import RiskOfFallStatus from './components/RiskOfFallStatus';
-import ReviewQuestion from './components/ReviewQuestion';
+import { BrowserRouter as Router } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <App />
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );

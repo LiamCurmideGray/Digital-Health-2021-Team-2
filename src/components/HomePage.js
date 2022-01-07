@@ -1,8 +1,10 @@
 import logo from '../logo.svg';
 import '../App.css';
 import './HomePage.css';
+import {useGripContext} from "./database/GripStrengthDatabase";
 
 function HomePage(){
+  const {addnewGripEntry} = useGripContext();
     return (
         <div className="App">
           <header className="App-header">
@@ -21,6 +23,7 @@ function HomePage(){
             <a href='/RiskOfFallStatus' className='page-button'>Risk Of Fall Status</a>
             <a href='/Timer' className='page-button'>Timer</a>
             <a href='/ReviewQuestion' className='page-button'>Review Question</a>
+            <button className='page-button' onClick={addnewGripEntry}>Test Database</button>
           </header>
         </div>
       );

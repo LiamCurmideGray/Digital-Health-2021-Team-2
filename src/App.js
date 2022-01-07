@@ -12,49 +12,38 @@ import ListOfEquipment from './components/ListOfEquipment';
 import ReviewQuestion from './components/ReviewQuestion';
 import RiskOfFallStatus from './components/RiskOfFallStatus';
 import Timer from './components/Timer';
+import {GripStrengthDatabaseProvider} from './components/database/GripStrengthDatabase';
+import { Container, Row, Col } from 'react-bootstrap';
+import { Route, Routes } from "react-router-dom";
+import React, { useState } from "react";
 
 function App() {
-  function getPages(){
-    const route = window.location.pathname;
-    if (route === "/GripStrength"){
-      return <GripStrength/>;
-    }
-    else if (route === "/GripStrength2"){
-      return <GripStrength2/>;
-    }
-    else if (route === "/GripStrength3"){
-      return <GripStrength3/>;
-    }
-    else if (route === "/GripStrength4"){
-      return <GripStrength4/>;
-    }
-    else if (route === "/GripStrength5"){
-      return <GripStrength5/>;
-    }
-    else if (route === "/TemplatePage"){
-      return <TemplatePage/>;
-    }
-    else if (route === "/LevelsOfMobility"){
-      return <LevelsOfMobility/>;
-    }
-    else if (route === "/ListOfEquipment"){
-      return <ListOfEquipment/>;
-    }
-    else if (route === "/Instructions"){
-      return <Instructions/>;
-    }
-    else if (route === "/RiskOfFallStatus"){
-      return <RiskOfFallStatus/>;
-    }
-    else if (route === "/ReviewQuestion"){
-      return <ReviewQuestion/>;
-    }
-    else if (route === "/Timer"){
-      return <Timer/>;
-    }
-    return <HomePage/>;
-  };
-  return getPages();
+
+  return(
+    <Container>
+      <Row>
+        <Col>
+        <GripStrengthDatabaseProvider>
+          <Routes>
+            <Route path="/" element={<HomePage/>}></Route>
+            <Route path="/GripStrength" element={<GripStrength/>}></Route>
+            <Route path="/GripStrength2" element={<GripStrength2/>}></Route>
+            <Route path="/GripStrength3" element={<GripStrength3/>}></Route>
+            <Route path="/GripStrength4" element={<GripStrength4/>}></Route>
+            <Route path="/GripStrength5" element={<GripStrength5/>}></Route>
+            <Route path="/TemplatePage" element={<TemplatePage/>}></Route>
+            <Route path="/LevelsOfMobility" element={<LevelsOfMobility/>}></Route>
+            <Route path="/ListOfEquipment" element={<ListOfEquipment/>}></Route>
+            <Route path="/Instructions" element={<Instructions/>}></Route>
+            <Route path="/RiskOfFallStatus" element={<RiskOfFallStatus/>}></Route>
+            <Route path="/ReviewQuestion" element={<ReviewQuestion/>}></Route>
+            <Route path="/Timer" element={<Timer/>}></Route>
+          </Routes>
+        </GripStrengthDatabaseProvider>
+        </Col>
+      </Row>
+    </Container>
+  );
 }
 
 export default App;
