@@ -32,7 +32,7 @@ export function GripStrengthDatabaseProvider({ children }) {
       // addnewGripEntry();
     }
 
-    function GripStrengthResults5(GripQuestion1,GripQuestion2){
+    function GripStrengthResults4(GripQuestion1,GripQuestion2){
       AnsGripQuestion1 = GripQuestion1;
       AnsGripQuestion2 = GripQuestion2;
 
@@ -53,7 +53,7 @@ export function GripStrengthDatabaseProvider({ children }) {
     };
 
   return (
-    <gripStrengthContext.Provider value={{GripStrengthResults2, GripStrengthResults5, addnewGripEntry}}>
+    <gripStrengthContext.Provider value={{GripStrengthResults2, GripStrengthResults4, addnewGripEntry}}>
       {children}
     </gripStrengthContext.Provider>
   );
