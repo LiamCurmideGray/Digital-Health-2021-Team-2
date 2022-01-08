@@ -9,23 +9,7 @@ import TemplatePage from "./common/TemplatePage";
 
 var status="";
 var trail = "0";
-
-// function getStatusBackgroundColor(statusText){
-//     if (statusText === 'Low Risk'){ 
-//         background= "#00FF00";
-//         console.log(background);
-//     }
-//     else if (statusText === 'Medium Risk'){ 
-//         background= "#FFFF00";
-//         console.log(background);
-//     }
-//     else if (statusText === 'High Risk') {
-//         background= "#FF0000";
-//         console.log(background);
-//     }
-//     return background;
-    
-// }
+var background="#8db0f7";
 
 class Timer extends Component {
   constructor(props){
@@ -35,14 +19,27 @@ class Timer extends Component {
 
   onStart=()=>{
     this.setState({seconds:this.state.seconds+1});
-    // background = getStatusBackgroundColor(this.state.seconds);
-    // console.log(background);
-    // document.getElementById("statusBox").backgroundColor = background;
+    if(this.state.seconds<=10){
+        background= "green";
+        console.log(background);
+        document.getElementById("statusBox").backgroundColor = background;
+    }
+    if(this.state.seconds>=11 &&this.state.seconds<=14){
+        background= "yellow";
+        console.log(background);
+        document.getElementById("statusBox").backgroundColor = background;
+    }
+    if((this.state.seconds>14)){
+        background= "red";
+        console.log(background);
+        document.getElementById("statusBox").backgroundColor = background;
+    }
+    document.getElementById("statusBox").backgroundColor = background;
     if(this.state.seconds>20){
         clearInterval(this.f);
         var time = this.state.seconds;
         console.log(time);
-        //document.getElementById("statusBox").backgroundColor = "'red'";
+        document.getElementById("statusBox").backgroundColor = "red";
         document.getElementById("RiskStatus").innerHTML = "Time Exceeded. Test Automatically Failed";
         status="Automatic Fail";
     }
@@ -63,7 +60,6 @@ class Timer extends Component {
 
  stopTimer=()=>{
      clearInterval(this.f);
-     var background="";
      var time = this.state.seconds;
      console.log(time);
     
@@ -71,22 +67,18 @@ class Timer extends Component {
         //Low Risk
         document.getElementById("RiskStatus").innerHTML = "Low Risk";
         status="Low Risk";
-        background= "#00FF00";
      }
      if(time>=11 &&time<=14){
         //medium Risk
         document.getElementById("RiskStatus").innerHTML = "Medium Risk";
         status="Medium Risk";
-        background= "#FFFF00";
     }
      if(time>14){
         //high risk
         document.getElementById("RiskStatus").innerHTML = "High Risk";
         status="High Risk";
-        background= "'#FF0000'";
     }
     console.log(status);
-    //background = getStatusBackgroundColor(status);
  }
  clear=()=>{
     if(trail===2){
@@ -94,9 +86,13 @@ class Timer extends Component {
         document.getElementById('timer-btn').disabled=true;
         document.getElementById('stop-timer').disabled=true;
         document.getElementById('clear-timer').disabled=true;
+        background = "#8db0f7";
+        document.getElementById("statusBox").backgroundColor = background;
     }else{
         document.getElementById("RiskStatus").innerHTML = "OFFICIAL TEST: Press Start to begin ...";
         document.getElementById("timer-btn").innerHTML = "Start Official Test";
+        background = "#8db0f7";
+        document.getElementById("statusBox").backgroundColor = background;
         clearInterval(this.f);
         document.getElementById('timer-btn').disabled=false;
         this.setState({seconds:0}) 
@@ -142,7 +138,7 @@ render(){
           <div className="main-section">
               <label className="subtitle">Timer</label>
                     <div className="TimerLayoutWords">
-                    <Box id='statusBox'className="status Display">
+                    <Box id='statusBox'className="status Display" backgroundColor={background}>
                             <h1 style={{ textAlignHorizontal: "center",textAlign: "center",}}>{this.state.seconds}</h1>
                             <div className="TimerDiv">
                             
