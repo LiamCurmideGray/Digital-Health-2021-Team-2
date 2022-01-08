@@ -11,6 +11,7 @@ import ListOfEquipment from './components/ListOfEquipment';
 import ReviewQuestion from './components/ReviewQuestion';
 import RiskOfFallStatus from './components/RiskOfFallStatus';
 import Timer from './components/Timer';
+import Summary from './components/Summary';
 import {GripStrengthDatabaseProvider} from './components/database/GripStrengthDatabase';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Route, Routes } from "react-router-dom";
@@ -36,6 +37,7 @@ function App() {
             <Route path="/RiskOfFallStatus" element={<RiskOfFallStatus/>}></Route>
             <Route path="/ReviewQuestion" element={<ReviewQuestion/>}></Route>
             <Route path="/Timer" element={<Timer/>}></Route>
+            <Route path="/Summary" element={<Summary/>}></Route>
           </Routes>
         </GripStrengthDatabaseProvider>
         </Col>

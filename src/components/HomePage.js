@@ -23,6 +23,7 @@ function HomePage(){
             <a href='/RiskOfFallStatus' className='page-button'>Risk Of Fall Status</a>
             <a href='/Timer' className='page-button'>Timer</a>
             <a href='/ReviewQuestion' className='page-button'>Review Question</a>
+            <a href='/Summary' className='page-button'>Summary</a>
             <button className='page-button' onClick={addnewGripEntry}>Test Database</button>
           </header>
         </div>
