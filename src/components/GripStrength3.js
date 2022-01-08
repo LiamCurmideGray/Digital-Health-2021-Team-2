@@ -1,5 +1,5 @@
 import "./common/TemplatePage.css";
-// import Button from "@mui/material/Button";
+import CommonHeader from './common/CommonHeader';
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import { useState, useEffect } from "react";
@@ -106,36 +106,7 @@ const GripStrength3 = () => {
 
   return (
     <div className="screen">
-      <table style={{ width: "75%" }}>
-        <tbody>
-          <tr>
-            <td
-              style={{
-                textAlign: "left",
-                width: "33%",
-              }}
-            >
-              <label className="details">[Patient Name]</label>
-            </td>
-            <td
-              style={{
-                textAlign: "center",
-                width: "33%",
-              }}
-            >
-              <label className="details">[Date]</label>
-            </td>
-            <td
-              style={{
-                textAlign: "right",
-                width: "33%",
-              }}
-            >
-              <label className="details">[MR Name]</label>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      {CommonHeader()}
       <div className="buttons-section space-between">
         <a href="/GripStrength2" className="back-button">
           &lt;

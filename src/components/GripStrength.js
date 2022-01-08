@@ -1,6 +1,7 @@
 import './common/TemplatePage.css';
 import GripPhoto from '../resources/Grip Strength Test Equipment.png'
 import { useNavigate } from 'react-router-dom';
+import CommonHeader from './common/CommonHeader';
 
 function GripStrength() {
     const navigate = useNavigate();
@@ -9,36 +10,7 @@ function GripStrength() {
     }
     return (
         <div className="screen">
-            <table style={{ width: '75%' }}>
-                <tbody>
-                    <tr>
-                        <td style={{
-                            textAlign: 'left',
-                            width: '33%'
-                        }}>
-                            <label className="details">
-                                [Patient Name]
-                            </label>
-                        </td>
-                        <td style={{
-                            textAlign: 'center',
-                            width: '33%'
-                        }}>
-                            <label className="details">
-                                [Date]
-                            </label>
-                        </td>
-                        <td style={{
-                            textAlign: 'right',
-                            width: '33%'
-                        }}>
-                            <label className="details">
-                                [MR Name]
-                            </label>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            {CommonHeader()}
             <div className="buttons-section space-between">
                 <a href="/" className="back-button">&lt;</a>
                 <label className="title">Grip Strength Test</label>
