@@ -9,6 +9,7 @@ import TemplatePage from "./common/TemplatePage";
 
 var status="";
 var pressed="false";
+var trail = "0";
 
 function getStatusBackgroundColor(statusText){
     var background = "";
@@ -38,6 +39,7 @@ class Timer extends Component {
         clearInterval(this.f);
         var time = this.state.seconds;
         console.log(time);
+        
         document.getElementById("RiskStatus").innerHTML = "Time Exceeded. Test Automatically Failed";
         status="Automatic Fail";
     }
@@ -47,10 +49,15 @@ class Timer extends Component {
  }
 
  timer=()=>{
+    trail ++;
    this.f=setInterval(this.onStart,1000);
-   document.getElementById("RiskStatus").innerHTML = "Press STOP to end the test ...";
+   if(trail===2){
+    document.getElementById("RiskStatus").innerHTML = "TRIAL: Press STOP to end the test ...";
+}else{
+   document.getElementById("RiskStatus").innerHTML = "Press STOP to end the test ... ";
     document.getElementById('timer-btn').disabled=true;
     console.log(this.state.seconds);
+}
  }
 
  stopTimer=()=>{
@@ -58,7 +65,6 @@ class Timer extends Component {
      var background="";
      var time = this.state.seconds;
      console.log(time);
-
     
      if(time<=10&&time!==0){
         //Low Risk
@@ -82,9 +88,18 @@ class Timer extends Component {
     background = getStatusBackgroundColor(status);
  }
  clear=()=>{
-     clearInterval(this.f);
-     document.getElementById('timer-btn').disabled=false;
-     this.setState({seconds:0})
+    if(trail===2){
+        document.getElementById("RiskStatus").innerHTML = "The test cannot be redone as the test has already been done";
+        document.getElementById('timer-btn').disabled=true;
+        document.getElementById('stop-timer').disabled=true;
+        document.getElementById('clear-timer').disabled=true;
+    }else{
+        document.getElementById("RiskStatus").innerHTML = "OFFICIAL TEST: Press Start to begin ...";
+        document.getElementById("timer-btn").innerHTML = "Start Official Test";
+        clearInterval(this.f);
+        document.getElementById('timer-btn').disabled=false;
+        this.setState({seconds:0}) 
+    }
  }
 
 render(){
@@ -130,16 +145,16 @@ render(){
                             <h1 style={{ textAlignHorizontal: "center",textAlign: "center",}}>{this.state.seconds}</h1>
                             <div className="TimerDiv">
                             <Box class="status Display">
-                                <h3 id="RiskStatus"  style={{ textAlignHorizontal: "center",textAlign: "center",}}>Press Start to begin ... </h3>
+                                <h3 id="RiskStatus"  style={{ textAlignHorizontal: "center",textAlign: "center",}}>TRIAL: Press Start to begin ... </h3>
                             </Box> 
                             </div>
 
                         {/* </Button> */}
                         <div style={{ textAlignHorizontal: "center",textAlign: "center",}}>
                             
-                            <Button class='TimerLayoutBtnStart' id='timer-btn' onClick={this.timer}>Start</Button>
+                            <Button class='TimerLayoutBtnStart' id='timer-btn' onClick={this.timer}>Start Trial</Button>
                             <Button id='stop-timer'class='TimerLayoutBtnStop' onClick={this.stopTimer}>Stop</Button>
-                            <Button class='TimerLayoutBtnReset' onClick={this.clear}>Reset</Button>
+                            <Button id='stop-timer' class='TimerLayoutBtnReset'  onClick={this.clear}>Reset</Button>
                             
                         </div>
                      </div>
