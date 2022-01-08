@@ -1,22 +1,27 @@
 import { render } from "@testing-library/react";
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { Component } from "react/cjs/react.production.min";
 import './common/TemplatePage.css';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TemplatePage from "./common/TemplatePage";
+import Fab from '@mui/material/Fab';
+import HelpIcon from '@mui/icons-material/Help';
+import Popover from '@mui/material/Popover';
+import Typography from '@mui/material/Typography';
 
 var status="";
 var trail = "0";
 var background="#8db0f7";
+
+//help poppup function
 
 class Timer extends Component {
   constructor(props){
     super(props);
     this.state={seconds:0};
   }
-
   onStart=()=>{
     this.setState({seconds:this.state.seconds+1});
     if(this.state.seconds<=10){
@@ -132,8 +137,8 @@ render(){
         </table>
           <div className="buttons-section space-between">
               <a href="/Instructions" className="back-button">&lt;</a>
-              <label className="title">Timed Up and Go Test</label>
-              <a href="" className="help-button" style={{ backgroundColor: 'green' }}>?</a>
+              <label className="title" textAlign='center'>Timed Up and Go Test</label>
+              <a href="" > </a>
           </div>
           <div className="main-section">
               <label className="subtitle">Timer</label>
@@ -146,7 +151,6 @@ render(){
                             
                             </div>
                             </Box> 
-                        {/* </Button> */}
                         <div style={{ textAlignHorizontal: "center",textAlign: "center",}}>
                             
                             <Button class='TimerLayoutBtnStart' id='timer-btn' onClick={this.timer}>Start Trial</Button>

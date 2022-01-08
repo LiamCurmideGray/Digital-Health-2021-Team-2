@@ -14,7 +14,7 @@ import Timer from './components/Timer';
 import {GripStrengthDatabaseProvider} from './components/database/GripStrengthDatabase';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Route, Routes } from "react-router-dom";
-import React, { useState } from "react";
+import React from "react";
 
 function App() {
 

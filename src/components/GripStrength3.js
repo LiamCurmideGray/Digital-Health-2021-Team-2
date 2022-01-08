@@ -5,6 +5,10 @@ import InputAdornment from "@mui/material/InputAdornment";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import {Alert} from "react-bootstrap";
+import Fab from '@mui/material/Fab';
+import HelpIcon from '@mui/icons-material/Help';
+import Popover from '@mui/material/Popover';
+import Typography from '@mui/material/Typography';
 
 function LeftResultInputs() {
   const [leftInput1, setLeftInput1] = useState(0);
@@ -71,6 +75,19 @@ function LeftResultInputs() {
   
   }
 
+  //help poppup function
+const [anchorEl, setAnchorEl] = useState(null);
+
+const handleClick = (event) => {
+  setAnchorEl(event.currentTarget);
+};
+
+const handleClose = () => {
+  setAnchorEl(null);
+};
+const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
+
   return (
     <div className="screen">
       <table style={{ width: "75%" }}>
@@ -106,9 +123,23 @@ function LeftResultInputs() {
           &lt;
         </a>
         <label className="title">Results Entry</label>
-        <a href="" className="help-button" style={{ backgroundColor: "green" }}>
-          ?
-        </a>
+        <Fab className='help-button' aria-describedby={id} variant="contained" onClick={handleClick} aria-label="add" >
+                <HelpIcon fontSize="large">
+                </HelpIcon>
+                </Fab>   
+                <Popover
+                    id={id}
+                    open={open}
+                    anchorEl={anchorEl}
+                    onClose={handleClose}
+                    anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'left',
+                    }}
+                >
+
+        <Typography sx={{ p: 5, fontSize:'1.5em' }}>This page is where you need to input the dynamometer readings accordingly. You must fill in the values according to how the test is performed on the patient</Typography>
+      </Popover>  
       </div>
 
       <div className="main-section">
