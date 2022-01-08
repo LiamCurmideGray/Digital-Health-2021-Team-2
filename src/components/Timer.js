@@ -8,24 +8,24 @@ import Button from '@mui/material/Button';
 import TemplatePage from "./common/TemplatePage";
 
 var status="";
-var pressed="false";
 var trail = "0";
 
-function getStatusBackgroundColor(statusText){
-    var background = "";
-
-    if (statusText === 'Low Risk'){ 
-        background= "#00FF00";
-    }
-    else if (statusText === 'Medium Risk'){ 
-        background= "#FFFF00";
-    }
-    else if (statusText === 'High Risk') {
-        background= "#FF0000";
-    }
-
-    console.log(background);
-}
+// function getStatusBackgroundColor(statusText){
+//     if (statusText === 'Low Risk'){ 
+//         background= "#00FF00";
+//         console.log(background);
+//     }
+//     else if (statusText === 'Medium Risk'){ 
+//         background= "#FFFF00";
+//         console.log(background);
+//     }
+//     else if (statusText === 'High Risk') {
+//         background= "#FF0000";
+//         console.log(background);
+//     }
+//     return background;
+    
+// }
 
 class Timer extends Component {
   constructor(props){
@@ -35,17 +35,18 @@ class Timer extends Component {
 
   onStart=()=>{
     this.setState({seconds:this.state.seconds+1});
+    // background = getStatusBackgroundColor(this.state.seconds);
+    // console.log(background);
+    // document.getElementById("statusBox").backgroundColor = background;
     if(this.state.seconds>20){
         clearInterval(this.f);
         var time = this.state.seconds;
         console.log(time);
-        
+        //document.getElementById("statusBox").backgroundColor = "'red'";
         document.getElementById("RiskStatus").innerHTML = "Time Exceeded. Test Automatically Failed";
         status="Automatic Fail";
     }
     console.log(this.state.seconds);
-    // document.querySelector('.timer-btn').setAttribute("hidden", "true");
-    // document.querySelector('.stop-timer').setAttribute("active", "true");
  }
 
  timer=()=>{
@@ -85,7 +86,7 @@ class Timer extends Component {
         background= "'#FF0000'";
     }
     console.log(status);
-    background = getStatusBackgroundColor(status);
+    //background = getStatusBackgroundColor(status);
  }
  clear=()=>{
     if(trail===2){
@@ -141,14 +142,14 @@ render(){
           <div className="main-section">
               <label className="subtitle">Timer</label>
                     <div className="TimerLayoutWords">
-
+                    <Box id='statusBox'className="status Display">
                             <h1 style={{ textAlignHorizontal: "center",textAlign: "center",}}>{this.state.seconds}</h1>
                             <div className="TimerDiv">
-                            <Box class="status Display">
+                            
                                 <h3 id="RiskStatus"  style={{ textAlignHorizontal: "center",textAlign: "center",}}>TRIAL: Press Start to begin ... </h3>
-                            </Box> 
+                            
                             </div>
-
+                            </Box> 
                         {/* </Button> */}
                         <div style={{ textAlignHorizontal: "center",textAlign: "center",}}>
                             
