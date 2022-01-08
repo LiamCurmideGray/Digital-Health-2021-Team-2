@@ -17,11 +17,11 @@ html {
   font-family: 'Open Sans';
 }
 
-.details{
+.details {
   font-size: 0.85em;
 }
 
-.alert{
+.alert {
   color: red;
 }
 
@@ -44,26 +44,26 @@ html {
   color: black;
 }
 
-p{
+p {
   font-size: 2.2em;
 }
 
-li{
+li {
   font-size: 2em;
 }
 
-.buttons-section{
+.buttons-section {
   width: 95%;
   display: flex;
 }
 
-.space-between { 
-  justify-content: space-between; 
-} 
+.space-between {
+  justify-content: space-between;
+}
 
-.back-button, .help-button{
+.back-button, .help-button {
   background-color: black;
-  display:inline-block;
+  display: inline-block;
   width: 1.5em;
   height: 1.5em;
   line-height: 1.5em;
@@ -72,40 +72,40 @@ li{
   border-radius: 50%;
   text-align: center;
   padding: 1.5%;
-  font-size:1.5em;
+  font-size: 1.5em;
   text-decoration: none;
   color: white;
   cursor: pointer;
 }
 
-.title{
-  font-size:1.8em;
+.title {
+  font-size: 1.8em;
   text-align: center;
   margin-bottom: 0.4em;
-  margin-top:  0.4em;
+  margin-top: 0.4em;
 }
 
-.subtitle{
-  font-size:2.75em;
+.subtitle {
+  font-size: 2.75em;
   text-align: left;
-  font-weight:bolder;
+  font-weight: bolder;
   margin-bottom: 0.5em;
-  margin-top:  0.5em;
+  margin-top: 0.5em;
 }
 
-fieldset{
+fieldset {
   border: transparent;
   padding: 0%;
 }
 
-input[type=radio]{
+input[type=radio] {
   height: 2em;
   width: 2em;
   margin-right: 1em;
   margin-bottom: 2.5em;
 }
 
-input[type=text]{
+input[type=text] {
   height: 2em;
   width: 20em;
   margin-right: 1em;
@@ -115,11 +115,11 @@ input[type=text]{
   cursor: pointer;
 }
 
-.radio-button-label{
+.radio-button-label {
   font-size: 2em;
 }
 
-.next-button{
+.next-button {
   background-color: #003bb1;
   margin-top: 1em;
   width: 10em;
@@ -135,17 +135,17 @@ input[type=text]{
   cursor: pointer;
 }
 
-.list-item{
+.list-item {
   margin-right: 1em;
   margin-bottom: 0.5em;
   font-size: 2em;
 }
 
-.image-style{
+.image-style {
   width: 60%;
 }
 
-table.style{
+table.style {
   font-size: 1em;
   text-align: center;
   width: 100%;
@@ -153,7 +153,7 @@ table.style{
   border-collapse: collapse;
 }
 
-th.style{
+th.style {
   font-size: 2em;
   text-align: center;
   border: 0.3em solid black;
@@ -162,7 +162,7 @@ th.style{
   height: 2em;
 }
 
-td.style{
+td.style {
   font-size: 1.5em;
   text-align: center;
   border: 0.4em solid black;
@@ -170,7 +170,7 @@ td.style{
   height: 2em;
 }
 
-.TimerLayoutBtnStart{
+.TimerLayoutBtnStart {
   padding: 32px 40px;
   display: inline-block;
   background-color: #4CAF50;
@@ -184,10 +184,10 @@ td.style{
   cursor: pointer;
   text-decoration: none;
   margin-bottom: 1em;
-  align-self: center ; 
+  align-self: center;
 }
 
-.TimerLayoutBtnStop{
+.TimerLayoutBtnStop {
   padding: 32px 40px;
   display: inline-block;
   background-color: #c76147;
@@ -201,10 +201,10 @@ td.style{
   text-decoration: none;
   margin-bottom: 1em;
   cursor: pointer;
-  align-self: center ; 
+  align-self: center;
 }
 
-.TimerLayoutBtnReset{
+.TimerLayoutBtnReset {
   padding: 32px 40px;
   display: inline-block;
   font-size: 24px;
@@ -217,46 +217,48 @@ td.style{
   text-decoration: none;
   margin-bottom: 1em;
   cursor: pointer;
-  align-self: center ; 
+  align-self: center;
 }
 
-.TimerLayoutWords{
+.TimerLayoutWords {
   font-size: 2cm;
   align-items: center;
 }
 
-.TimerDiv{
+.TimerDiv {
   align-items: center;
   align-content: center;
 }
 
-.gripInputs{
+.gripInputs {
   width: 100%;
-  color:aliceblue;
-  
+  color: aliceblue;
+
 }
 
-.statusDisplay{
-  align-self: center ; 
+.statusDisplay {
+  align-self: center;
   align-content: center;
-  padding-top:1; 
-  width: 300; 
+  padding-top: 1;
+  width: 300;
   height: 55;
 }
 
-.fallStatusText{
-  font-size:0.5em;
+.fallStatusText {
+  font-size: 0.5em;
   text-align: center;
   margin-bottom: 0.4em;
-  margin-top:  0.4em;
+  margin-top: 0.4em;
 }
 
 .highrisk {
-  background-color:red;
-  }
+  background-color: red;
+}
+
 .mediumrisk {
-  background-color:yellow;
-  }
-  .lowrisk {
-    background-color:green;
-    }
+  background-color: yellow;
+}
+
+.lowrisk {
+  background-color: green;
+}
