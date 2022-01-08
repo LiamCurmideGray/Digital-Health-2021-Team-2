@@ -1,4 +1,5 @@
 import './common/TemplatePage.css';
+import CommonHeader from './common/CommonHeader';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './common/TemplatePage.css';
@@ -66,36 +67,7 @@ const GripStrength4 = () => {
 
     return (
         <div className="screen">
-            <table style={{ width: '75%' }}>
-                <tbody>
-                    <tr>
-                        <td style={{
-                            textAlign: 'left',
-                            width: '33%'
-                        }}>
-                            <label className="details">
-                                [Patient Name]
-                            </label>
-                        </td>
-                        <td style={{
-                            textAlign: 'center',
-                            width: '33%'
-                        }}>
-                            <label className="details">
-                                [Date]
-                            </label>
-                        </td>
-                        <td style={{
-                            textAlign: 'right',
-                            width: '33%'
-                        }}>
-                            <label className="details">
-                                [MR Name]
-                            </label>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            {CommonHeader()}
             <div className="buttons-section space-between">
                 <a href="/GripStrength3" className="back-button">&lt;</a>
                 <label className="title">Grip Strength Test</label>
