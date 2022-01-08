@@ -8,7 +8,7 @@ import Button from '@mui/material/Button';
 import TemplatePage from "./common/TemplatePage";
 
 var status="";
-
+var pressed="false";
 
 function getStatusBackgroundColor(statusText){
     var background = "";
@@ -34,10 +34,21 @@ class Timer extends Component {
 
   onStart=()=>{
     this.setState({seconds:this.state.seconds+1});
+    if(this.state.seconds>20){
+        clearInterval(this.f);
+        var time = this.state.seconds;
+        console.log(time);
+        document.getElementById("RiskStatus").innerHTML = "Time Exceeded. Test Automatically Failed";
+        status="Automatic Fail";
+    }
+    console.log(this.state.seconds);
+    // document.querySelector('.timer-btn').setAttribute("hidden", "true");
+    // document.querySelector('.stop-timer').setAttribute("active", "true");
  }
 
  timer=()=>{
    this.f=setInterval(this.onStart,1000);
+   document.getElementById("RiskStatus").innerHTML = "Press STOP to end the test ...";
     document.getElementById('timer-btn').disabled=true;
     console.log(this.state.seconds);
  }
@@ -68,15 +79,13 @@ class Timer extends Component {
         background= "'#FF0000'";
     }
     console.log(status);
-    //background = getStatusBackgroundColor(status);
+    background = getStatusBackgroundColor(status);
  }
  clear=()=>{
      clearInterval(this.f);
      document.getElementById('timer-btn').disabled=false;
      this.setState({seconds:0})
  }
-
-  
 
 render(){
     return(
@@ -116,18 +125,22 @@ render(){
           </div>
           <div className="main-section">
               <label className="subtitle">Timer</label>
-                  <li>Press the START button when you are ready to being the test and the STOP button when you wish to terminate the test</li>
-                    <div>
-                        <div class="TimerLayoutWords">
+                    <div className="TimerLayoutWords">
+
                             <h1 style={{ textAlignHorizontal: "center",textAlign: "center",}}>{this.state.seconds}</h1>
+                            <div className="TimerDiv">
                             <Box class="status Display">
-                                <h3 id="RiskStatus"  className="statusDisplay"></h3>
+                                <h3 id="RiskStatus"  style={{ textAlignHorizontal: "center",textAlign: "center",}}>Press Start to begin ... </h3>
                             </Box> 
-                        </div>
-                        <div class='TimerDiv'>
+                            </div>
+
+                        {/* </Button> */}
+                        <div style={{ textAlignHorizontal: "center",textAlign: "center",}}>
+                            
                             <Button class='TimerLayoutBtnStart' id='timer-btn' onClick={this.timer}>Start</Button>
-                            <Button class='TimerLayoutBtnStop' onClick={this.stopTimer}>Stop</Button>
+                            <Button id='stop-timer'class='TimerLayoutBtnStop' onClick={this.stopTimer}>Stop</Button>
                             <Button class='TimerLayoutBtnReset' onClick={this.clear}>Reset</Button>
+                            
                         </div>
                      </div>
             </div>

@@ -183,6 +183,7 @@ td.style{
   cursor: pointer;
   text-decoration: none;
   margin-bottom: 1em;
+  align-self: center ; 
 }
 
 .TimerLayoutBtnStop{
@@ -199,6 +200,7 @@ td.style{
   text-decoration: none;
   margin-bottom: 1em;
   cursor: pointer;
+  align-self: center ; 
 }
 
 .TimerLayoutBtnReset{
@@ -214,6 +216,7 @@ td.style{
   text-decoration: none;
   margin-bottom: 1em;
   cursor: pointer;
+  align-self: center ; 
 }
 
 .TimerLayoutWords{
@@ -222,7 +225,8 @@ td.style{
 }
 
 .TimerDiv{
-  padding-left: 30%;
+  align-items: center;
+  align-content: center;
 }
 
 .gripInputs{
