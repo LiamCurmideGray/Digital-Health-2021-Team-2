@@ -6,7 +6,7 @@ import { useGripContext } from "./database/GripStrengthDatabase";
 
 const GripStrength4 = () => {
 
-    const { addnewGripEntry } = useGripContext();
+    const { GripStrengthResults } = useGripContext();
     const navigate = useNavigate();
 
     const [question1, setAnswerQuestion1] = useState("");
@@ -24,7 +24,7 @@ const GripStrength4 = () => {
             document.getElementById("question2-alert").innerHTML = "Please select an option!";
             document.getElementById("question2Form").scrollIntoView();
         }
-        else if (question2.value == "no, other" || question2.value == "no, reason: "){
+        else if (question2 == "no, other" || question2 == "no, reason: "){
             document.getElementById("question2-other-alert").innerHTML = "Please input a reason!";
             document.getElementById("question2Form").scrollIntoView();
         }
@@ -36,7 +36,7 @@ const GripStrength4 = () => {
             document.getElementById("question1-alert").innerHTML = "Please select an option!";
             document.getElementById("question1Form").scrollIntoView();
         }
-        else if (question1.value == "no, other" || question1.value == "no, reason: "){
+        else if (question1 == "no, other" || question1 == "no, reason: "){
             document.getElementById("question1-other-alert").innerHTML = "Please input a reason!";
             document.getElementById("question1Form").scrollIntoView();
         }
@@ -48,7 +48,7 @@ const GripStrength4 = () => {
             console.log("Passing results to GripStrength");
             sessionStorage.setItem("question4", question1);
             sessionStorage.setItem("question5", question2);
-            addnewGripEntry();
+            GripStrengthResults();
             navigate("");
         }
     }
@@ -191,9 +191,9 @@ const GripStrength4 = () => {
 
                                 <label className="radio-button-label" for="gst-question2-radio6">Refused</label>
                                 <br />
-                                <input type="radio" ild="gst-question2-radio7" name="question2-sub-questions" onClick={function () {
+                                <input type="radio" id="gst-question2-radio7" name="question2-sub-questions" onClick={function () {
                                     document.getElementById("right-hand-text-box").disabled = false;
-                                }} onChange={(e) => setAnswerQuestion2(e.target.value)} value="no, other" disabled={false} style={{ marginLeft: "7.5em" }} />
+                                }} onChange={(e) => setAnswerQuestion2(e.target.value)} value="no, other" style={{ marginLeft: "7.5em" }} />
                                 <label className="radio-button-label" for="gst-question2-radio7">Other:  </label>
                                 <input type="text" id="right-hand-text-box" disabled={true} onBlur={(e) => setAnswerQuestion2("no, reason: " + e.target.value)} />
                                 <h3 class="alert" id="question2-other-alert"></h3>
