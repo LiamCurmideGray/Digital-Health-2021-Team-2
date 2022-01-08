@@ -52,43 +52,43 @@ function ReviewQuestion() {
                             document.getElementById("radio-button-refused").checked = false;
                             document.getElementById("radio-button-prev-other").checked = false;
                         }} />
-                        <label className="radio-button-label" for="radio-button-yes">Yes</label>
+                        <label className="radio-button-label" htmlFor="radio-button-yes">Yes</label>
                     </div>
                     <div>
                         <input type="radio" id="radio-button-no" name="group1" value="no"
                         onClick={function () {
                             document.getElementById("TUGTestCarriedOut").disabled = false; }}/>
 
-                        <label className="radio-button-label" for="radio-button-no">No</label>
+                        <label className="radio-button-label" htmlFor="radio-button-no">No</label>
                     </div>
                     <fieldset id="TUGTestCarriedOut" disabled={true}>
                         <div>
                             <input type="radio" id="radio-button-att" name="group1-1" value="TUG Test Carried out: No, Reason: attempted-but-unable" style={{ marginLeft: "7.5em" }} 
                             onChange={(e) => setAnswerQuestion1(e.target.value)}/>
-                            <label className="radio-button-label" for="radio-button-att">Attempted, but unable</label>
+                            <label className="radio-button-label" htmlFor="radio-button-att">Attempted, but unable</label>
                         </div>
                         <div>
                             <input type="radio" id="radio-button-unsafe" name="group1-1" value="TUG Test Carried out: No, Reason: unsafe" style={{ marginLeft: "7.5em" }} 
                             onChange={(e) => setAnswerQuestion1(e.target.value)}/>
-                            <label className="radio-button-label" for="radio-button-unsafe">Unsafe</label>
+                            <label className="radio-button-label" htmlFor="radio-button-unsafe">Unsafe</label>
                         </div>
                         <div>
                             <input type="radio" id="radio-button-unable" name="group1-1" value="TUG Test Carried out: No, Reason: unable" style={{ marginLeft: "7.5em" }} 
                             onChange={(e) => setAnswerQuestion1(e.target.value)}/>
-                            <label className="radio-button-label" for="radio-button-unable">Unable to understand command</label>
+                            <label className="radio-button-label" htmlFor="radio-button-unable">Unable to understand command</label>
                         </div>
                         <div>
                             <input type="radio" id="radio-button-refused" name="group1-1" value="TUG Test Carried out: No, Reason: refused" style={{ marginLeft: "7.5em" }} 
                             onChange={(e) => setAnswerQuestion1(e.target.value)}/>
-                            <label className="radio-button-label" for="radio-button-refused">Refused</label>
+                            <label className="radio-button-label" htmlFor="radio-button-refused">Refused</label>
                         </div>
                         <div>
                             <input type="radio" id="radio-button-prev-other" name="group1-1" value="other" style={{ marginLeft: "7.5em" }} onClick={function () {
                                     document.getElementById("left-hand-text-box").disabled = false;
                                 }}  onChange={(e) => setAnswerQuestion1(e.target.value)} style={{ marginLeft: "7.5em" }} />
-                            <label className="radio-button-label" for="radio-button-prev-other">Other:</label>
+                            <label className="radio-button-label" htmlFor="radio-button-prev-other">Other:</label>
                             <input type="text" id="left-hand-text-box" disabled={true} onBlur={(e) => setAnswerQuestion1("TUG Test Carried out: No, Reason: " + e.target.value)} />
-                            <h3 class="alert" id="question1-other-alert"></h3>
+                            <h3 className="alert" id="question1-other-alert"></h3>
 
                         </div>
                     </fieldset>

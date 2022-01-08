@@ -6,6 +6,7 @@ import './common/TemplatePage.css';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TemplatePage from "./common/TemplatePage";
+import CommonHeader from "./common/CommonHeader";
 
 var status="";
 var trail = "0";
@@ -102,34 +103,7 @@ class Timer extends Component {
 render(){
     return(
       <div className="screen">
-         <table style={{ width: '75%' }}>
-              <tr>
-                  <td style={{
-                      textAlign: 'left',
-                      width: '33%'
-                  }}>
-                      <label className="details">
-                          [Patient Name]
-                      </label>
-                  </td>
-                  <td style={{
-                      textAlign: 'center',
-                      width: '33%'
-                  }}>
-                      <label className="details">
-                          [Date]
-                      </label>
-                  </td>
-                  <td style={{
-                      textAlign: 'right',
-                      width: '33%'
-                  }}>
-                      <label className="details">
-                          [MR Name]
-                      </label>
-                  </td>
-                </tr>
-        </table>
+         {CommonHeader()}
           <div className="buttons-section space-between">
               <a href="/Instructions" className="back-button">&lt;</a>
               <label className="title">Timed Up and Go Test</label>
