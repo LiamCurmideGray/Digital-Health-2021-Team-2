@@ -6,7 +6,7 @@ import { useGripContext } from "./database/GripStrengthDatabase";
 
 const GripStrength4 = () => {
 
-    const { GripStrengthResults5 } = useGripContext();
+    const { addnewGripEntry } = useGripContext();
     const navigate = useNavigate();
 
     const [question1, setAnswerQuestion1] = useState("");
@@ -46,7 +46,9 @@ const GripStrength4 = () => {
         }
         if (question1 != "" && question2 != "") {
             console.log("Passing results to GripStrength");
-            GripStrengthResults5(question1, question2);
+            sessionStorage.setItem("question4", question1);
+            sessionStorage.setItem("question5", question2);
+            addnewGripEntry();
             navigate("");
         }
     }
@@ -84,7 +86,7 @@ const GripStrength4 = () => {
                 </tr>
             </table>
             <div className="buttons-section space-between">
-                <a href="/GripStrength4" className="back-button">&lt;</a>
+                <a href="/GripStrength3" className="back-button">&lt;</a>
                 <label className="title">Grip Strength Test</label>
                 <a href="" className="help-button" style={{ backgroundColor: 'green' }}>?</a>
             </div>
@@ -102,7 +104,7 @@ const GripStrength4 = () => {
                                 document.getElementById("gst-question1-radio5").checked = false;
                                 document.getElementById("gst-question1-radio6").checked = false;
                                 document.getElementById("gst-question1-radio7").checked = false;
-                            }} onChange={(e) => setAnswerQuestion1({ name: e.target.name, value: e.target.value })} value="grip strength test carried out on left hand" />
+                            }} onChange={(e) => setAnswerQuestion1(e.target.value)} value="grip strength test carried out on left hand" />
                             <label className="radio-button-label" for="gst-question1-radio1">Yes</label>
                             <br />
                             <input type="radio" id="gst-question1-radio2" name="question1-yes-no" onClick={function () {
@@ -114,29 +116,29 @@ const GripStrength4 = () => {
                             <fieldset id="leftHandFieldset" disabled={true}>
                                 <input type="radio" id="gst-question1-radio3" name="question1-sub-questions" value="no, attempted but unable" onClick={function () {
                                     document.getElementById("left-hand-text-box").disabled = true;
-                                }} onChange={(e) => setAnswerQuestion1({ name: e.target.name, value: e.target.value })} style={{ marginLeft: "7.5em" }} />
+                                }} onChange={(e) => setAnswerQuestion1(e.target.value)} style={{ marginLeft: "7.5em" }} />
                                 <label className="radio-button-label" for="gst-question1-radio3">Attempted but unable</label>
                                 <br />
                                 <input type="radio" id="gst-question1-radio4" name="question1-sub-questions" value="no, unsafe" onClick={function () {
                                     document.getElementById("left-hand-text-box").disabled = true;
-                                }} onChange={(e) => setAnswerQuestion1({ name: e.target.name, value: e.target.value })} style={{ marginLeft: "7.5em" }} />
+                                }} onChange={(e) => setAnswerQuestion1(e.target.value)} style={{ marginLeft: "7.5em" }} />
                                 <label className="radio-button-label" for="gst-question1-radio4">Unsafe</label>
                                 <br />
                                 <input type="radio" id="gst-question1-radio5" name="question1-sub-questions" value="no, unable to understand" onClick={function () {
                                     document.getElementById("left-hand-text-box").disabled = true;
-                                }} onChange={(e) => setAnswerQuestion1({ name: e.target.name, value: e.target.value })} style={{ marginLeft: "7.5em" }} />
+                                }} onChange={(e) => setAnswerQuestion1(e.target.value)} style={{ marginLeft: "7.5em" }} />
                                 <label className="radio-button-label" for="gst-question1-radio5">Unable to understand</label>
                                 <br />
                                 <input type="radio" id="gst-question1-radio6" name="question1-sub-questions" value="no, refused" onClick={function () {
                                     document.getElementById("left-hand-text-box").disabled = true;
-                                }} onChange={(e) => setAnswerQuestion1({ name: e.target.name, value: e.target.value })} style={{ marginLeft: "7.5em" }} />
+                                }} onChange={(e) => setAnswerQuestion1(e.target.value)} style={{ marginLeft: "7.5em" }} />
                                 <label className="radio-button-label" for="gst-question1-radio6">Refused</label>
                                 <br />
                                 <input type="radio" id="gst-question1-radio7" name="question1-sub-questions" value="no, other" onClick={function () {
                                     document.getElementById("left-hand-text-box").disabled = false;
-                                }} onChange={(e) => setAnswerQuestion1({ name: e.target.name, value: e.target.value })} style={{ marginLeft: "7.5em" }} />
+                                }} onChange={(e) => setAnswerQuestion1(e.target.value)} style={{ marginLeft: "7.5em" }} />
                                 <label className="radio-button-label" for="gst-question1-radio7">Other:  </label>
-                                <input type="text" id="left-hand-text-box" disabled={true} onBlur={(e) => setAnswerQuestion1({ name: e.target.name, value: "no, reason: " + e.target.value })} />
+                                <input type="text" id="left-hand-text-box" disabled={true} onBlur={(e) => setAnswerQuestion1("no, reason: " + e.target.value)} />
                                 <h3 class="alert" id="question1-other-alert"></h3>
                             </fieldset>
                         </form>
@@ -157,7 +159,7 @@ const GripStrength4 = () => {
                                     document.getElementById("gst-question2-radio5").checked = false;
                                     document.getElementById("gst-question2-radio6").checked = false;
                                     document.getElementById("gst-question2-radio7").checked = false;
-                                }} onChange={(e) => setAnswerQuestion2({ name: e.target.name, value: e.target.value })} value="grip strength test carried out on right hand" />
+                                }} onChange={(e) => setAnswerQuestion2(e.target.value)} value="grip strength test carried out on right hand" />
                                 <label className="radio-button-label" for="gst-question2-radio1">Yes</label>
                                 <br />
                                 <input type="radio" id="gst-question2-radio2" name="question2-yes-no" onClick={function () {
@@ -170,37 +172,37 @@ const GripStrength4 = () => {
                             <fieldset id="rightHandFieldset" disabled={true}>
                                 <input type="radio" id="gst-question2-radio3" name="question2-sub-questions" value="attempted-unable" onClick={function () {
                                     document.getElementById("right-hand-text-box").disabled = true;
-                                }} onChange={(e) => setAnswerQuestion2({ name: e.target.name, value: e.target.value })} style={{ marginLeft: "7.5em" }} />
+                                }} onChange={(e) => setAnswerQuestion2(e.target.value)} style={{ marginLeft: "7.5em" }} />
                                 <label className="radio-button-label" for="gst-question2-radio3">Attempted but unable</label>
                                 <br />
                                 <input type="radio" id="gst-question2-radio4" name="question2-sub-questions" value="unsafe" onClick={function () {
                                     document.getElementById("right-hand-text-box").disabled = true;
-                                }} onChange={(e) => setAnswerQuestion2({ name: e.target.name, value: e.target.value })} style={{ marginLeft: "7.5em" }} />
+                                }} onChange={(e) => setAnswerQuestion2(e.target.value)} style={{ marginLeft: "7.5em" }} />
                                 <label className="radio-button-label" for="gst-question2-radio4">Unsafe</label>
                                 <br />
                                 <input type="radio" id="gst-question2-radio5" name="question2-sub-questions" value="unable-to-understand" onClick={function () {
                                     document.getElementById("right-hand-text-box").disabled = true;
-                                }} onChange={(e) => setAnswerQuestion2({ name: e.target.name, value: e.target.value })} style={{ marginLeft: "7.5em" }} />
+                                }} onChange={(e) => setAnswerQuestion2(e.target.value)} style={{ marginLeft: "7.5em" }} />
                                 <label className="radio-button-label" for="gst-question2-radio5">Unable to understand</label>
                                 <br />
                                 <input type="radio" id="gst-question2-radio6" name="question2-sub-questions" value="refused" onClick={function () {
                                     document.getElementById("right-hand-text-box").disabled = true;
-                                }} onChange={(e) => setAnswerQuestion2({ name: e.target.name, value: e.target.value })} style={{ marginLeft: "7.5em" }} />
+                                }} onChange={(e) => setAnswerQuestion2(e.target.value)} style={{ marginLeft: "7.5em" }} />
 
                                 <label className="radio-button-label" for="gst-question2-radio6">Refused</label>
                                 <br />
-                                <input type="radio" id="gst-question2-radio7" name="question2-sub-questions" onClick={function () {
+                                <input type="radio" ild="gst-question2-radio7" name="question2-sub-questions" onClick={function () {
                                     document.getElementById("right-hand-text-box").disabled = false;
-                                }} onChange={(e) => setAnswerQuestion2({ name: e.target.name, value: e.target.value })} value="no, other" disabled={false} style={{ marginLeft: "7.5em" }} />
+                                }} onChange={(e) => setAnswerQuestion2(e.target.value)} value="no, other" disabled={false} style={{ marginLeft: "7.5em" }} />
                                 <label className="radio-button-label" for="gst-question2-radio7">Other:  </label>
-                                <input type="text" id="right-hand-text-box" disabled={true} onBlur={(e) => setAnswerQuestion2({ name: e.target.name, value: "no, reason: " + e.target.value })} />
+                                <input type="text" id="right-hand-text-box" disabled={true} onBlur={(e) => setAnswerQuestion2("no, reason: " + e.target.value)} />
                                 <h3 class="alert" id="question2-other-alert"></h3>
                             </fieldset>
                         </form>
                     </ol>
                 </form>
             </div>
-            <button className="next-button" onClick={validateForm}>Next</button>
+            <button className="next-button" onClick={validateForm}>Submit Results</button>
         </div>
     );
 };
