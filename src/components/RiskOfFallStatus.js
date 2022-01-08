@@ -40,23 +40,43 @@ function RiskOfFallStatus() {
 
             <div className="main-section">
                 <label className="subtitle">Risk of Fall Status</label>
-                <label></label>
+                <ul>
+                    <li>Status: XX</li>
+                    <li>Time taken: XX</li>
+                </ul>
+                <label className='subtitle'></label>
                 <div>
                     <table className="style">
                         <tr>
                             <th className="style">
-                                Risk Status
+                                Risk of Falls
                             </th>
                             <th className="style">
-                                Patient Time
+                                Normative Reference Value
                             </th>
                         </tr>
                         <tr>
                             <td className="style">
-                                
+                                Low Risk
                             </td>
                             <td className="style">
-                        
+                                &lt;10 seconds
+                            </td>
+                        </tr>
+                        <tr>
+                            <td className="style">
+                                Medium Risk
+                            </td>
+                            <td className="style">
+                                11- 14 seconds
+                            </td>
+                        </tr>
+                        <tr>
+                            <td className="style">
+                                Hight Risk
+                            </td>
+                            <td className="style">
+                                &gt;15 seconds
                             </td>
                         </tr>
                     </table>
