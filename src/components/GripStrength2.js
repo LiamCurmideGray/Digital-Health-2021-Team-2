@@ -13,6 +13,9 @@ const GripStrength2 = () => {
     const [question1, setAnswerQuestion1] = useState("");
     const [question2, setAnswerQuestion2] = useState("");
     const [question3, setAnswerQuestion3] = useState("");
+    sessionStorage.setItem("question1", question1);
+    sessionStorage.setItem("question2", question2);
+    sessionStorage.setItem("question3", question3);
 
     console.log("Question 1: ", question1);
     console.log("Question 2: ", question2);
@@ -27,7 +30,7 @@ const GripStrength2 = () => {
             document.getElementById("question3-alert").innerHTML = "Please select an option!";
             document.getElementById("question3Form").scrollIntoView(false);
         }
-        else{
+        else {
             document.getElementById("question3-alert").innerHTML = "";
         }
         if (question2 == "") {
@@ -41,7 +44,7 @@ const GripStrength2 = () => {
             document.getElementById("question1-alert").innerHTML = "Please select an option!";
             document.getElementById("question1Form").scrollIntoView();
         }
-        else{
+        else {
             document.getElementById("question1-alert").innerHTML = "";
         }
         if (question1 != "" && question2 != "" && question3 != "") {

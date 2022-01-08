@@ -3,10 +3,10 @@ import "./common/TemplatePage.css";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 import { Alert } from "react-bootstrap";
 
-function LeftResultInputs() {
+function GstResultInputs() {
   const [leftInput1, setLeftInput1] = useState(0);
   const [leftInput2, setLeftInput2] = useState(0);
   const [rightInput1, setRightInput1] = useState(0);
@@ -15,12 +15,18 @@ function LeftResultInputs() {
   const [errorLeft, setErrorLeft] = useState("");
   const [errorRight, setErrorRight] = useState("");
   const [errorConfirm, setErrorConfirm] = useState(false);
+  var question1 = sessionStorage.getItem("question1");
+  var question2 = sessionStorage.getItem("question2");
+  var question3 = sessionStorage.getItem("question3");
   sessionStorage.setItem("MaxLeftHandResult", "No Left Result");
   sessionStorage.setItem("MaxRightHandResult", "No Right Result");
 
 
   const navigate = useNavigate();
 
+  if (question1 == "" || question2 == "" || question3 == "") {
+    return <Navigate to="/GripStrength2"/>;
+  }
   function maxVal(input, input2) {
 
     const values = [input, input2];
@@ -289,5 +295,5 @@ function LeftResultInputs() {
   );
 }
 
-export default LeftResultInputs;
+export default GstResultInputs;
 
