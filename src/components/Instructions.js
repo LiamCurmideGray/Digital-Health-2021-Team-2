@@ -1,7 +1,12 @@
 import '../App.css';
 import CommonHeader from './common/CommonHeader';
+import { useNavigate } from 'react-router-dom';
 
 function Instructions() {
+    const navigate = useNavigate();
+    function navToNextPage() {
+        navigate("/Timer")
+    }
     return (
         <div className="screen">
             {CommonHeader()}
@@ -32,7 +37,7 @@ function Instructions() {
                     </ol>
                 </div>
             </div>
-            <a href="/Timer" className="next-button">Next</a>
+            <button className="next-button" onClick={navToNextPage}>Next</button>
         </div>
     );
 }

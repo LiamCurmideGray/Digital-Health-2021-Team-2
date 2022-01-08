@@ -1,5 +1,3 @@
-
-
 function CommonHeader(Title) {
 
     return (

@@ -5,23 +5,24 @@ import CommonHeader from './common/CommonHeader';
 
 function GripStrength() {
     const navigate = useNavigate();
-    function navToNextPage(){
+    function navToNextPage() {
         navigate("/GripStrength2")
     }
     return (
         <div className="screen">
             {CommonHeader()}
-            <div className="buttons-section space-between">
+            {<div className="buttons-section space-between">
                 <a href="/" className="back-button">&lt;</a>
                 <label className="title">Grip Strength Test</label>
                 <a href="" className="help-button" style={{ backgroundColor: 'green' }}>?</a>
-            </div>
-            <img src={GripPhoto} style={{
-                padding: 20
-            }} />
+            </div>}
+
             <div className="main-section">
                 <label className="subtitle">Equipment and Instructions</label>
                 <p>Equipment needed:</p>
+                <img src={GripPhoto} style={{
+                    padding: 20
+                }} />
                 <ul>
                     <li>Dynamometer</li>
                 </ul>
