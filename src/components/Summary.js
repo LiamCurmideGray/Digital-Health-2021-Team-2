@@ -1,7 +1,17 @@
 import './common/TemplatePage.css';
-import TUGPhoto from '../resources/TUG_Test_Setup.png'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useGripContext } from "./database/GripStrengthDatabase";
 
-function ListOfEquipment() {
+
+const Summary = () => {
+    const navigate = useNavigate();
+
+    function validateForm() {
+        console.log("Results are to be submitted after the SUBMIT is pressed");
+        navigate("/");
+    }
+
     return (
         <div className="screen">
             <table style={{ width: '75%' }}>
@@ -34,28 +44,31 @@ function ListOfEquipment() {
                 </tr>
             </table>
             <div className="buttons-section space-between">
-                <a href="/LevelsOfMobility" className="back-button">&lt;</a>
-                <label className="title">Timed Up and Go Test</label>
+                {/* <a href="/GripStrength4" className="back-button">&lt;</a> */}
+                <a href=""></a>
+                <label className="title">Results</label>
                 <a href="" className="help-button" style={{ backgroundColor: 'green' }}>?</a>
             </div>
-
             <div className="main-section">
-                <label className="subtitle">List of Equipment</label>
-                <div>
-                    <ul>
-                        <li className="list-item">Arm-chair</li>
-                        <li className="list-item">Tape measure</li>
-                        <li className="list-item">Tape</li>
-                    </ul>
-                </div>
-                <label className="subtitle">Setup of Test</label>
-                <img src={TUGPhoto} style={{
-                padding: 20
-            }}/>
+                <label className="subtitle">Levels of Mobility</label>
+                <ul>
+                    <li>Previous level: XX</li>
+                    <li>Current level: XX</li>
+                </ul>
+                <label className="subtitle">Timed Up and Go Test</label>
+                <ul>
+                    <li>Risk of Fall Status: STATUS; TIME_TAKEN</li>
+                    <li>Carried out: YES/NO</li>
+                </ul>
+                <label className="subtitle">Grip Strength test</label>
+                <ul>
+                    <li>Left hand: XX</li>
+                    <li>Right level: XX</li>
+                </ul>
             </div>
-            <a href="/Instructions" className="next-button">Next</a>
+            <button className="next-button" onClick={validateForm}>Submit</button>
         </div>
     );
-}
+};
 
-export default ListOfEquipment;
+export default Summary;

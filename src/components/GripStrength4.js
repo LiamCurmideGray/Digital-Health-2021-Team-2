@@ -49,7 +49,7 @@ const GripStrength4 = () => {
             sessionStorage.setItem("question4", question1);
             sessionStorage.setItem("question5", question2);
             GripStrengthResults();
-            navigate("");
+            navigate("/Summary");
         }
     }
 
