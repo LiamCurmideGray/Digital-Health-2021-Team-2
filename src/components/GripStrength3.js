@@ -64,36 +64,6 @@ function LeftResultInputs() {
     if (sessionStorage.getItem("MaxLeftHandResult") != "No Left Result" && sessionStorage.getItem("MaxRightHandResult") != "No Right Result") {
       navigate("/GripStrength4")
     }
-    // else {
-    //   if (leftInput1 <= 0 && leftInput2 <= 0) {
-    //     sessionStorage.setItem("MaxLeftHandResult", "No Left Result");
-    //   }
-    //   else {
-
-    //     if (rightInput1 <= 0 && rightInput2 <= 0) {
-
-    //       setError("You haven't inputed the data for the Right hand! Click next button again to proceed without Right Hand values");
-    //       setErrorConfirm(true);
-    //     }
-    //     sessionStorage.setItem("MaxLeftHandResult", `Left Max Result: ${maxVal(leftInput1, leftInput2)}kg`);
-    //   }
-
-    //   if (rightInput1 == 0 && rightInput2 == 0) {
-    //     sessionStorage.setItem("MaxRightHandResult", "No Right Result");
-    //   }
-    //   else {
-
-    //     if (leftInput1 == 0 && leftInput2 == 0) {
-    //       setError("You haven't inputed the data for the Left hand! Click next button again to proceed without Left Hand values");
-    //       setErrorConfirm(true);
-    //     }
-    //     sessionStorage.setItem("MaxRightHandResult", `Right Max Result: ${maxVal(rightInput1, rightInput2)}kg`);
-    //   }
-
-    //   if (sessionStorage.getItem("MaxLeftHandResult") != "No Left Result" && sessionStorage.getItem("MaxRightHandResult") != "No Right Result") {
-    //     navigate("/GripStrength4")
-    //   }
-    // }
     console.log(sessionStorage.getItem("MaxRightHandResult"));
     console.log(sessionStorage.getItem("MaxLeftHandResult"));
     console.log("\n");
