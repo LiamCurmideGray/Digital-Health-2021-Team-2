@@ -128,15 +128,15 @@ function LevelsOfMobility() {
                     <fieldset id="CurrentLevelofMobilityFieldset" disabled={true}>
                         <div>
                             <input type="radio" id="radio-button-prev-stick2" name="group2-1" value="stick" style={{ marginLeft: "7.5em" }} onChange={(e) => setAnswerQuestion2("independent-with-walking-aid with " + e.target.value)} />
-                            <label className="radio-button-label" htmlFor="radio-button-prev-stick">Stick</label>
+                            <label className="radio-button-label" htmlFor="radio-button-prev-stick2">Stick</label>
                         </div>
                         <div>
                             <input type="radio" id="radio-button-prev-roll-frame2" name="group2-1" value="rollator-frame" style={{ marginLeft: "7.5em" }} onChange={(e) => setAnswerQuestion2("independent-with-walking-aid with " + e.target.value)} />
-                            <label className="radio-button-label" htmlFor="radio-button-prev-roll-frame">Rollator Frame</label>
+                            <label className="radio-button-label" htmlFor="radio-button-prev-roll-frame2">Rollator Frame</label>
                         </div>
                         <div>
                             <input type="radio" id="radio-button-prev-gutt-frame2" name="group2-1" value="gutter-frame" style={{ marginLeft: "7.5em" }} onChange={(e) => setAnswerQuestion2("independent-with-walking-aid with " + e.target.value)} />
-                            <label className="radio-button-label" htmlFor="radio-button-prev-gutt-frame">Gutter Frame</label>
+                            <label className="radio-button-label" htmlFor="radio-button-prev-gutt-frame2">Gutter Frame</label>
                         </div>
                         <div>
                             <input type="radio" id="radio-button-prev-other2" name="group2-1" value="other" style={{ marginLeft: "7.5em" }} onClick={function () {
