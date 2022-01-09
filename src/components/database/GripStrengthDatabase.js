@@ -29,11 +29,17 @@ export function GripStrengthDatabaseProvider({ children }) {
       console.log(sessionStorage.getItem("question3"));
       console.log(sessionStorage.getItem("question4"));
       console.log(sessionStorage.getItem("question5"));
-      // addnewGripEntry();
+      addnewGripEntry();
     }
 
     async function addnewGripEntry() {
       console.log("Wasalt fil method ta add new Grip Entry");
+
+      let SessionLeftResult = sessionStorage.getItem("MaxLeftHandResult");
+      let SessionRightResult = sessionStorage.getItem("MaxRightHandResult");
+  
+      let ActualObjectLeftResult = JSON.parse(SessionLeftResult);
+      let ActualObjectRightResult = JSON.parse(SessionRightResult);
 
       await setDoc(doc(db, "patients", patientId.toString(),"SectionB", dateString), {
         GripStrengthResults: {
@@ -42,8 +48,8 @@ export function GripStrengthDatabaseProvider({ children }) {
          Question3: sessionStorage.getItem("question3"),
          Question4: sessionStorage.getItem("question4"),
          Question5: sessionStorage.getItem("question5"),
-         MaxLeftHandResult: sessionStorage.getItem("MaxLeftHandResult"),
-         MaxRightHandResult: sessionStorage.getItem("MaxRightHandResult"),
+         MaxLeftHandResult: ActualObjectLeftResult,
+         MaxRightHandResult: ActualObjectRightResult,
         },
       });
       console.log("Updated Database");
