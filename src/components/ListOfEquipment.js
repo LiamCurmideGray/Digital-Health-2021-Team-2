@@ -12,10 +12,12 @@ import { Navigate, useNavigate } from 'react-router-dom';
 
 function ListOfEquipment() {
     const navigate = useNavigate();
+    const [anchorEl, setAnchorEl] = React.useState(null);
     const question1 = sessionStorage.getItem("TUGQuestion1");
     const question2 = sessionStorage.getItem("TUGQuestion2");
     console.log(question1);
     console.log(question2);
+
     if (question1 == "" || question2 == "") {
         return <Navigate to="/LevelsOfMobility" />;
     }
@@ -24,7 +26,7 @@ function ListOfEquipment() {
     }
   
   //help poppup function
-const [anchorEl, setAnchorEl] = React.useState(null);
+
 
 const handleClick = (event) => {
   setAnchorEl(event.currentTarget);

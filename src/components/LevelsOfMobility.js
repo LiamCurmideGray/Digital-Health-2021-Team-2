@@ -59,8 +59,6 @@ function LevelsOfMobility() {
         }
     }
 
-
-function LevelsOfMobility() {
     //help poppup function
     const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -214,7 +212,4 @@ function LevelsOfMobility() {
         </div>
     );
 }
-
-
-
 export default LevelsOfMobility;
