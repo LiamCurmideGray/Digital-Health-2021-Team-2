@@ -18,10 +18,12 @@ function LevelsOfMobility() {
     function validateForm() {
 
         if (question2 == "") {
+            document.getElementById("question2-other-alert").innerHTML = "";
             document.getElementById("question2-alert").innerHTML = "Please select an option!";
             document.getElementById("question2Form").scrollIntoView();
         }
         else if (question2 == "other" || question2 == "independent-with-walking-aid with ") {
+            document.getElementById("question2-alert").innerHTML = "";
             document.getElementById("question2-other-alert").innerHTML = "Please input a reason!";
             document.getElementById("question2Form").scrollIntoView();
         }
@@ -30,10 +32,12 @@ function LevelsOfMobility() {
             document.getElementById("question2-other-alert").innerHTML = "";
         }
         if (question1 == "") {
+            document.getElementById("question1-other-alert").innerHTML = "";
             document.getElementById("question1-alert").innerHTML = "Please select an option!";
             document.getElementById("question1Form").scrollIntoView();
         }
         else if (question1 == "other" || question1 == "independent-with-walking-aid with ") {
+            document.getElementById("question1-alert").innerHTML = "";
             document.getElementById("question1-other-alert").innerHTML = "Please input a reason!";
             document.getElementById("question1Form").scrollIntoView();
         }
@@ -42,7 +46,7 @@ function LevelsOfMobility() {
             document.getElementById("question1-other-alert").innerHTML = "";
         }
 
-        if ((question1 != "" && question2 != "") && (question1 != "other" && question2 != "other")) {
+        if ((question1 != "" && question2 != "") && (question1 != "other" && question2 != "other") && (question1 != "independent-with-walking-aid with " && question2 != "independent-with-walking-aid with ")) {
             sessionStorage.setItem("TUGQuestion1", "Previous Level of Mobility " + question1);
             sessionStorage.setItem("TUGQuestion2", "Current Level of Mobility " + question2);
             navigate("/ListOfEquipment");
