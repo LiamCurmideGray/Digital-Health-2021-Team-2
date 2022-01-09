@@ -55,7 +55,7 @@ const id = open ? 'simple-popover' : undefined;
         if (question1 != "" && question1 != "other" && question1 != "TUG Test Carried out: No, Reason: ") {
             sessionStorage.setItem("TUGTestCarriedOut", question1);
             TUGTestResults();
-            // navigate("/GripStrength");
+            navigate("/GripStrength");
         }
     }
     return (

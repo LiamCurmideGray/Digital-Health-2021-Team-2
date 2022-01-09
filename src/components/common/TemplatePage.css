@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
+/* @media (max-width: 720px) for small screens */
+/* @media (min-width: 720px) for larger screens */
+
 html {
   scroll-behavior: smooth;
 }
