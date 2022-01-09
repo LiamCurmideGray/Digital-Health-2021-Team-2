@@ -49,8 +49,39 @@ export function GripStrengthDatabaseProvider({ children }) {
       console.log("Updated Database");
     };
 
+
+
+    function TUGTestResults(){
+      console.log(sessionStorage.getItem("TUGQuestion1"));
+      console.log(sessionStorage.getItem("TUGQuestion2"));
+      console.log(sessionStorage.getItem("TUGTimer"));
+      console.log(sessionStorage.getItem("TUGStatus"));
+      console.log(sessionStorage.getItem("TUGTestCarriedOut"));
+      // addnewTUGEntry();
+    }
+
+
+
+    async function addnewTUGEntry() {
+
+      await setDoc(doc(db, "patients", patientId.toString(),"SectionB", dateString), {
+        TUGTestResults: {
+         LevelsOfMobility: {
+           PreviousLevelofMobility: sessionStorage.getItem("TUGQuestion1"),
+           CurrentLevelofMobility: sessionStorage.getItem("TUGQuestion2")
+         },
+         RiskOfFallStatus:{
+           TimeTakenInSeconds: Number(sessionStorage.getItem("TUGTimer")),
+           Status: sessionStorage.getItem("TUGStatus")
+         },
+         TUGTestCarriedOut: sessionStorage.getItem("TUGTestCarriedOut")
+        },
+      });
+      console.log("Updated Database");
+    };
+
   return (
-    <gripStrengthContext.Provider value={{addnewGripEntry, GripStrengthResults}}>
+    <gripStrengthContext.Provider value={{addnewGripEntry, addnewTUGEntry, GripStrengthResults, TUGTestResults}}>
       {children}
     </gripStrengthContext.Provider>
   );

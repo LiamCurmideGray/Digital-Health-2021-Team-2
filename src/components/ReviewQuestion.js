@@ -2,11 +2,15 @@ import './common/TemplatePage.css';
 import CommonHeader from './common/CommonHeader';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useGripContext } from "./database/GripStrengthDatabase";
+
 
 function ReviewQuestion() {
 
     const [question1, setAnswerQuestion1] = useState("");
     const navigate = useNavigate();
+    const { TUGTestResults } = useGripContext();
+
 
     console.log(question1);
 
@@ -27,8 +31,9 @@ function ReviewQuestion() {
         }
 
         if (question1 != "" && question1 != "other" && question1 != "TUG Test Carried out: No, Reason: ") {
-            sessionStorage.setItem("TUGTestCarriedOut", "Previous Level of Mobility " + question1);
-            navigate("/GripStrength");
+            sessionStorage.setItem("TUGTestCarriedOut", question1);
+            TUGTestResults();
+            // navigate("/GripStrength");
         }
     }
     return (
