@@ -1,11 +1,14 @@
 import "./common/TemplatePage.css";
-
 import CommonHeader from "./common/CommonHeader";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
 import { Alert } from "react-bootstrap";
+import Fab from '@mui/material/Fab';
+import HelpIcon from '@mui/icons-material/Help';
+import Popover from '@mui/material/Popover';
+import Typography from '@mui/material/Typography';
 
 const GripStrength3 = () => {
   const [leftInput1, setLeftInput1] = useState(0);
@@ -20,12 +23,22 @@ const GripStrength3 = () => {
   const question2 = sessionStorage.getItem("question2");
   const question3 = sessionStorage.getItem("question3");
 
+  //help poppup function
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
 
-  const LeftResult =  { TestResult: "No Left Result", Risk: "Unidentified Risk" };
+  const LeftResult = { TestResult: "No Left Result", Risk: "Unidentified Risk" };
   const RightResult = { TestResult: "No Right Result", Risk: "Unidentified Risk" };
   sessionStorage.setItem("MaxLeftHandResult", JSON.stringify(LeftResult));
   sessionStorage.setItem("MaxRightHandResult", JSON.stringify(RightResult));
-  
+
   let risk = "Unidentified Risk";
 
   var user = { result: "Start of the Class", risk: "risk" };
@@ -38,29 +51,20 @@ const GripStrength3 = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (
-      question2 == "recent pain right-hand" ||
-      question3 == "yes recent surgery right-hand"
-    ) {
+    if (question2 == "recent pain right-hand" || question3 == "yes recent surgery right-hand") {
       document.getElementById("rightHandFieldset").hidden = true;
       setErrorRight(
-        "Results disabled due t_o recent pain or surgery in right hand"
+        "Results disabled due to recent pain or surgery in right hand"
       );
     }
-    if (
-      question2 == "recent pain left-hand" ||
-      question3 == "yes recent surgery left-hand"
-    ) {
+    if (question2 == "recent pain left-hand" || question3 == "yes recent surgery left-hand") {
       document.getElementById("leftHandFieldset").hidden = true;
       setErrorLeft(
         "Results disabled due to recent pain or surgery in left hand"
       );
     }
     if (question1 == "sign name with right-hand") {
-      if (
-        question2 == "recent pain right-hand" ||
-        question3 == "yes recent surgery right-hand"
-      ) {
+      if (question2 == "recent pain right-hand" || question3 == "yes recent surgery right-hand") {
         document.getElementById("rightHandFieldset").hidden = true;
         document.getElementById("leftHandFieldset").hidden = true;
         setErrorRight(
@@ -72,10 +76,7 @@ const GripStrength3 = () => {
       }
     }
     if (question1 == "sign name with left-hand") {
-      if (
-        question2 == "recent pain left-hand" ||
-        question3 == "yes recent surgery left-hand"
-      ) {
+      if (question2 == "recent pain left-hand" || question3 == "yes recent surgery left-hand") {
         document.getElementById("rightHandFieldset").hidden = true;
         document.getElementById("leftHandFieldset").hidden = true;
         setErrorRight(
@@ -97,24 +98,24 @@ const GripStrength3 = () => {
     if (gender == "Male") {
       if (result < 27) {
         return (risk = "High Risk");
-      } 
+      }
       else {
         return (risk = "Low Risk");
       }
 
     } else if (gender == "Female") {
-      
+
       if (result < 16) {
         return (risk = "High Risk");
       }
-      
+
       else {
         return (risk = "Low Risk");
       }
     } else {
       const MResult = calculateRisk(result, "Male");
       const FResult = calculateRisk(result, "Female")
-      const AllRisks = {MResult, FResult};
+      const AllRisks = { MResult, FResult };
       return AllRisks;
     }
   }
@@ -131,32 +132,23 @@ const GripStrength3 = () => {
     }
     setError("");
 
-    if (
-      leftInput1 <= 0 &&
-      leftInput2 <= 0 &&
-      rightInput1 <= 0 &&
-      rightInput2 <= 0
-    ) {
+    if (leftInput1 <= 0 && leftInput2 <= 0 && rightInput1 <= 0 && rightInput2 <= 0) {
       setErrorRight("");
       setErrorLeft("");
-      setError(
-        "You're about to proceed without inputting anything, click next button again to proceed without any values"
-      );
+      setError("You're about to proceed without inputting anything, click next button again to proceed without any values");
       setErrorConfirm(true);
-    } else if (leftInput1 <= 0 && leftInput2 <= 0) {
+    }
+    else if (leftInput1 <= 0 && leftInput2 <= 0) {
       setError("");
       setErrorRight("");
-      setErrorLeft(
-        "You're about to proceed without inputting LEFT HAND results, click next button again to proceed without Left Hand values"
-      );
+      setErrorLeft("You're about to proceed without inputting LEFT HAND results, click next button again to proceed without Left Hand values");
       sessionStorage.setItem("MaxLeftHandResult", JSON.stringify(LeftResult));
       setErrorConfirm(true);
-    } else if (rightInput1 <= 0 && rightInput2 <= 0) {
+    }
+    else if (rightInput1 <= 0 && rightInput2 <= 0) {
       setError("");
       setErrorLeft("");
-      setErrorRight(
-        "You're about to proceed without inputting RIGHT HAND results, click next button again to proceed without Right Hand values"
-      );
+      setErrorRight("You're about to proceed without inputting RIGHT HAND results, click next button again to proceed without Right Hand values");
       sessionStorage.setItem("MaxRightHandResult", JSON.stringify(RightResult));
       setErrorConfirm(true);
     }
@@ -190,7 +182,7 @@ const GripStrength3 = () => {
     let obj = JSON.parse(test);
     console.log(obj.result);
     console.log("\n");
-    
+
 
     let SessionLeftResult = sessionStorage.getItem("MaxLeftHandResult");
     let SessionRightResult = sessionStorage.getItem("MaxRightHandResult");
@@ -202,10 +194,7 @@ const GripStrength3 = () => {
     let ActualObjectLeftResult = JSON.parse(SessionLeftResult);
     let ActualObjectRightResult = JSON.parse(SessionRightResult);
 
-    if (
-      ActualObjectLeftResult.TestResult != "No Left Result" &&
-      ActualObjectRightResult.TestResult != "No Right Result"
-    ) {
+    if (leftInput1 > 0 || leftInput2 > 0 || rightInput1 > 0 || rightInput2 > 0){
       navigate("/GripStrength4");
     }
   }
@@ -213,14 +202,27 @@ const GripStrength3 = () => {
   return (
     <div className="screen">
       {CommonHeader()}
+
       <div className="buttons-section space-between">
-        <a href="/GripStrength2" className="back-button">
-          &lt;
-        </a>
-        <label className="title">Results Entry</label>
-        <a href="" className="help-button" style={{ backgroundColor: "green" }}>
-          ?
-        </a>
+        <a href="/GripStrength2" className="back-button">&lt;</a>
+        <label className="title">Grip Strength Test</label>
+        <Fab className='help-button' aria-describedby={id} variant="contained" onClick={handleClick} aria-label="add" >
+          <HelpIcon fontSize="large">
+          </HelpIcon>
+        </Fab>
+        <Popover
+          id={id}
+          open={open}
+          anchorEl={anchorEl}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+        >
+
+          <Typography sx={{ p: 5, fontSize: '1.5em' }}>This is where you can input the Grip Strength test results using the dynamometer. Some fields might be disabled depending on the answers to the previous questions.</Typography>
+        </Popover>
       </div>
 
       <div className="main-section">

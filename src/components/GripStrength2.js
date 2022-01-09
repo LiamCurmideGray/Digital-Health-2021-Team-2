@@ -59,18 +59,18 @@ const GripStrength2 = () => {
             navigate("/GripStrength3")
         }
     }
-//help poppup function
-const [anchorEl, setAnchorEl] = React.useState(null);
+    //help poppup function
+    const [anchorEl, setAnchorEl] = React.useState(null);
 
-const handleClick = (event) => {
-  setAnchorEl(event.currentTarget);
-};
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
 
-const handleClose = () => {
-  setAnchorEl(null);
-};
-const open = Boolean(anchorEl);
-  const id = open ? 'simple-popover' : undefined;
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+    const open = Boolean(anchorEl);
+    const id = open ? 'simple-popover' : undefined;
     return (
         <div className="screen">
             {CommonHeader()}
@@ -79,22 +79,22 @@ const open = Boolean(anchorEl);
                 <a href="/GripStrength" className="back-button">&lt;</a>
                 <label className="title">Grip Strength Test</label>
                 <Fab className='help-button' aria-describedby={id} variant="contained" onClick={handleClick} aria-label="add" >
-                <HelpIcon fontSize="large">
-                </HelpIcon>
-                </Fab>   
+                    <HelpIcon fontSize="large">
+                    </HelpIcon>
+                </Fab>
                 <Popover
                     id={id}
                     open={open}
                     anchorEl={anchorEl}
                     onClose={handleClose}
                     anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'left',
+                        vertical: 'bottom',
+                        horizontal: 'left',
                     }}
                 >
 
-        <Typography sx={{ p: 5, fontSize:'1.5em' }}>This page consists of questions that you should ask to the patient. Please answer all questions and sub questions before progressing to the next page.</Typography>
-      </Popover>  
+                    <Typography sx={{ p: 5, fontSize: '1.5em' }}>This page consists of questions that you should ask to the patient. Please answer all questions and sub questions before progressing to the next page.</Typography>
+                </Popover>
             </div>
             <div className="main-section">
                 <label className="subtitle">Test Questions</label>
