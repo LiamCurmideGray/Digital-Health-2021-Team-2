@@ -26,6 +26,7 @@ const GripStrength3 = () => {
   const question3 = sessionStorage.getItem("question3");
   sessionStorage.setItem("MaxLeftHandResult", "No Left Result");
   sessionStorage.setItem("MaxRightHandResult", "No Right Result");
+  const [anchorEl, setAnchorEl] = useState(null);
 
 
   const navigate = useNavigate();
@@ -111,7 +112,7 @@ const GripStrength3 = () => {
   }
 
   //help poppup function
-const [anchorEl, setAnchorEl] = useState(null);
+
 
 const handleClick = (event) => {
   setAnchorEl(event.currentTarget);
