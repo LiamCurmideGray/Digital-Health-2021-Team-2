@@ -1,16 +1,11 @@
 import "./common/TemplatePage.css";
-import CommonHeader from './common/CommonHeader';
+
+import CommonHeader from "./common/CommonHeader";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
-
-import {Alert} from "react-bootstrap";
-import Fab from '@mui/material/Fab';
-import HelpIcon from '@mui/icons-material/Help';
-import Popover from '@mui/material/Popover';
-import Typography from '@mui/material/Typography';
 import { useState, useEffect } from "react";
-import { useNavigate, Navigate } from 'react-router-dom';
-
+import { useNavigate, Navigate } from "react-router-dom";
+import { Alert } from "react-bootstrap";
 
 const GripStrength3 = () => {
   const [leftInput1, setLeftInput1] = useState(0);
@@ -24,36 +19,71 @@ const GripStrength3 = () => {
   const question1 = sessionStorage.getItem("question1");
   const question2 = sessionStorage.getItem("question2");
   const question3 = sessionStorage.getItem("question3");
-  sessionStorage.setItem("MaxLeftHandResult", "No Left Result");
-  sessionStorage.setItem("MaxRightHandResult", "No Right Result");
-  const [anchorEl, setAnchorEl] = useState(null);
 
+
+  const LeftResult =  { TestResult: "No Left Result", Risk: "Unidentified Risk" };
+  const RightResult = { TestResult: "No Right Result", Risk: "Unidentified Risk" };
+  sessionStorage.setItem("MaxLeftHandResult", JSON.stringify(LeftResult));
+  sessionStorage.setItem("MaxRightHandResult", JSON.stringify(RightResult));
+  
+  let risk = "Unidentified Risk";
+
+  var user = { result: "Start of the Class", risk: "risk" };
+  sessionStorage.setItem("TEST", JSON.stringify(user));
+  let test = sessionStorage.getItem("TEST");
+  let obj = JSON.parse(test);
+  console.log(obj.result);
+  console.log("\n");
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (question2 == "recent pain right-hand" || question3 == "yes recent surgery right-hand") {
+    if (
+      question2 == "recent pain right-hand" ||
+      question3 == "yes recent surgery right-hand"
+    ) {
       document.getElementById("rightHandFieldset").hidden = true;
-      setErrorRight("Results disabled due to recent pain or surgery in right hand");
+      setErrorRight(
+        "Results disabled due t_o recent pain or surgery in right hand"
+      );
     }
-    if (question2 == "recent pain left-hand" || question3 == "yes recent surgery left-hand") {
+    if (
+      question2 == "recent pain left-hand" ||
+      question3 == "yes recent surgery left-hand"
+    ) {
       document.getElementById("leftHandFieldset").hidden = true;
-      setErrorLeft("Results disabled due to recent pain or surgery in left hand");
+      setErrorLeft(
+        "Results disabled due to recent pain or surgery in left hand"
+      );
     }
     if (question1 == "sign name with right-hand") {
-      if (question2 == "recent pain right-hand" || question3 == "yes recent surgery right-hand") {
+      if (
+        question2 == "recent pain right-hand" ||
+        question3 == "yes recent surgery right-hand"
+      ) {
         document.getElementById("rightHandFieldset").hidden = true;
         document.getElementById("leftHandFieldset").hidden = true;
-        setErrorRight("Results disabled due to recent pain or surgery in dominant hand");
-        setErrorLeft("Results disabled due to recent pain or surgery in dominant hand");
+        setErrorRight(
+          "Results disabled due to recent pain or surgery in dominant hand"
+        );
+        setErrorLeft(
+          "Results disabled due to recent pain or surgery in dominant hand"
+        );
       }
     }
     if (question1 == "sign name with left-hand") {
-      if (question2 == "recent pain left-hand" || question3 == "yes recent surgery left-hand") {
+      if (
+        question2 == "recent pain left-hand" ||
+        question3 == "yes recent surgery left-hand"
+      ) {
         document.getElementById("rightHandFieldset").hidden = true;
         document.getElementById("leftHandFieldset").hidden = true;
-        setErrorRight("Results disabled due to recent pain or surgery in dominant hand");
-        setErrorLeft("Results disabled due to recent pain or surgery in dominant hand");
+        setErrorRight(
+          "Results disabled due to recent pain or surgery in dominant hand"
+        );
+        setErrorLeft(
+          "Results disabled due to recent pain or surgery in dominant hand"
+        );
       }
     }
   });
@@ -62,67 +92,123 @@ const GripStrength3 = () => {
     return <Navigate to="/GripStrength2" />;
   }
 
+  function calculateRisk(result, gender) {
+
+    if (gender == "Male") {
+      if (result < 27) {
+        return (risk = "High Risk");
+      } 
+      else {
+        return (risk = "Low Risk");
+      }
+
+    } else if (gender == "Female") {
+      
+      if (result < 16) {
+        return (risk = "High Risk");
+      }
+      
+      else {
+        return (risk = "Low Risk");
+      }
+    } else {
+      const MResult = calculateRisk(result, "Male");
+      const FResult = calculateRisk(result, "Female")
+      const AllRisks = {MResult, FResult};
+      return AllRisks;
+    }
+  }
 
   function maxVal(input, input2) {
-
     const values = [input, input2];
-    const LeftMax = Math.max(...values);
-    return LeftMax;
+    const maxValue = Math.max(...values);
+    return maxValue;
   }
 
   function onSubmit() {
-
     if (errorConfirm == true) {
-      navigate("/GripStrength4")
+      navigate("/GripStrength4");
     }
     setError("");
 
-    if ((leftInput1 <= 0 && leftInput2 <= 0) && (rightInput1 <= 0 && rightInput2 <= 0)) {
+    if (
+      leftInput1 <= 0 &&
+      leftInput2 <= 0 &&
+      rightInput1 <= 0 &&
+      rightInput2 <= 0
+    ) {
       setErrorRight("");
       setErrorLeft("");
-      setError("You're about to proceed without inputting anything, click next button again to proceed without any values");
+      setError(
+        "You're about to proceed without inputting anything, click next button again to proceed without any values"
+      );
       setErrorConfirm(true);
-    }
-    else if (leftInput1 <= 0 && leftInput2 <= 0) {
+    } else if (leftInput1 <= 0 && leftInput2 <= 0) {
       setError("");
       setErrorRight("");
-      setErrorLeft("You're about to proceed without inputting LEFT HAND results, click next button again to proceed without Left Hand values");
-      sessionStorage.setItem("MaxLeftHandResult", "No Left Result");
+      setErrorLeft(
+        "You're about to proceed without inputting LEFT HAND results, click next button again to proceed without Left Hand values"
+      );
+      sessionStorage.setItem("MaxLeftHandResult", JSON.stringify(LeftResult));
       setErrorConfirm(true);
-    }
-    else if (rightInput1 <= 0 && rightInput2 <= 0) {
+    } else if (rightInput1 <= 0 && rightInput2 <= 0) {
       setError("");
       setErrorLeft("");
-      setErrorRight("You're about to proceed without inputting RIGHT HAND results, click next button again to proceed without Right Hand values");
-      sessionStorage.setItem("MaxRightHandResult", "No Right Result");
+      setErrorRight(
+        "You're about to proceed without inputting RIGHT HAND results, click next button again to proceed without Right Hand values"
+      );
+      sessionStorage.setItem("MaxRightHandResult", JSON.stringify(RightResult));
       setErrorConfirm(true);
     }
     if (leftInput1 > 0 || leftInput2 > 0) {
-      sessionStorage.setItem("MaxLeftHandResult", `Left Max Result: ${maxVal(leftInput1, leftInput2)}kg`);
+
+      let maxValue = maxVal(leftInput1, leftInput2);
+      //Remember to Replace "X" with gender from Database!
+      LeftResult.Risk = calculateRisk(maxValue, "X");
+      LeftResult.TestResult = `Left Max Result: ${maxValue}kg`
+      sessionStorage.setItem(
+        "MaxLeftHandResult",
+        JSON.stringify(LeftResult)
+      );
     }
     if (rightInput1 > 0 || rightInput2 > 0) {
-      sessionStorage.setItem("MaxRightHandResult", `Right Max Result: ${maxVal(rightInput1, rightInput2)}kg`);
+      let maxValue = maxVal(rightInput1, rightInput2);
+      //Remember to Replace "X" with gender from Database!
+      RightResult.Risk = calculateRisk(maxValue, "X");
+      RightResult.TestResult = `Right Max Result: ${maxValue}kg`
+
+      sessionStorage.setItem(
+        "MaxRightHandResult",
+        JSON.stringify(RightResult)
+      );
     }
-    if (sessionStorage.getItem("MaxLeftHandResult") != "No Left Result" && sessionStorage.getItem("MaxRightHandResult") != "No Right Result") {
-      navigate("/GripStrength4")
-    }
-    console.log(sessionStorage.getItem("MaxRightHandResult"));
-    console.log(sessionStorage.getItem("MaxLeftHandResult"));
+
+
+    var user = { result: "HERE AT ON SUBMTI", risk: "risk" };
+    sessionStorage.setItem("TEST", JSON.stringify(user));
+    let test = sessionStorage.getItem("TEST");
+    let obj = JSON.parse(test);
+    console.log(obj.result);
     console.log("\n");
+    
+
+    let SessionLeftResult = sessionStorage.getItem("MaxLeftHandResult");
+    let SessionRightResult = sessionStorage.getItem("MaxRightHandResult");
+
+    console.log("Left Hand Result: ", JSON.parse(SessionLeftResult));
+    console.log("Right Hand Result: ", JSON.parse(SessionRightResult));
+    console.log("\n");
+
+    let ActualObjectLeftResult = JSON.parse(SessionLeftResult);
+    let ActualObjectRightResult = JSON.parse(SessionRightResult);
+
+    if (
+      ActualObjectLeftResult.TestResult != "No Left Result" &&
+      ActualObjectRightResult.TestResult != "No Right Result"
+    ) {
+      navigate("/GripStrength4");
+    }
   }
-
-  //help poppup function
-
-
-const handleClick = (event) => {
-  setAnchorEl(event.currentTarget);
-};
-
-const handleClose = () => {
-  setAnchorEl(null);
-};
-const open = Boolean(anchorEl);
-  const id = open ? 'simple-popover' : undefined;
 
   return (
     <div className="screen">
@@ -132,28 +218,20 @@ const open = Boolean(anchorEl);
           &lt;
         </a>
         <label className="title">Results Entry</label>
-        <Fab className='help-button' aria-describedby={id} variant="contained" onClick={handleClick} aria-label="add" >
-                <HelpIcon fontSize="large">
-                </HelpIcon>
-                </Fab>   
-                <Popover
-                    id={id}
-                    open={open}
-                    anchorEl={anchorEl}
-                    onClose={handleClose}
-                    anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'left',
-                    }}
-                >
-
-        <Typography sx={{ p: 5, fontSize:'1.5em' }}>This page is where you need to input the dynamometer readings accordingly. You must fill in the values according to how the test is performed on the patient</Typography>
-      </Popover>  
+        <a href="" className="help-button" style={{ backgroundColor: "green" }}>
+          ?
+        </a>
       </div>
 
       <div className="main-section">
-        <h3>Please fill the fields for both hands, or only fill for one of the hands</h3>
-        <h3>In case patient can only provide 1 reading, leave 2nd reading blank or 0</h3>
+        <h3>
+          Please fill the fields for both hands, or only fill for one of the
+          hands
+        </h3>
+        <h3>
+          In case patient can only provide 1 reading, leave 2nd reading blank or
+          0
+        </h3>
         {error && <Alert variant="danger">{error}</Alert>}
         <label className="subtitle">Left Hand Results</label>
         <form>
@@ -175,13 +253,16 @@ const open = Boolean(anchorEl);
                       label="Required"
                       type="number"
                       variant="filled"
-                      onChange={(event) => { setLeftInput1(event.target.value); setErrorConfirm(false); }}
+                      onChange={(event) => {
+                        setLeftInput1(event.target.value);
+                        setErrorConfirm(false);
+                      }}
                       InputProps={{
                         inputProps: { min: 0 },
                         startAdornment: (
                           <InputAdornment position="start">kg</InputAdornment>
                         ),
-                        inputMode: 'numeric',
+                        inputMode: "numeric",
                       }}
                     />
                   </td>
@@ -204,13 +285,16 @@ const open = Boolean(anchorEl);
                       label="Required"
                       type="number"
                       variant="filled"
-                      onChange={(event) => { setLeftInput2(event.target.value); setErrorConfirm(false); }}
+                      onChange={(event) => {
+                        setLeftInput2(event.target.value);
+                        setErrorConfirm(false);
+                      }}
                       InputProps={{
                         inputProps: { min: 0 },
                         startAdornment: (
                           <InputAdornment position="start">kg</InputAdornment>
                         ),
-                        inputMode: 'numeric',
+                        inputMode: "numeric",
                       }}
                     />
                   </td>
@@ -232,8 +316,7 @@ const open = Boolean(anchorEl);
                     textAlign: "center",
                     width: "33%",
                   }}
-                >
-                </td>
+                ></td>
                 <td
                   style={{
                     textAlign: "right",
@@ -265,13 +348,16 @@ const open = Boolean(anchorEl);
                       label="Required"
                       type="number"
                       variant="filled"
-                      onChange={(event) => { setRightInput1(event.target.value); setErrorConfirm(false); }}
+                      onChange={(event) => {
+                        setRightInput1(event.target.value);
+                        setErrorConfirm(false);
+                      }}
                       InputProps={{
                         inputProps: { min: 0 },
                         startAdornment: (
                           <InputAdornment position="start">kg</InputAdornment>
                         ),
-                        inputMode: 'numeric',
+                        inputMode: "numeric",
                       }}
                     />
                   </td>
@@ -294,13 +380,16 @@ const open = Boolean(anchorEl);
                       label="Required"
                       type="number"
                       variant="filled"
-                      onChange={(event) => { setRightInput2(event.target.value); setErrorConfirm(false); }}
+                      onChange={(event) => {
+                        setRightInput2(event.target.value);
+                        setErrorConfirm(false);
+                      }}
                       InputProps={{
                         inputProps: { min: 0 },
                         startAdornment: (
                           <InputAdornment position="start">kg</InputAdornment>
                         ),
-                        inputMode: 'numeric',
+                        inputMode: "numeric",
                       }}
                     />
                   </td>
@@ -322,8 +411,7 @@ const open = Boolean(anchorEl);
                     textAlign: "center",
                     width: "33%",
                   }}
-                >
-                </td>
+                ></td>
                 <td
                   style={{
                     textAlign: "right",
@@ -336,11 +424,11 @@ const open = Boolean(anchorEl);
           {errorRight && <Alert variant="danger">{errorRight}</Alert>}
         </form>
       </div>
-      <button className="next-button" onClick={onSubmit}>Next</button>
-
+      <button className="next-button" onClick={onSubmit}>
+        Next
+      </button>
     </div>
   );
-}
+};
 
 export default GripStrength3;
-

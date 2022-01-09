@@ -19,9 +19,9 @@ const ProtectedRoute = ({ children }) => {
 // console.log(sessionStorage.getItem("TUGStatus"));
 // console.log(sessionStorage.getItem("TUGTestCarriedOut"));
 
-console.log("\n");
-console.log(children);
-console.log(children.props.children[2].props.path);
+// console.log("\n");
+// console.log(children);
+// console.log(children.props.children[2].props.path);
 // console.log(children[0].props.path);
 let path = children.props.children[2].props.path;
 var num = 0;

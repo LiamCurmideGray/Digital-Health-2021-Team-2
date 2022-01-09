@@ -10,24 +10,27 @@ import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 
 const GripStrength4 = () => {
-    console.log(sessionStorage.getItem("MaxLeftHandResult"));
-    console.log(sessionStorage.getItem("MaxRightHandResult"));
+    // console.log(sessionStorage.getItem("MaxLeftHandResult"));
+    // console.log(sessionStorage.getItem("MaxRightHandResult"));
     const { GripStrengthResults } = useGripContext();
     const navigate = useNavigate();
 
-    const [question1, setAnswerQuestion1] = useState("");
-    const [question2, setAnswerQuestion2] = useState("");
-    const MaxLeftHandResult = sessionStorage.getItem("MaxLeftHandResult");
-    const MaxRightHandResult = sessionStorage.getItem("MaxRightHandResult");
+    const [question4, setAnswerQuestion1] = useState("");
+    const [question5, setAnswerQuestion2] = useState("");
+    const ObjectMaxLeftHandResult = sessionStorage.getItem("MaxLeftHandResult");
+    const ObjectMaxRightHandResult = sessionStorage.getItem("MaxRightHandResult");
+
+    const MaxLeftHandResult = JSON.parse(ObjectMaxLeftHandResult);
+    const MaxRightHandResult =JSON.parse(ObjectMaxRightHandResult);
     // console.log("Question 1: ", question1);
     // console.log("Question 2: ", question2);
     // console.log("\n");
 
     useEffect(() => {
-        if (MaxLeftHandResult == "No Left Result") {
+        if (MaxLeftHandResult.TestResult == "No Left Result") {
             document.getElementById("gst-question1-radio1").disabled = true;
         }
-        if (MaxRightHandResult == "No Right Result") {
+        if (MaxRightHandResult.TestResult == "No Right Result") {
             document.getElementById("gst-question2-radio1").disabled = true;
         }
     });
@@ -35,11 +38,11 @@ const GripStrength4 = () => {
     function validateForm() {
 
         console.log("\nEntered into the validate form");
-        if (question2 == "") {
+        if (question5 == "") {
             document.getElementById("question2-alert").innerHTML = "Please select an option!";
             document.getElementById("question2Form").scrollIntoView();
         }
-        else if (question2 == "no, other" || question2 == "no, reason: ") {
+        else if (question5 == "no, other" || question5 == "no, reason: ") {
             document.getElementById("question2-other-alert").innerHTML = "Please input a reason!";
             document.getElementById("question2Form").scrollIntoView();
         }
@@ -47,11 +50,11 @@ const GripStrength4 = () => {
             document.getElementById("question2-alert").innerHTML = "";
             document.getElementById("question2-other-alert").innerHTML = "";
         }
-        if (question1 == "") {
+        if (question4 == "") {
             document.getElementById("question1-alert").innerHTML = "Please select an option!";
             document.getElementById("question1Form").scrollIntoView();
         }
-        else if (question1 == "no, other" || question1 == "no, reason: ") {
+        else if (question4 == "no, other" || question4 == "no, reason: ") {
             document.getElementById("question1-other-alert").innerHTML = "Please input a reason!";
             document.getElementById("question1Form").scrollIntoView();
         }
@@ -59,12 +62,20 @@ const GripStrength4 = () => {
             document.getElementById("question1-alert").innerHTML = "";
             document.getElementById("question1-other-alert").innerHTML = "";
         }
-        if (question1 != "" && question2 != "") {
-            console.log("Passing results to GripStrength");
-            sessionStorage.setItem("question4", question1);
-            sessionStorage.setItem("question5", question2);
-            GripStrengthResults();
-            navigate("/Summary");
+        if (question4 != "" && question5 != "") {
+            if(question4 != "no, other" && question5 != "no, other"){
+            if(question4 != "no, reason: " && question5 != "no, reason: "){
+
+                console.log("Passing results to GripStrength");
+                sessionStorage.setItem("question4", question4);
+                sessionStorage.setItem("question5", question5);
+    
+                console.log(question4);
+                console.log(question5, "\n");
+                GripStrengthResults();
+                navigate("/Summary");
+            }
+            }
         }
     }
 
