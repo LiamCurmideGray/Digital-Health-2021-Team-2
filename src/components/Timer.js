@@ -5,23 +5,22 @@ import { Component } from "react/cjs/react.production.min";
 import './common/TemplatePage.css';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import TemplatePage from "./common/TemplatePage";
 import Fab from '@mui/material/Fab';
 import HelpIcon from '@mui/icons-material/Help';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
+import Popup from './Popup'
 
 var status="";
 var trail = "0";
 var background="#8db0f7";
-
-//help poppup function
 
 class Timer extends Component {
   constructor(props){
     super(props);
     this.state={seconds:0};
   }
+
   onStart=()=>{
     this.setState({seconds:this.state.seconds+1});
     if(this.state.seconds<=10){
@@ -85,6 +84,7 @@ class Timer extends Component {
     }
     console.log(status);
  }
+
  clear=()=>{
     if(trail===2){
         document.getElementById("RiskStatus").innerHTML = "The test cannot be redone as the test has already been done";
@@ -138,7 +138,7 @@ render(){
           <div className="buttons-section space-between">
               <a href="/Instructions" className="back-button">&lt;</a>
               <label className="title" textAlign='center'>Timed Up and Go Test</label>
-              <a href="" > </a>
+              <Popup/>
           </div>
           <div className="main-section">
               <label className="subtitle">Timer</label>
