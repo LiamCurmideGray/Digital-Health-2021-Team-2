@@ -14,8 +14,8 @@ function RiskOfFallStatus() {
             <div className="main-section">
                 <label className="subtitle">Risk of Fall Status</label>
                 <ul>
-                    <li>Status: XX</li>
-                    <li>Time taken: XX</li>
+                    <li>Status: <b> {sessionStorage.getItem("TUGStatus")} </b></li>
+                    <li>Time taken: <b> {sessionStorage.getItem("TUGTimer")} seconds </b></li>
                 </ul>
                 <label className='subtitle'></label>
                 <div>

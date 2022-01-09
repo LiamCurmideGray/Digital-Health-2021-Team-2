@@ -36,13 +36,8 @@ class Timer extends Component {
             document.getElementById("statusBox").backgroundColor = background;
         }
         document.getElementById("statusBox").backgroundColor = background;
-        if (this.state.seconds > 20) {
-            clearInterval(this.f);
-            var time = this.state.seconds;
-            console.log(time);
-            document.getElementById("statusBox").backgroundColor = "red";
-            document.getElementById("RiskStatus").innerHTML = "Time Exceeded. Test Automatically Failed";
-            status = "Automatic Fail";
+        if (this.state.seconds >= 20) {
+            this.stopTimer();
         }
         console.log(this.state.seconds);
     }
@@ -79,6 +74,15 @@ class Timer extends Component {
             document.getElementById("RiskStatus").innerHTML = "High Risk";
             status = "High Risk";
         }
+
+        if(time >= 20) {
+            document.getElementById("statusBox").backgroundColor = "red";
+            document.getElementById("RiskStatus").innerHTML = "Time Exceeded. Test Automatically Failed";
+            status = "High Status";
+        }
+
+        sessionStorage.setItem("TUGTimer", time);
+        sessionStorage.setItem("TUGStatus", status);
         console.log(status);
     }
     clear = () => {
@@ -125,7 +129,7 @@ class Timer extends Component {
 
                             <Button class='TimerLayoutBtnStart' id='timer-btn' onClick={this.timer}>Start Trial</Button>
                             <Button id='stop-timer' class='TimerLayoutBtnStop' onClick={this.stopTimer}>Stop</Button>
-                            <Button id='stop-timer' class='TimerLayoutBtnReset' onClick={this.clear}>Reset</Button>
+                            <Button id='clear-timer' class='TimerLayoutBtnReset' onClick={this.clear}>Reset</Button>
 
                         </div>
                     </div>
