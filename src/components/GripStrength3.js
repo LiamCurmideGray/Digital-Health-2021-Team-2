@@ -2,9 +2,15 @@ import "./common/TemplatePage.css";
 import CommonHeader from './common/CommonHeader';
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
+
+import {Alert} from "react-bootstrap";
+import Fab from '@mui/material/Fab';
+import HelpIcon from '@mui/icons-material/Help';
+import Popover from '@mui/material/Popover';
+import Typography from '@mui/material/Typography';
 import { useState, useEffect } from "react";
 import { useNavigate, Navigate } from 'react-router-dom';
-import { Alert } from "react-bootstrap";
+
 
 const GripStrength3 = () => {
   const [leftInput1, setLeftInput1] = useState(0);
@@ -104,6 +110,19 @@ const GripStrength3 = () => {
     console.log("\n");
   }
 
+  //help poppup function
+const [anchorEl, setAnchorEl] = useState(null);
+
+const handleClick = (event) => {
+  setAnchorEl(event.currentTarget);
+};
+
+const handleClose = () => {
+  setAnchorEl(null);
+};
+const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
+
   return (
     <div className="screen">
       {CommonHeader()}
@@ -112,9 +131,23 @@ const GripStrength3 = () => {
           &lt;
         </a>
         <label className="title">Results Entry</label>
-        <a href="" className="help-button" style={{ backgroundColor: "green" }}>
-          ?
-        </a>
+        <Fab className='help-button' aria-describedby={id} variant="contained" onClick={handleClick} aria-label="add" >
+                <HelpIcon fontSize="large">
+                </HelpIcon>
+                </Fab>   
+                <Popover
+                    id={id}
+                    open={open}
+                    anchorEl={anchorEl}
+                    onClose={handleClose}
+                    anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'left',
+                    }}
+                >
+
+        <Typography sx={{ p: 5, fontSize:'1.5em' }}>This page is where you need to input the dynamometer readings accordingly. You must fill in the values according to how the test is performed on the patient</Typography>
+      </Popover>  
       </div>
 
       <div className="main-section">

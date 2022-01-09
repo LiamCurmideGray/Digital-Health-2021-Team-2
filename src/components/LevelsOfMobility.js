@@ -1,8 +1,15 @@
 import './common/TemplatePage.css';
+
+import Fab from '@mui/material/Fab';
+import HelpIcon from '@mui/icons-material/Help';
+import Popover from '@mui/material/Popover';
+import Typography from '@mui/material/Typography';
+
 import CommonHeader from './common/CommonHeader';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 function LevelsOfMobility() {
+
 
     const [question1, setAnswerQuestion1] = useState("");
     const [question2, setAnswerQuestion2] = useState("");
@@ -52,13 +59,45 @@ function LevelsOfMobility() {
         }
     }
 
+
+function LevelsOfMobility() {
+    //help poppup function
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
+
     return (
         <div className="screen">
             {CommonHeader()}
             <div className="buttons-section space-between">
                 <a href="/" className="back-button">&lt;</a>
                 <label className="title">Levels of Mobility</label>
-                <a href="" className="help-button" style={{ backgroundColor: 'green' }}>?</a>
+                <Fab className='help-button' aria-describedby={id} variant="contained" onClick={handleClick} aria-label="add" >
+                <HelpIcon fontSize="large">
+                </HelpIcon>
+                </Fab>   
+                <Popover
+                    id={id}
+                    open={open}
+                    anchorEl={anchorEl}
+                    onClose={handleClose}
+                    anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'left',
+                    }}
+                >
+
+        <Typography sx={{ p: 5, fontSize:'1.5em' }}>This page is where you must ask the pateient the following questions regarding their past mobility levels. Please answer all the questions and sub-questions before progressing</Typography>
+      </Popover>   
             </div>
 
             <div className="main-section">

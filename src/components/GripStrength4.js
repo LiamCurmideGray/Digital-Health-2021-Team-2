@@ -4,6 +4,10 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './common/TemplatePage.css';
 import { useGripContext } from "./database/GripStrengthDatabase";
+import Fab from '@mui/material/Fab';
+import HelpIcon from '@mui/icons-material/Help';
+import Popover from '@mui/material/Popover';
+import Typography from '@mui/material/Typography';
 
 const GripStrength4 = () => {
     console.log(sessionStorage.getItem("MaxLeftHandResult"));
@@ -64,6 +68,18 @@ const GripStrength4 = () => {
         }
     }
 
+     //help poppup function
+const [anchorEl, setAnchorEl] = useState(null);
+
+const handleClick = (event) => {
+  setAnchorEl(event.currentTarget);
+};
+
+const handleClose = () => {
+  setAnchorEl(null);
+};
+const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
 
     return (
         <div className="screen">
@@ -71,7 +87,23 @@ const GripStrength4 = () => {
             <div className="buttons-section space-between">
                 <a href="/GripStrength3" className="back-button">&lt;</a>
                 <label className="title">Grip Strength Test</label>
-                <a href="" className="help-button" style={{ backgroundColor: 'green' }}>?</a>
+                <Fab className='help-button' aria-describedby={id} variant="contained" onClick={handleClick} aria-label="add" >
+                <HelpIcon fontSize="large">
+                </HelpIcon>
+                </Fab>   
+                <Popover
+                    id={id}
+                    open={open}
+                    anchorEl={anchorEl}
+                    onClose={handleClose}
+                    anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'left',
+                    }}
+                >
+
+        <Typography sx={{ p: 5, fontSize:'1.5em' }}>This page is where you must answer questions regarding to how the test was carried out and how the patient performed</Typography>
+      </Popover>  
             </div>
             <div className="main-section">
                 <label className="subtitle">Left Hand</label>

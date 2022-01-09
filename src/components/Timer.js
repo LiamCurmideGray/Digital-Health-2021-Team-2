@@ -1,12 +1,20 @@
 import { render } from "@testing-library/react";
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { Component } from "react/cjs/react.production.min";
 import './common/TemplatePage.css';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+
+import Fab from '@mui/material/Fab';
+import HelpIcon from '@mui/icons-material/Help';
+import Popover from '@mui/material/Popover';
+import Typography from '@mui/material/Typography';
+import Popup from './Popup'
+
 import TemplatePage from "./common/TemplatePage";
 import CommonHeader from "./common/CommonHeader";
+
 
 var status = "";
 var trail = "0";
@@ -85,6 +93,7 @@ class Timer extends Component {
         sessionStorage.setItem("TUGStatus", status);
         console.log(status);
     }
+
     clear = () => {
         if (trail === 2) {
             document.getElementById("RiskStatus").innerHTML = "The test cannot be redone as the test has already been done";
@@ -104,6 +113,7 @@ class Timer extends Component {
         }
     }
 
+
     render() {
         return (
             <div className="screen">
@@ -111,7 +121,7 @@ class Timer extends Component {
                 <div className="buttons-section space-between">
                     <a href="/Instructions" className="back-button">&lt;</a>
                     <label className="title">Timed Up and Go Test</label>
-                    <a href="" className="help-button" style={{ backgroundColor: 'green' }}>?</a>
+                    <Popup/>
                 </div>
                 <div className="main-section">
                     <label className="subtitle">Timer</label>
@@ -123,9 +133,10 @@ class Timer extends Component {
                                 <h3 id="RiskStatus" style={{ textAlignHorizontal: "center", textAlign: "center", }}>TRIAL: Press Start to begin ... </h3>
 
                             </div>
-                        </Box>
-                        {/* </Button> */}
-                        <div style={{ textAlignHorizontal: "center", textAlign: "center", }}>
+
+                            </Box> 
+                        <div style={{ textAlignHorizontal: "center",textAlign: "center",}}>
+                            
 
                             <Button class='TimerLayoutBtnStart' id='timer-btn' onClick={this.timer}>Start Trial</Button>
                             <Button id='stop-timer' class='TimerLayoutBtnStop' onClick={this.stopTimer}>Stop</Button>
