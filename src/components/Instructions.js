@@ -1,12 +1,16 @@
 import '../App.css';
+
 import Fab from '@mui/material/Fab';
 import HelpIcon from '@mui/icons-material/Help';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import React from 'react'
+import CommonHeader from './common/CommonHeader';
+import { useNavigate } from 'react-router-dom';
 
 function Instructions() {
-     //help poppup function
+  
+       //help poppup function
      const [anchorEl, setAnchorEl] = React.useState(null);
 
      const handleClick = (event) => {
@@ -19,38 +23,14 @@ function Instructions() {
    
      const open = Boolean(anchorEl);
      const id = open ? 'simple-popover' : undefined;
+    const navigate = useNavigate();
+    function navToNextPage() {
+        navigate("/Timer")
+    }
 
     return (
         <div className="screen">
-            <table style={{ width: '75%' }}>
-                <tr>
-                    <td style={{
-                        textAlign: 'left',
-                        width: '33%'
-                    }}>
-                        <label className="details">
-                            [Patient Name]
-                        </label>
-                    </td>
-                    <td style={{
-                        textAlign: 'center',
-                        width: '33%'
-                    }}>
-                        <label className="details">
-                            [Date]
-                        </label>
-                    </td>
-                    <td style={{
-                        textAlign: 'right',
-                        width: '33%'
-                    }}>
-                        <label className="details">
-                            [MR Name]
-                        </label>
-                    </td>
-
-                </tr>
-            </table>
+            {CommonHeader()}
             <div className="buttons-section space-between">
                 <a href="/ListOfEquipment" className="back-button">&lt;</a>
                 <label className="title">Timed Up and Go Test</label>
@@ -94,7 +74,7 @@ function Instructions() {
                     </ol>
                 </div>
             </div>
-            <a href="/Timer" className="next-button">Next</a>
+            <button className="next-button" onClick={navToNextPage}>Next</button>
         </div>
     );
 }

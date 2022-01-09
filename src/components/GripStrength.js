@@ -1,14 +1,17 @@
 import './common/TemplatePage.css';
 import React from "react";
 import GripPhoto from '../resources/Grip Strength Test Equipment.png'
+
 import Fab from '@mui/material/Fab';
 import HelpIcon from '@mui/icons-material/Help';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 
-function GripStrength() {
+import { useNavigate } from 'react-router-dom';
+import CommonHeader from './common/CommonHeader';
 
-    //help poppup function
+function GripStrength() {
+      //help poppup function
     const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -22,40 +25,18 @@ function GripStrength() {
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
   
+    const navigate = useNavigate();
+    function navToNextPage() {
+        navigate("/GripStrength2")
+    }
+
     return (
         <div className="screen">
-            <table style={{ width: '75%' }}>
-                <tr>
-                    <td style={{
-                        textAlign: 'left',
-                        width: '33%'
-                    }}>
-                        <label className="details">
-                            [Patient Name]
-                        </label>
-                    </td>
-                    <td style={{
-                        textAlign: 'center',
-                        width: '33%'
-                    }}>
-                        <label className="details">
-                            [Date]
-                        </label>
-                    </td>
-                    <td style={{
-                        textAlign: 'right',
-                        width: '33%'
-                    }}>
-                        <label className="details">
-                            [MR Name]
-                        </label>
-                    </td>
-
-                </tr>
-            </table>
-            <div className="buttons-section space-between">
+            {CommonHeader()}
+            {<div className="buttons-section space-between">
                 <a href="/" className="back-button">&lt;</a>
                 <label className="title">Grip Strength Test</label>
+
                 <Fab className='help-button' aria-describedby={id} variant="contained" onClick={handleClick} aria-label="add" >
                 <HelpIcon fontSize="large">
                 </HelpIcon>
@@ -77,9 +58,13 @@ function GripStrength() {
             <img src={GripPhoto} style={{
                 padding: 20
             }}/>
+
             <div className="main-section">
                 <label className="subtitle">Equipment and Instructions</label>
                 <p>Equipment needed:</p>
+                <img src={GripPhoto} style={{
+                    padding: 20
+                }} />
                 <ul>
                     <li>Dynamometer</li>
                 </ul>
@@ -89,7 +74,7 @@ function GripStrength() {
                     <li>"I'll start by asking you a couple of questions first and then we can proceed to the test."</li>
                 </ul>
             </div>
-            <a href="/GripStrength2" className="next-button">Next</a>
+            <button className="next-button" onClick={navToNextPage}>Next</button>
         </div>
     );
 }

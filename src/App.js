@@ -11,10 +11,13 @@ import ListOfEquipment from './components/ListOfEquipment';
 import ReviewQuestion from './components/ReviewQuestion';
 import RiskOfFallStatus from './components/RiskOfFallStatus';
 import Timer from './components/Timer';
+import Summary from './components/Summary';
 import {GripStrengthDatabaseProvider} from './components/database/GripStrengthDatabase';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Route, Routes } from "react-router-dom";
-import React from "react";
+import React, { useState } from "react";
+import ProtectedRoute from './components/security/ProtectedRoute';
+
 
 function App() {
 
@@ -23,20 +26,26 @@ function App() {
       <Row>
         <Col>
         <GripStrengthDatabaseProvider>
+            <ProtectedRoute>
           <Routes>
-            <Route path="/" element={<HomePage/>}></Route>
-            <Route path="/GripStrength" element={<GripStrength/>}></Route>
-            <Route path="/GripStrength2" element={<GripStrength2/>}></Route>
-            <Route path="/GripStrength3" element={<GripStrength3/>}></Route>
-            <Route path="/GripStrength4" element={<GripStrength4/>}></Route>
             <Route path="/TemplatePage" element={<TemplatePage/>}></Route>
-            <Route path="/LevelsOfMobility" element={<LevelsOfMobility/>}></Route>
-            <Route path="/ListOfEquipment" element={<ListOfEquipment/>}></Route>
-            <Route path="/Instructions" element={<Instructions/>}></Route>
-            <Route path="/RiskOfFallStatus" element={<RiskOfFallStatus/>}></Route>
-            <Route path="/ReviewQuestion" element={<ReviewQuestion/>}></Route>
-            <Route path="/Timer" element={<Timer/>}></Route>
+            <Route path="/" element={<HomePage/>}></Route>
+            
+                <Route path="/LevelsOfMobility" element={<LevelsOfMobility/>}></Route>
+                <Route path="/ListOfEquipment" element={<ListOfEquipment/>}></Route>
+                <Route path="/Instructions" element={<Instructions/>}></Route>
+                <Route path="/Timer" element={<Timer/>}></Route>
+                <Route path="/RiskOfFallStatus" element={<RiskOfFallStatus/>}></Route>
+                <Route path="/ReviewQuestion" element={<ReviewQuestion/>}></Route>
+
+                <Route path="/GripStrength" element={<GripStrength/>}></Route>
+                <Route path="/GripStrength2" element={<GripStrength2/>}></Route>
+                <Route path="/GripStrength3" element={<GripStrength3/>}></Route>
+                <Route path="/GripStrength4" element={<GripStrength4/>}></Route>
+                <Route path="/Summary" element={<Summary/>}></Route>
+
           </Routes>
+            </ProtectedRoute>
         </GripStrengthDatabaseProvider>
         </Col>
       </Row>

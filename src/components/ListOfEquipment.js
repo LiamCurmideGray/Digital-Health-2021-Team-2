@@ -1,12 +1,29 @@
 import './common/TemplatePage.css';
+
 import Fab from '@mui/material/Fab';
 import HelpIcon from '@mui/icons-material/Help';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import React from 'react'
 
+import TUGPhoto from '../resources/TUG_Test_Setup.png'
+import CommonHeader from './common/CommonHeader';
+import { Navigate, useNavigate } from 'react-router-dom';
+
 function ListOfEquipment() {
-//help poppup function
+    const navigate = useNavigate();
+    const question1 = sessionStorage.getItem("TUGQuestion1");
+    const question2 = sessionStorage.getItem("TUGQuestion2");
+    console.log(question1);
+    console.log(question2);
+    if (question1 == "" || question2 == "") {
+        return <Navigate to="/LevelsOfMobility" />;
+    }
+    function navToNextPage(){
+        navigate("/Instructions")
+    }
+  
+  //help poppup function
 const [anchorEl, setAnchorEl] = React.useState(null);
 
 const handleClick = (event) => {
@@ -22,35 +39,7 @@ const id = open ? 'simple-popover' : undefined;
 
     return (
         <div className="screen">
-            <table style={{ width: '75%' }}>
-                <tr>
-                    <td style={{
-                        textAlign: 'left',
-                        width: '33%'
-                    }}>
-                        <label className="details">
-                            [Patient Name]
-                        </label>
-                    </td>
-                    <td style={{
-                        textAlign: 'center',
-                        width: '33%'
-                    }}>
-                        <label className="details">
-                            [Date]
-                        </label>
-                    </td>
-                    <td style={{
-                        textAlign: 'right',
-                        width: '33%'
-                    }}>
-                        <label className="details">
-                            [MR Name]
-                        </label>
-                    </td>
-
-                </tr>
-            </table>
+            {CommonHeader()}
             <div className="buttons-section space-between">
                 <a href="/LevelsOfMobility" className="back-button">&lt;</a>
                 <label className="title">Timed Up and Go Test</label>
@@ -83,9 +72,11 @@ const id = open ? 'simple-popover' : undefined;
                     </ul>
                 </div>
                 <label className="subtitle">Setup of Test</label>
-                {/* <img src="" className=""> */}
+                <img src={TUGPhoto} style={{
+                    padding: 20
+                }} />
             </div>
-            <a href="/Instructions" className="next-button">Next</a>
+            <button className="next-button" onClick={navToNextPage}>Next</button>
         </div>
     );
 }
