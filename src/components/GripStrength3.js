@@ -4,6 +4,7 @@ import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import React, { useState, useEffect } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
+import { useGripContext } from "./database/GripStrengthDatabase";
 import { Alert } from "react-bootstrap";
 import Fab from '@mui/material/Fab';
 import HelpIcon from '@mui/icons-material/Help';
@@ -19,6 +20,9 @@ const GripStrength3 = () => {
   const [errorLeft, setErrorLeft] = useState("");
   const [errorRight, setErrorRight] = useState("");
   const [errorConfirm, setErrorConfirm] = useState(false);
+  const { getGenderFromDatabase } = useGripContext();
+
+
   const question1 = sessionStorage.getItem("question1");
   const question2 = sessionStorage.getItem("question2");
   const question3 = sessionStorage.getItem("question3");
@@ -41,17 +45,19 @@ const GripStrength3 = () => {
 
   let risk = "Unidentified Risk";
 
-  var user = { result: "Start of the Class", risk: "risk" };
-  sessionStorage.setItem("TEST", JSON.stringify(user));
-  let test = sessionStorage.getItem("TEST");
-  let obj = JSON.parse(test);
-  console.log(obj.result);
-  console.log("\n");
 
   const navigate = useNavigate();
+  
+async function retreiveGender(){
+  let gender = await getGenderFromDatabase();
+  return gender;
+}
 
-  useEffect(() => {
-    if (question2 == "recent pain right-hand" || question3 == "yes recent surgery right-hand") {
+useEffect(() => {
+    if (
+      question2 == "recent pain right-hand" ||
+      question3 == "yes recent surgery right-hand"
+    ) {
       document.getElementById("rightHandFieldset").hidden = true;
       setErrorRight(
         "Results disabled due to recent pain or surgery in right hand"
@@ -126,7 +132,11 @@ const GripStrength3 = () => {
     return maxValue;
   }
 
-  function onSubmit() {
+  async function onSubmit() {
+ 
+    let DatabaseGender = await retreiveGender();
+    console.log("The patient gender: ", DatabaseGender);
+
     if (errorConfirm == true) {
       navigate("/GripStrength4");
     }
@@ -156,7 +166,7 @@ const GripStrength3 = () => {
 
       let maxValue = maxVal(leftInput1, leftInput2);
       //Remember to Replace "X" with gender from Database!
-      LeftResult.Risk = calculateRisk(maxValue, "X");
+      LeftResult.Risk = calculateRisk(maxValue, DatabaseGender);
       LeftResult.TestResult = `Left Max Result: ${maxValue}kg`
       sessionStorage.setItem(
         "MaxLeftHandResult",
@@ -166,7 +176,7 @@ const GripStrength3 = () => {
     if (rightInput1 > 0 || rightInput2 > 0) {
       let maxValue = maxVal(rightInput1, rightInput2);
       //Remember to Replace "X" with gender from Database!
-      RightResult.Risk = calculateRisk(maxValue, "X");
+      RightResult.Risk = calculateRisk(maxValue, DatabaseGender);
       RightResult.TestResult = `Right Max Result: ${maxValue}kg`
 
       sessionStorage.setItem(
@@ -174,15 +184,6 @@ const GripStrength3 = () => {
         JSON.stringify(RightResult)
       );
     }
-
-
-    var user = { result: "HERE AT ON SUBMTI", risk: "risk" };
-    sessionStorage.setItem("TEST", JSON.stringify(user));
-    let test = sessionStorage.getItem("TEST");
-    let obj = JSON.parse(test);
-    console.log(obj.result);
-    console.log("\n");
-
 
     let SessionLeftResult = sessionStorage.getItem("MaxLeftHandResult");
     let SessionRightResult = sessionStorage.getItem("MaxRightHandResult");

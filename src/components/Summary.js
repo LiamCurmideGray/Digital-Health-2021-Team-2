@@ -60,10 +60,10 @@ const Summary = () => {
     ActualObjectLeftResult.Risk !== null) {
        
         for(var k in ActualObjectLeftResult.Risk){
-            finalLeft.push(<ul><li>{k} Risk: {ActualObjectLeftResult.Risk[k]}</li></ul>)
+            finalLeft.push(<ul><li>{k} Verdict: {ActualObjectLeftResult.Risk[k]}</li></ul>)
         }
     } else {
-        finalLeft.push(<ul><li>Risk: {ActualObjectLeftResult.Risk}</li></ul>)
+        finalLeft.push(<ul><li>Verdict: {ActualObjectLeftResult.Risk}</li></ul>)
     }
 
 
@@ -72,10 +72,10 @@ const Summary = () => {
     ActualObjectRightResult.Risk !== null) {
        
         for(var k in ActualObjectRightResult.Risk){
-            finalRight.push(<ul><li>{k} Risk: {ActualObjectRightResult.Risk[k]}</li></ul>)
+            finalRight.push(<ul><li>{k} Verdict: {ActualObjectRightResult.Risk[k]}</li></ul>)
         }
     } else {
-        finalRight.push(<ul><li>Risk: {ActualObjectRightResult.Risk}</li></ul>)
+        finalRight.push(<ul><li>Verdict: {ActualObjectRightResult.Risk}</li></ul>)
     }
 
 
@@ -119,9 +119,11 @@ const Summary = () => {
                 <ul>
                     <li>{ActualObjectLeftResult.TestResult}</li>
                    {finalLeft}
+                  <ul> <li>Reason: {sessionStorage.getItem("question4")}</li> </ul>
                    <br/>
                     <li>{ActualObjectRightResult.TestResult}</li>
                     {finalRight}
+                   <ul> <li>Reason: {sessionStorage.getItem("question5")}</li> </ul>
                 </ul>
             </div>
             <button className="next-button" onClick={validateForm}>Submit</button>

@@ -74,8 +74,22 @@ export function GripStrengthDatabaseProvider({ children }) {
       console.log("Updated Database");
     };
 
+    async function getGenderFromDatabase(){
+      const docRef = doc(db, "patients", patientId.toString());
+      const docSnap = await getDoc(docRef);
+  
+      if (docSnap) {
+        const patientObject = docSnap.data();
+        console.log(patientObject.gender);
+        
+        return await patientObject.gender;
+      } else {
+        console.log("No such document!");
+      }
+    }
+
   return (
-    <gripStrengthContext.Provider value={{addNewEntry, AllResults}}>
+    <gripStrengthContext.Provider value={{addNewEntry, AllResults, getGenderFromDatabase}}>
       {children}
     </gripStrengthContext.Provider>
   );
