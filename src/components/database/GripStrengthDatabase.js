@@ -23,16 +23,24 @@ export function GripStrengthDatabaseProvider({ children }) {
     let patientId = 1234;
    
     //1234 can be changed accordingly via patientID
-    function GripStrengthResults(){
+    function AllResults(){
+      console.log("\nGrip Strength Results");
       console.log(sessionStorage.getItem("question1"));
       console.log(sessionStorage.getItem("question2"));
       console.log(sessionStorage.getItem("question3"));
       console.log(sessionStorage.getItem("question4"));
       console.log(sessionStorage.getItem("question5"));
-      addnewGripEntry();
+
+      console.log("\nTUG Test Results");
+      console.log(sessionStorage.getItem("TUGQuestion1"));
+      console.log(sessionStorage.getItem("TUGQuestion2"));
+      console.log(sessionStorage.getItem("TUGTimer"));
+      console.log(sessionStorage.getItem("TUGStatus"));
+      console.log(sessionStorage.getItem("TUGTestCarriedOut"));
+      addNewEntry();
     }
 
-    async function addnewGripEntry() {
+    async function addNewEntry() {
       console.log("Wasalt fil method ta add new Grip Entry");
 
       let SessionLeftResult = sessionStorage.getItem("MaxLeftHandResult");
@@ -51,43 +59,23 @@ export function GripStrengthDatabaseProvider({ children }) {
          MaxLeftHandResult: ActualObjectLeftResult,
          MaxRightHandResult: ActualObjectRightResult,
         },
-      });
-      console.log("Updated Database");
-    };
-
-
-
-    function TUGTestResults(){
-      console.log(sessionStorage.getItem("TUGQuestion1"));
-      console.log(sessionStorage.getItem("TUGQuestion2"));
-      console.log(sessionStorage.getItem("TUGTimer"));
-      console.log(sessionStorage.getItem("TUGStatus"));
-      console.log(sessionStorage.getItem("TUGTestCarriedOut"));
-      // addnewTUGEntry();
-    }
-
-
-
-    async function addnewTUGEntry() {
-
-      await setDoc(doc(db, "patients", patientId.toString(),"SectionB", dateString), {
         TUGTestResults: {
-         LevelsOfMobility: {
-           PreviousLevelofMobility: sessionStorage.getItem("TUGQuestion1"),
-           CurrentLevelofMobility: sessionStorage.getItem("TUGQuestion2")
+          LevelsOfMobility: {
+            PreviousLevelofMobility: sessionStorage.getItem("TUGQuestion1"),
+            CurrentLevelofMobility: sessionStorage.getItem("TUGQuestion2")
+          },
+          RiskOfFallStatus:{
+            TimeTakenInSeconds: Number(sessionStorage.getItem("TUGTimer")),
+            Status: sessionStorage.getItem("TUGStatus")
+          },
+          TUGTestCarriedOut: sessionStorage.getItem("TUGTestCarriedOut")
          },
-         RiskOfFallStatus:{
-           TimeTakenInSeconds: Number(sessionStorage.getItem("TUGTimer")),
-           Status: sessionStorage.getItem("TUGStatus")
-         },
-         TUGTestCarriedOut: sessionStorage.getItem("TUGTestCarriedOut")
-        },
       });
       console.log("Updated Database");
     };
 
   return (
-    <gripStrengthContext.Provider value={{addnewGripEntry, addnewTUGEntry, GripStrengthResults, TUGTestResults}}>
+    <gripStrengthContext.Provider value={{addNewEntry, AllResults}}>
       {children}
     </gripStrengthContext.Provider>
   );

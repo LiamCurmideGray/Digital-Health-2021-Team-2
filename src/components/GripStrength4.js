@@ -3,7 +3,6 @@ import CommonHeader from './common/CommonHeader';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './common/TemplatePage.css';
-import { useGripContext } from "./database/GripStrengthDatabase";
 import Fab from '@mui/material/Fab';
 import HelpIcon from '@mui/icons-material/Help';
 import Popover from '@mui/material/Popover';
@@ -12,7 +11,6 @@ import Typography from '@mui/material/Typography';
 const GripStrength4 = () => {
     // console.log(sessionStorage.getItem("MaxLeftHandResult"));
     // console.log(sessionStorage.getItem("MaxRightHandResult"));
-    const { GripStrengthResults } = useGripContext();
     const navigate = useNavigate();
 
     const [question4, setAnswerQuestion1] = useState("");
@@ -72,7 +70,6 @@ const GripStrength4 = () => {
     
                 console.log(question4);
                 console.log(question5, "\n");
-                GripStrengthResults();
                 navigate("/Summary");
             }
             }
