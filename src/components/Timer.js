@@ -14,11 +14,12 @@ import Popup from './Popup'
 
 import TemplatePage from "./common/TemplatePage";
 import CommonHeader from "./common/CommonHeader";
-
+import ProtectedRoute from "./security/ProtectedRoute";
 
 var status = "";
 var trail = "0";
 var background = "#8db0f7";
+var protectRoute = 9;
 
 class Timer extends Component {
     constructor(props) {
@@ -115,6 +116,10 @@ class Timer extends Component {
 
 
     render() {
+        
+        if(protectRoute == 0) {
+            return ProtectedRoute();
+        }
         return (
             <div className="screen">
                 {CommonHeader()}

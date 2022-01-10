@@ -9,6 +9,7 @@ import React from 'react'
 import TUGPhoto from '../resources/TUG_Test_Setup.png'
 import CommonHeader from './common/CommonHeader';
 import { Navigate, useNavigate } from 'react-router-dom';
+import ProtectedRoute from './security/ProtectedRoute';
 
 function ListOfEquipment() {
     const navigate = useNavigate();
@@ -18,9 +19,10 @@ function ListOfEquipment() {
     console.log(question1);
     console.log(question2);
 
-    if (question1 == "" || question2 == "") {
-        return <Navigate to="/LevelsOfMobility" />;
-    }
+  if (question1 == "" || question2 == "") { 
+   return ProtectedRoute();
+  }
+
     function navToNextPage(){
         navigate("/Instructions")
     }
