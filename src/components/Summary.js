@@ -7,6 +7,7 @@ import HelpIcon from '@mui/icons-material/Help';
 import { ArrowBack } from '@mui/icons-material';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
+import Button from "@mui/material/Button";
 import { useGripContext } from './database/GripStrengthDatabase';
 
 const Summary = () => {
@@ -142,7 +143,7 @@ const Summary = () => {
           <ul> <li>Reason: {sessionStorage.getItem("question5")}</li> </ul>
         </ul>
       </div>
-      <button className="next-button" onClick={validateForm}>Submit</button>
+      <Button className="next-button" onClick={validateForm}>Submit</Button>
     </div>
   );
 };

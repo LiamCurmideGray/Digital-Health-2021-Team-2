@@ -6,6 +6,9 @@ import HelpIcon from "@mui/icons-material/Help";
 import { ArrowBack } from '@mui/icons-material';
 import Popover from "@mui/material/Popover";
 import Typography from "@mui/material/Typography";
+
+import Button from "@mui/material/Button";
+
 import { useNavigate } from "react-router-dom";
 import CommonHeader from "./common/CommonHeader";
 
@@ -93,9 +96,9 @@ function GripStrength() {
           </li>
         </ul>
       </div>
-      <button className="next-button" onClick={navToNextPage}>
+      <Button className="next-button" onClick={navToNextPage}>
         Next
-      </button>
+      </Button>
     </div>
   );
 }
