@@ -17,11 +17,13 @@ function ListOfEquipment() {
     const question2 = sessionStorage.getItem("TUGQuestion2");
     console.log(question1);
     console.log(question2);
+    
+    if (question1 == "" || question2 == "") { 
+        return ProtectedRoute();
+  }
 
-    if (question1 == "" || question2 == "") {
-        return <Navigate to="/LevelsOfMobility" />;
-    }
-    function navToNextPage(){
+
+     function navToNextPage(){
         navigate("/Instructions")
     }
   

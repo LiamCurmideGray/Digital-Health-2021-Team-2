@@ -9,6 +9,7 @@ import {
   deleteField,
   getDoc,
   onSnapshot,
+  getDocs,
 } from "firebase/firestore";
 import db from "../../config/fbConfig";
 
@@ -17,9 +18,11 @@ const gripStrengthContext = createContext();
 export function GripStrengthDatabaseProvider({ children }) {
     const db = getFirestore();
 
+    const todaysSession = Date.now();
     const current = new Date();
     const date = `${current.getDate()}-${current.getMonth()+1}-${current.getFullYear()} at ${current.getHours()}:${current.getMinutes()}`;
     const dateString = date.toString();
+    // const dateString = todaysSession.toString();
     let patientId = 1234;
    
     //1234 can be changed accordingly via patientID
@@ -49,7 +52,8 @@ export function GripStrengthDatabaseProvider({ children }) {
       let ActualObjectLeftResult = JSON.parse(SessionLeftResult);
       let ActualObjectRightResult = JSON.parse(SessionRightResult);
 
-      await setDoc(doc(db, "patients", patientId.toString(),"SectionB", dateString), {
+      await setDoc(doc(db, "patients", patientId.toString(),"SectionB", todaysSession.toString()), {
+        DateofSession: dateString,
         GripStrengthResults: {
          Question1: sessionStorage.getItem("question1"),
          Question2: sessionStorage.getItem("question2"),
@@ -69,10 +73,28 @@ export function GripStrengthDatabaseProvider({ children }) {
             Status: sessionStorage.getItem("TUGStatus")
           },
           TUGTestCarriedOut: sessionStorage.getItem("TUGTestCarriedOut")
-         },
+         }
       });
       console.log("Updated Database");
     };
+
+    let SessionsArray = [];
+    async function getPatientDocuments(){
+      const query = await getDocs(collection(db, "patients", patientId.toString(),"SectionB"));
+
+      if(query.data != undefined) {
+        query.forEach((doc) => {
+          SessionsArray.push({id: doc.id, data: doc.data()});
+        });
+        
+        SessionsArray.sort(function (a,b) {return parseInt(b.id) - parseInt(a.id) });
+        let latestSession = SessionsArray[0].data;
+        
+        return latestSession;
+      } else {
+        return null;
+      }
+    }
 
     async function getGenderFromDatabase(){
       const docRef = doc(db, "patients", patientId.toString());
@@ -89,7 +111,7 @@ export function GripStrengthDatabaseProvider({ children }) {
     }
 
   return (
-    <gripStrengthContext.Provider value={{addNewEntry, AllResults, getGenderFromDatabase}}>
+    <gripStrengthContext.Provider value={{addNewEntry, AllResults, getGenderFromDatabase, getPatientDocuments}}>
       {children}
     </gripStrengthContext.Provider>
   );
