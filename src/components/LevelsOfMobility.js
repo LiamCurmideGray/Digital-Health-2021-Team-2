@@ -122,33 +122,44 @@ function LevelsOfMobility() {
 
                     <label className="radio-button-label" htmlFor="radio-button1-prev-ind-and-walk-aid">Independent with Walking Aid</label>
 
-                    <fieldset id="PreviousLevelOfMobilityFieldset" disabled={true}>
+                    <fieldset id="PreviousLevelOfMobilityFieldset" className="indented-radio-buttons" disabled={true}>
                         <div>
-                            <input type="radio" id="radio-button-prev-stick" name="group1-1" value="stick" style={{ marginLeft: "7.5em" }} onChange={(e) => setAnswerQuestion1("independent with walking aid: " + e.target.value)} />
+                            <input type="radio" id="radio-button-prev-stick" name="group1-1" value="stick"  onChange={(e) => {
+                                setAnswerQuestion1("independent with walking aid: " + e.target.value)
+                                document.getElementById("text-box1").disabled = true}} />
                             <label className="radio-button-label" htmlFor="radio-button-prev-stick">Stick</label>
                         </div>
                         <div>
-                            <input type="radio" id="radio-button-prev-roll-frame" name="group1-1" value="rollator frame" style={{ marginLeft: "7.5em" }} onChange={(e) => setAnswerQuestion1("independent with walking aid: " + e.target.value)} />
+                            <input type="radio" id="radio-button-prev-roll-frame" name="group1-1" value="rollator frame"  onChange={(e) => {
+                                setAnswerQuestion1("independent with walking aid: " + e.target.value)
+                                document.getElementById("text-box1").disabled = true}} />
                             <label className="radio-button-label" htmlFor="radio-button-prev-roll-frame">Rollator Frame</label>
                         </div>
                         <div>
-                            <input type="radio" id="radio-button-prev-gutt-frame" name="group1-1" value="gutter frame" style={{ marginLeft: "7.5em" }} onChange={(e) => setAnswerQuestion1("independent with walking aid: " + e.target.value)} />
+                            <input type="radio" id="radio-button-prev-gutt-frame" name="group1-1" value="gutter frame"  onChange={(e) => {
+                                setAnswerQuestion1("independent with walking aid: " + e.target.value)
+                                document.getElementById("text-box1").disabled = true}} />
                             <label className="radio-button-label" htmlFor="radio-button-prev-gutt-frame">Gutter Frame</label>
                         </div>
                         <div>
-                            <input type="radio" id="radio-button-prev-other" name="group1-1" value="other" style={{ marginLeft: "7.5em" }} onClick={function () {
-                                document.getElementById("left-hand-text-box").disabled = false;
-                            }} onChange={(e) => setAnswerQuestion1(e.target.value)} style={{ marginLeft: "7.5em" }} />
+                            <input type="radio" id="radio-button-prev-other" name="group1-1" value="other"  onClick={function () {
+                                document.getElementById("text-box1").disabled = false;
+                            }} onChange={(e) => setAnswerQuestion1(e.target.value)} />
                             <label className="radio-button-label" htmlFor="radio-button-prev-other">Other: </label>
-                            <input type="text" id="left-hand-text-box" disabled={true} onBlur={(e) => setAnswerQuestion1("independent with walking aid: " + e.target.value)} />
+                            <input type="text" id="text-box1" disabled={true} onBlur={(e) => setAnswerQuestion1("independent with walking aid: " + e.target.value)} />
                             <h3 className="alert" id="question1-other-alert"></h3>
                         </div>
                         <div>
-                            <input type="radio" id="radio-button-prev-req-help" name="group1-1" value="requires help of 1 person" style={{ marginLeft: "7.5em" }} onChange={(e) => setAnswerQuestion1("independent with walking aid: " + e.target.value)} />
+                            <input type="radio" id="radio-button-prev-req-help" name="group1-1" value="requires help of 1 person"  onChange={(e) => {
+                                setAnswerQuestion1("independent with walking aid: " + e.target.value)
+                                document.getElementById("text-box1").disabled = true}} />
                             <label className="radio-button-label" htmlFor="radio-button-prev-req-help">Requires Help of 1 Person</label>
                         </div>
                         <div>
-                            <input type="radio" id="radio-button-prev-dependant" name="group1-1" value="dependant, chair user or bedbound" style={{ marginLeft: "7.5em" }} onChange={(e) => setAnswerQuestion1("independent with walking aid: " + e.target.value)} />
+                            <input type="radio" id="radio-button-prev-dependant" name="group1-1" value="dependant, chair user or bedbound"  onChange={(e) => {
+                                setAnswerQuestion1("independent with walking aid: " + e.target.value);
+                                document.getElementById("text-box1").disabled = true;
+                                }} />
                             <label className="radio-button-label" htmlFor="radio-button-prev-dependant">Dependant, Chair User or Bedbound</label>
                         </div>
                     </fieldset>
@@ -176,33 +187,43 @@ function LevelsOfMobility() {
 
                     <label className="radio-button-label" htmlFor="radio-button2-prev-ind-and-walk-aid">Independent with Walking Aid</label>
 
-                    <fieldset id="CurrentLevelofMobilityFieldset" disabled={true}>
+                    <fieldset id="CurrentLevelofMobilityFieldset" className="indented-radio-buttons" disabled={true}>
                         <div>
-                            <input type="radio" id="radio-button-prev-stick2" name="group2-1" value="stick" style={{ marginLeft: "7.5em" }} onChange={(e) => setAnswerQuestion2("independent with walking aid: " + e.target.value)} />
+                            <input type="radio" id="radio-button-prev-stick2" name="group2-1" value="stick"  onChange={(e) => {
+                                setAnswerQuestion2("independent with walking aid: " + e.target.value)
+                                document.getElementById("text-box2").disabled = true}} />
                             <label className="radio-button-label" htmlFor="radio-button-prev-stick2">Stick</label>
                         </div>
                         <div>
-                            <input type="radio" id="radio-button-prev-roll-frame2" name="group2-1" value="rollator frame" style={{ marginLeft: "7.5em" }} onChange={(e) => setAnswerQuestion2("independent with walking aid: " + e.target.value)} />
+                            <input type="radio" id="radio-button-prev-roll-frame2" name="group2-1" value="rollator frame"  onChange={(e) => {
+                                setAnswerQuestion2("independent with walking aid: " + e.target.value)
+                                document.getElementById("text-box2").disabled = true}} />
                             <label className="radio-button-label" htmlFor="radio-button-prev-roll-frame2">Rollator Frame</label>
                         </div>
                         <div>
-                            <input type="radio" id="radio-button-prev-gutt-frame2" name="group2-1" value="gutter frame" style={{ marginLeft: "7.5em" }} onChange={(e) => setAnswerQuestion2("independent with walking aid: " + e.target.value)} />
+                            <input type="radio" id="radio-button-prev-gutt-frame2" name="group2-1" value="gutter frame"  onChange={(e) => {
+                                setAnswerQuestion2("independent with walking aid: " + e.target.value)
+                                document.getElementById("text-box2").disabled = true}} />
                             <label className="radio-button-label" htmlFor="radio-button-prev-gutt-frame2">Gutter Frame</label>
                         </div>
                         <div>
-                            <input type="radio" id="radio-button-prev-other2" name="group2-1" value="other" style={{ marginLeft: "7.5em" }} onClick={function () {
-                                document.getElementById("left-hand-text-box2").disabled = false;
-                            }} onChange={(e) => setAnswerQuestion2(e.target.value)} style={{ marginLeft: "7.5em" }} />
+                            <input type="radio" id="radio-button-prev-other2" name="group2-1" value="other"  onClick={function () {
+                                document.getElementById("text-box2").disabled = false;
+                            }} onChange={(e) => setAnswerQuestion2(e.target.value)}  />
                             <label className="radio-button-label" htmlFor="radio-button-prev-other2">Other: </label>
-                            <input type="text" id="left-hand-text-box2" disabled={true} onBlur={(e) => setAnswerQuestion2("independent with walking aid: " + e.target.value)} />
+                            <input type="text" id="text-box2" disabled={true} onBlur={(e) => setAnswerQuestion2("independent with walking aid: " + e.target.value)} />
                             <h3 className="alert" id="question2-other-alert"></h3>
                         </div>
                         <div>
-                            <input type="radio" id="radio-button-prev-req-help2" name="group2-1" value="requires help of 1 person" style={{ marginLeft: "7.5em" }} onChange={(e) => setAnswerQuestion2("independent with walking aid: " + e.target.value)} />
+                            <input type="radio" id="radio-button-prev-req-help2" name="group2-1" value="requires help of 1 person"  onChange={(e) => {
+                                setAnswerQuestion2("independent with walking aid: " + e.target.value)
+                                document.getElementById("text-box2").disabled = true}} />
                             <label className="radio-button-label" htmlFor="radio-button-prev-req-help2">Requires Help of 1 Person</label>
                         </div>
                         <div>
-                            <input type="radio" id="radio-button-prev-dependant2" name="group2-1" value="dependant, chair user or bedbound" style={{ marginLeft: "7.5em" }} onChange={(e) => setAnswerQuestion2("independent with walking aid: " + e.target.value)} />
+                            <input type="radio" id="radio-button-prev-dependant2" name="group2-1" value="dependant, chair user or bedbound"  onChange={(e) => {
+                                setAnswerQuestion2("independent with walking aid: " + e.target.value)
+                                document.getElementById("text-box2").disabled = true}} />
                             <label className="radio-button-label" htmlFor="radio-button-prev-dependant2">Dependant, Chair User or Bedbound</label>
                         </div>
                     </fieldset>

@@ -3,56 +3,13 @@
 /* @media (max-width: 720px) for small screens */
 /* @media (min-width: 720px) for larger screens */
 
+/* Common css*/
 html {
   scroll-behavior: smooth;
 }
 
-.screen {
-  background-color: #3e73dd;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* justify-content: top; */
-  font-size: 1.75em;
-  color: white;
-  /* padding-bottom: 3%; */
-  font-family: 'Open Sans';
-}
-
-.details {
-  font-size: 0.85em;
-}
-
 .alert {
   color: red;
-}
-
-.main-section {
-  background-color: #8db0f7;
-  border-radius: 50px;
-  padding-left: 3em;
-  padding-right: 3em;
-  padding-top: 1em;
-  padding-bottom: 3em;
-  /* min-height: 90vh; */
-  /* position: relative; */
-  width: 75%;
-  min-height: 20em;
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  /* justify-content: center; */
-  font-size: 0.5em;
-  color: black;
-}
-
-p {
-  font-size: 2.2em;
-}
-
-li {
-  font-size: 2em;
 }
 
 .buttons-section {
@@ -64,61 +21,9 @@ li {
   justify-content: space-between;
 }
 
-.back-button, .help-button {
-  background-color: black;
-  display: inline-block;
-  width: 1.5em;
-  height: 1.5em;
-  line-height: 1.5em;
-  margin-top: 0.25em;
-  margin-bottom: 1em;
-  border-radius: 50%;
-  text-align: center;
-  padding: 1.5%;
-  font-size: 1.5em;
-  text-decoration: none;
-  cursor: pointer; 
-}
-
-.title {
-  font-size: 1.8em;
-  text-align: center;
-  margin-bottom: 0.4em;
-  margin-top: 0.4em;
-}
-
-.subtitle {
-  font-size: 2.75em;
-  text-align: left;
-  font-weight: bolder;
-  margin-bottom: 0.5em;
-  margin-top: 0.5em;
-}
-
 fieldset {
   border: transparent;
   padding: 0%;
-}
-
-input[type=radio] {
-  height: 2em;
-  width: 2em;
-  margin-right: 1em;
-  margin-bottom: 2.5em;
-}
-
-input[type=text] {
-  height: 2em;
-  width: 20em;
-  margin-right: 1em;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid #000000;
-  cursor: pointer;
-}
-
-.radio-button-label {
-  font-size: 2em;
 }
 
 .next-button {
@@ -129,7 +34,6 @@ input[type=text] {
   border-radius: 20px;
   border: 0em;
   text-align: center;
-  /* padding-top: 2%; */
   font-size: 1.25em;
   text-decoration: none;
   color: white;
@@ -137,119 +41,418 @@ input[type=text] {
   cursor: pointer;
 }
 
-.list-item {
-  margin-right: 1em;
-  margin-bottom: 0.5em;
-  font-size: 2em;
-}
-
-.image-style {
-  width: 60%;
-}
-
-table.style {
-  font-size: 1em;
-  text-align: center;
-  width: 100%;
-  border: 0.4em solid black;
-  border-collapse: collapse;
-}
-
-th.style {
-  font-size: 2em;
-  text-align: center;
-  border: 0.3em solid black;
-  border-collapse: collapse;
-  width: 50%;
-  height: 2em;
-}
-
-td.style {
-  font-size: 1.5em;
-  text-align: center;
-  border: 0.4em solid black;
-  border-collapse: collapse;
-  height: 2em;
-}
-
-.TimerLayoutBtnStart {
-  padding: 32px 40px;
-  display: inline-block;
-  background-color: #4CAF50;
-  font-size: 24px;
-  width: 10em;
-  height: 2em;
-  border-radius: 20px;
-  text-align: center;
-  padding-top: 2%;
-  padding-bottom: 4%;
-  cursor: pointer;
-  text-decoration: none;
-  margin-bottom: 1em;
-  align-self: center;
-}
-
-.TimerLayoutBtnStop {
-  padding: 32px 40px;
-  display: inline-block;
-  background-color: #c76147;
-  font-size: 24px;
-  width: 10em;
-  height: 2em;
-  border-radius: 20px;
-  text-align: center;
-  padding-top: 2%;
-  padding-bottom: 4%;
-  text-decoration: none;
-  margin-bottom: 1em;
-  cursor: pointer;
-  align-self: center;
-}
-
-.TimerLayoutBtnReset {
-  padding: 32px 40px;
-  display: inline-block;
-  font-size: 24px;
-  width: 10em;
-  height: 2em;
-  border-radius: 20px;
-  text-align: center;
-  padding-top: 2%;
-  padding-bottom: 4%;
-  text-decoration: none;
-  margin-bottom: 1em;
-  cursor: pointer;
-  align-self: center;
-}
-
-.TimerLayoutWords {
-  font-size: 2cm;
-  align-items: center;
-}
-
 .TimerDiv {
   align-items: center;
   align-content: center;
 }
 
-.gripInputs {
-  width: 100%;
-  color: aliceblue;
-
+.indented-radio-buttons{
+  margin-left: 10%;
 }
 
-.statusDisplay {
-  align-self: center;
-  align-content: center;
-  padding-top: 1;
-  width: 300;
-  height: 55;
+/* Large screen css */
+@media (min-width: 720px) {
+  .screen {
+    background-color: #3e73dd;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.75em;
+    color: white;
+    font-family: 'Open Sans';
+  }
+
+  .details {
+    font-size: 0.85em;
+  }
+
+  .main-section {
+    background-color: #8db0f7;
+    border-radius: 50px;
+    padding-left: 3em;
+    padding-right: 3em;
+    padding-top: 1em;
+    padding-bottom: 3em;
+    width: 75%;
+    min-height: 20em;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    font-size: 0.5em;
+    color: black;
+  }
+
+  p {
+    font-size: 2.2em;
+  }
+
+  li {
+    font-size: 2em;
+  }
+
+  .back-button, .help-button {
+    background-color: black;
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    line-height: 1.5em;
+    margin-top: 0.25em;
+    margin-bottom: 1em;
+    border-radius: 50%;
+    text-align: center;
+    padding: 1.5%;
+    font-size: 1.5em;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .title {
+    font-size: 1.8em;
+    text-align: center;
+    margin-bottom: 0.4em;
+    margin-top: 0.4em;
+  }
+
+  .subtitle {
+    font-size: 2.75em;
+    text-align: left;
+    font-weight: bolder;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+  }
+
+  input[type=radio] {
+    height: 2em;
+    width: 2em;
+    margin-right: 1em;
+    margin-bottom: 2.5em;
+  }
+
+  .radio-button-label {
+    font-size: 2em;
+  }
+
+  input[type=text] {
+    height: 2em;
+    width: 20em;
+    margin-right: 1em;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #000000;
+    cursor: pointer;
+  }
+
+  .list-item {
+    margin-right: 1em;
+    margin-bottom: 0.5em;
+    font-size: 2em;
+  }
+
+  .image-style {
+    width: 60%;
+  }
+
+  table.style {
+    font-size: 1em;
+    text-align: center;
+    width: 100%;
+    border: 0.4em solid black;
+    border-collapse: collapse;
+  }
+
+  th.style {
+    font-size: 2em;
+    text-align: center;
+    border: 0.3em solid black;
+    border-collapse: collapse;
+    width: 50%;
+    height: 2em;
+  }
+
+  td.style {
+    font-size: 1.5em;
+    text-align: center;
+    border: 0.4em solid black;
+    border-collapse: collapse;
+    height: 2em;
+  }
+
+  .TimerLayoutBtnStart {
+    padding: 32px 40px;
+    display: inline-block;
+    background-color: #4CAF50;
+    font-size: 24px;
+    width: 10em;
+    height: 3.2em;
+    border-radius: 20px;
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 4%;
+    cursor: pointer;
+    text-decoration: none;
+    margin-bottom: 1em;
+    align-self: center;
+  }
+
+  .TimerLayoutBtnStop {
+    padding: 32px 40px;
+    display: inline-block;
+    background-color: #c76147;
+    font-size: 24px;
+    width: 10em;
+    height: 3.2em;
+    border-radius: 20px;
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 4%;
+    text-decoration: none;
+    margin-bottom: 1em;
+    cursor: pointer;
+    align-self: center;
+  }
+
+  .TimerLayoutBtnReset {
+    padding: 32px 40px;
+    display: inline-block;
+    font-size: 24px;
+    width: 10em;
+    height: 3.2em;
+    border-radius: 20px;
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 4%;
+    text-decoration: none;
+    margin-bottom: 1em;
+    cursor: pointer;
+    align-self: center;
+  }
+
+  .TimerLayoutWords {
+    font-size: 2em;
+    align-items: center;
+  }
+
+  .gripInputs {
+    width: 100%;
+    color: aliceblue;
+  }
+
+  .statusDisplay {
+    align-self: center;
+    align-content: center;
+    padding-top: 1;
+    width: 300;
+    height: 55;
+  }
+
+  .fallStatusText {
+    font-size: 0.5em;
+    text-align: center;
+    margin-bottom: 0.4em;
+    margin-top: 0.4em;
+  }
 }
 
-.fallStatusText {
-  font-size: 0.5em;
-  text-align: center;
-  margin-bottom: 0.4em;
-  margin-top: 0.4em;
-}
+/* Small screen css */
+@media (max-width: 720px) {
+  .screen {
+    background-color: #3e73dd;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-family: 'Open Sans';
+  }
 
+  .details {
+    font-size: 0.5em;
+  }
+
+  .main-section {
+    background-color: #8db0f7;
+    border-radius: 20px;
+    padding-left: 3em;
+    padding-right: 3em;
+    padding-top: 1em;
+    padding-bottom: 3em;
+    width: 75%;
+    min-height: 20em;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    font-size: 0.5em;
+    color: black;
+  }
+
+  p {
+    font-size: 1.8em;
+  }
+
+  li {
+    font-size: 1.8em;
+  }
+
+  .back-button, .help-button {
+    background-color: black;
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    line-height: 1.5em;
+    margin-top: 0.25em;
+    margin-bottom: 1em;
+    border-radius: 50%;
+    text-align: center;
+    padding: 1.5%;
+    font-size: 1.5em;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .title {
+    font-size: 1.2em;
+    text-align: center;
+    margin-bottom: 0.4em;
+    margin-top: 0.8em;
+  }
+
+  .subtitle {
+    font-size: 2em;
+    text-align: left;
+    font-weight: bolder;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+  }
+
+  input[type=radio] {
+    height: 1em;
+    width: 1em;
+    margin-right: 0.7em;
+    margin-bottom: 1.5em;
+  }
+
+  .radio-button-label {
+    font-size: 1.8em;
+  }
+
+  input[type=text] {
+    height: 2em;
+    width: 10em;
+    margin-right: 1em;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #000000;
+    cursor: pointer;
+  }
+
+  .list-item {
+    margin-right: 0.8em;
+    margin-bottom: 0.5em;
+    font-size: 1.8em;
+  }
+
+  .image-style {
+    width: 60%;
+  }
+
+  table.style {
+    font-size: 1em;
+    text-align: center;
+    width: 100%;
+    border: 0.4em solid black;
+    border-collapse: collapse;
+  }
+
+  th.style {
+    font-size: 2em;
+    text-align: center;
+    border: 0.3em solid black;
+    border-collapse: collapse;
+    width: 50%;
+    height: 2em;
+  }
+
+  td.style {
+    font-size: 1.5em;
+    text-align: center;
+    border: 0.4em solid black;
+    border-collapse: collapse;
+    height: 2em;
+  }
+
+  .TimerLayoutBtnStart {
+    padding: 32px 40px;
+    display: inline-block;
+    background-color: #4CAF50;
+    font-size: 1.5em;
+    width: 10em;
+    height: 3.2em;
+    border-radius: 20px;
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 4%;
+    cursor: pointer;
+    text-decoration: none;
+    margin-bottom: 1em;
+    align-self: center;
+  }
+
+  .TimerLayoutBtnStop {
+    padding: 32px 40px;
+    display: inline-block;
+    background-color: #c76147;
+    font-size: 1.5em;
+    width: 10em;
+    height: 3.2em;
+    border-radius: 20px;
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 4%;
+    text-decoration: none;
+    margin-bottom: 1em;
+    cursor: pointer;
+    align-self: center;
+  }
+
+  .TimerLayoutBtnReset {
+    padding: 32px 40px;
+    display: inline-block;
+    font-size: 1.5em;
+    width: 10em;
+    height: 3.2em;
+    border-radius: 20px;
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 4%;
+    text-decoration: none;
+    margin-bottom: 1em;
+    cursor: pointer;
+    align-self: center;
+  }
+
+  .TimerLayoutWords {
+    font-size: 2em;
+    align-items: center;
+  }
+
+  .gripInputs {
+    width: 100%;
+    color: aliceblue;
+  }
+
+  .statusDisplay {
+    align-self: center;
+    align-content: center;
+    padding-top: 1;
+    width: 300;
+    height: 55;
+  }
+
+  .fallStatusText {
+    font-size: 0.5em;
+    text-align: center;
+    margin-bottom: 0.4em;
+    margin-top: 0.4em;
+  }
+}
