@@ -6,6 +6,7 @@ import Fab from '@mui/material/Fab';
 import HelpIcon from '@mui/icons-material/Help';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
+import { useGripContext } from './database/GripStrengthDatabase';
 
 const Summary = () => {
 

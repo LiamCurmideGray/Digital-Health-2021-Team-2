@@ -32,6 +32,7 @@ const GripStrength3 = () => {
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+  
   const handleClose = () => {
     setAnchorEl(null);
   };
