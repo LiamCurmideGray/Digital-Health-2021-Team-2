@@ -4,8 +4,6 @@ import HelpIcon from '@mui/icons-material/Help';
 import { ArrowBack } from '@mui/icons-material';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
-import Button from "@mui/material/Button";
-
 import CommonHeader from './common/CommonHeader';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -153,7 +151,7 @@ function ReviewQuestion() {
                     </fieldset>
                 </form>
             </div>
-            <Button className="next-button" onClick={validateForm}>Complete TUG Test</Button>
+            <button className="next-button" onClick={validateForm}>Complete TUG Test</button>
         </div>
     );
 }

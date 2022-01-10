@@ -11,7 +11,6 @@ import HelpIcon from '@mui/icons-material/Help';
 import { ArrowBack } from '@mui/icons-material';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
-import Button from "@mui/material/Button";
 
 const GripStrength3 = () => {
   const [leftInput1, setLeftInput1] = useState(0);
@@ -437,9 +436,9 @@ const GripStrength3 = () => {
           {errorRight && <Alert variant="danger">{errorRight}</Alert>}
         </form>
       </div>
-      <Button className="next-button" onClick={onSubmit}>
+      <button className="next-button" onClick={onSubmit}>
         Next
-      </Button>
+      </button>
     </div>
   );
 };

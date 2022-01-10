@@ -6,7 +6,6 @@ import { ArrowBack } from '@mui/icons-material';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
-
 import React from 'react'
 
 function RiskOfFallStatus() {
