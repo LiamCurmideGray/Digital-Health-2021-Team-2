@@ -28,8 +28,14 @@ const GripStrength4 = () => {
         if (MaxLeftHandResult.TestResult == "No Left Result") {
             document.getElementById("gst-question1-radio1").disabled = true;
         }
+        else {
+            document.getElementById("gst-question1-radio2").disabled = true;
+        }
         if (MaxRightHandResult.TestResult == "No Right Result") {
             document.getElementById("gst-question2-radio1").disabled = true;
+        }
+        else {
+            document.getElementById("gst-question2-radio2").disabled = true;
         }
     });
 
@@ -41,6 +47,7 @@ const GripStrength4 = () => {
             document.getElementById("question2Form").scrollIntoView();
         }
         else if (question5 == "no, other" || question5 == "no, reason: ") {
+            document.getElementById("question2-alert").innerHTML = "";
             document.getElementById("question2-other-alert").innerHTML = "Please input a reason!";
             document.getElementById("question2Form").scrollIntoView();
         }
@@ -53,6 +60,7 @@ const GripStrength4 = () => {
             document.getElementById("question1Form").scrollIntoView();
         }
         else if (question4 == "no, other" || question4 == "no, reason: ") {
+            document.getElementById("question1-alert").innerHTML = "";
             document.getElementById("question1-other-alert").innerHTML = "Please input a reason!";
             document.getElementById("question1Form").scrollIntoView();
         }
