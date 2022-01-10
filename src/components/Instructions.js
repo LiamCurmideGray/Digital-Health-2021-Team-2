@@ -7,8 +7,10 @@ import Typography from '@mui/material/Typography';
 import React from 'react'
 import CommonHeader from './common/CommonHeader';
 import { useNavigate } from 'react-router-dom';
+import ProtectedRoute from './security/ProtectedRoute';
 
 function Instructions() {
+    sessionStorage.setItem("Timer", true);
     const goBack = () => {
         navigate("/ListOfEquipment");
     };
@@ -29,6 +31,11 @@ function Instructions() {
     const navigate = useNavigate();
     function navToNextPage() {
         navigate("/Timer")
+    }
+
+    if (sessionStorage.getItem("Instructions") === 'false'){
+        // console.log("AAAAAAAA");
+        return ProtectedRoute();
     }
 
     return (

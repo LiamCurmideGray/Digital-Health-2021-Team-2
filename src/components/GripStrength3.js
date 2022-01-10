@@ -101,6 +101,7 @@ const GripStrength3 = () => {
       }
     }
   });
+  
 
   if (question1 == "" || question2 == "" || question3 == "") {
     return <Navigate to="/GripStrength2" />;

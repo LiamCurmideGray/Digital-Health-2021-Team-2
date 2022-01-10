@@ -14,10 +14,31 @@ function LevelsOfMobility() {
     const [question2, setAnswerQuestion2] = useState("");
     sessionStorage.setItem("TUGQuestion1", question1);
     sessionStorage.setItem("TUGQuestion2", question2);
+    sessionStorage.setItem("TUGTimer", 0);
+    sessionStorage.setItem("TUGStatus", "");
+    sessionStorage.setItem("TUGTestCarriedOut", "");
+    sessionStorage.setItem("question1", "");
+    sessionStorage.setItem("question2", "");
+    sessionStorage.setItem("question3", "");
+    sessionStorage.setItem("question4", "");
+    sessionStorage.setItem("question5", "");
+    sessionStorage.setItem("Instructions", false);
+    sessionStorage.setItem("Timer", false);
+    sessionStorage.setItem("GripStrength2", false);
     const navigate = useNavigate();
 
-    console.log("Previous Level of Mobility", question1);
-    console.log("Current Level of Mobility", question2);
+    console.log("Previous Level of Mobility ", sessionStorage.getItem("TUGQuestion1"));
+    console.log("Current Level of Mobility ", sessionStorage.getItem("TUGQuestion2"));
+    console.log("TUG Timer ", sessionStorage.getItem("TUGTimer"));
+    console.log("TUG Status ", sessionStorage.getItem("TUGStatus"));
+    console.log("TUG Carried out ", sessionStorage.getItem("TUGTestCarriedOut"));
+    console.log("GST Question 1 ", sessionStorage.getItem("question1"));
+    console.log("GST Question 2 ", sessionStorage.getItem("question2"));
+    console.log("GST Question 3 ", sessionStorage.getItem("question3"));
+    console.log("GST Question 4 ", sessionStorage.getItem("question4"));
+    console.log("GST Question 5 ", sessionStorage.getItem("question5"));
+    console.log("Instructions ", sessionStorage.getItem("Instructions"));
+    console.log("Timer ", sessionStorage.getItem("Timer"));
     console.log("\n");
 
     function validateForm() {

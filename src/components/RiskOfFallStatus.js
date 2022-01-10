@@ -7,6 +7,7 @@ import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 import React from 'react'
+import ProtectedRoute from './security/ProtectedRoute';
 
 function RiskOfFallStatus() {
     const navigate = useNavigate();
@@ -28,6 +29,9 @@ function RiskOfFallStatus() {
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
 
+    if (sessionStorage.getItem("TUGTimer") === '0'){
+        return ProtectedRoute();
+    }
     return (
         <div className="screen">
             {CommonHeader()}

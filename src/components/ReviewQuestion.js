@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import CommonHeader from './common/CommonHeader';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ProtectedRoute from './security/ProtectedRoute';
 
 
 function ReviewQuestion() {
@@ -33,6 +34,10 @@ function ReviewQuestion() {
 
 
     console.log(question1);
+
+    if (sessionStorage.getItem("TUGStatus") === ''){
+        return ProtectedRoute();
+    }
 
     function validateForm() {
         if (question1 == "") {

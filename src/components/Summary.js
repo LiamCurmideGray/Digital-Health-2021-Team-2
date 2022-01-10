@@ -8,6 +8,7 @@ import { ArrowBack } from '@mui/icons-material';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import { useGripContext } from './database/GripStrengthDatabase';
+import ProtectedRoute from './security/ProtectedRoute';
 
 const Summary = () => {
 
@@ -115,6 +116,10 @@ let lastTUGResults = null;
     navigate("/GripStrength4");
   };
 
+  if (sessionStorage.getItem("question4") === '' || sessionStorage.getItem("question5") === '' ) {
+    console.log("ASDFGASGSDFZ");
+    return ProtectedRoute();
+  }
   return (
     <div className="screen">
       {CommonHeader()}

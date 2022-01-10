@@ -7,12 +7,28 @@ import HelpIcon from '@mui/icons-material/Help';
 import { ArrowBack } from '@mui/icons-material';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
+import ProtectedRoute from './security/ProtectedRoute';
 
 const GripStrength4 = () => {
     // console.log(sessionStorage.getItem("MaxLeftHandResult"));
     // console.log(sessionStorage.getItem("MaxRightHandResult"));
     const navigate = useNavigate();
+    //help poppup function
+    const [anchorEl, setAnchorEl] = useState(null);
 
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+    const open = Boolean(anchorEl);
+    const id = open ? 'simple-popover' : undefined;
+
+    const goBack = () => {
+        navigate("/GripStrength3");
+    };
     const [question4, setAnswerQuestion1] = useState("");
     const [question5, setAnswerQuestion2] = useState("");
     const ObjectMaxLeftHandResult = sessionStorage.getItem("MaxLeftHandResult");
@@ -26,24 +42,28 @@ const GripStrength4 = () => {
 
     useEffect(() => {
         if (MaxLeftHandResult != null) {
-
-            if (MaxLeftHandResult.TestResult == "No Left Result") {
-                document.getElementById("gst-question1-radio1").disabled = true;
+            try {
+                if (MaxLeftHandResult.TestResult == "No Left Result") {
+                    document.getElementById("gst-question1-radio1").disabled = true;
+                }
+                else {
+                    document.getElementById("gst-question1-radio2").disabled = true;
+                }
+                if (MaxRightHandResult.TestResult == "No Right Result") {
+                    document.getElementById("gst-question2-radio1").disabled = true;
+                }
+                else {
+                    document.getElementById("gst-question2-radio2").disabled = true;
+                }
             }
-            else {
-                document.getElementById("gst-question1-radio2").disabled = true;
-            }
-            if (MaxRightHandResult.TestResult == "No Right Result") {
-                document.getElementById("gst-question2-radio1").disabled = true;
-            }
-            else {
-                document.getElementById("gst-question2-radio2").disabled = true;
-            }
+            catch {}
         }
     });
-
+    if (sessionStorage.getItem("question1") === '' || sessionStorage.getItem("question2") === '' || sessionStorage.getItem("question3") === '') {
+        console.log("ASDFGASGSDFZ");
+        return ProtectedRoute();
+    }
     function validateForm() {
-
         console.log("\nEntered into the validate form");
         if (question5 == "") {
             document.getElementById("question2-alert").innerHTML = "Please select an option!";
@@ -87,22 +107,13 @@ const GripStrength4 = () => {
         }
     }
 
-    //help poppup function
-    const [anchorEl, setAnchorEl] = useState(null);
 
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
 
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-    const open = Boolean(anchorEl);
-    const id = open ? 'simple-popover' : undefined;
-
-    const goBack = () => {
-        navigate("/GripStrength3");
-    };
+    console.log(sessionStorage.getItem("question1"));
+    console.log(sessionStorage.getItem("question2"));
+    console.log(sessionStorage.getItem("question3"));
+    console.log(sessionStorage.getItem("question4"));
+    console.log(sessionStorage.getItem("question5"));
 
     return (
         <div className="screen">

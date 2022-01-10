@@ -8,6 +8,7 @@ import HelpIcon from '@mui/icons-material/Help';
 import { ArrowBack } from '@mui/icons-material';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
+import ProtectedRoute from './security/ProtectedRoute';
 
 const GripStrength2 = () => {
     const { GripStrengthResults2 } = useGripContext();
@@ -73,9 +74,12 @@ const GripStrength2 = () => {
     const goBack = () => {
         navigate("/GripStrength");
     };
-    
+
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
+    if (sessionStorage.getItem("GripStrength2") === 'false') {
+        return ProtectedRoute();
+    }
     return (
         <div className="screen">
             {CommonHeader()}
