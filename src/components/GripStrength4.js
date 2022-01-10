@@ -25,8 +25,10 @@ const GripStrength4 = () => {
     // console.log("\n");
 
     useEffect(() => {
-        if (MaxLeftHandResult.TestResult == "No Left Result") {
-            document.getElementById("gst-question1-radio1").disabled = true;
+        if(MaxLeftHandResult != null) {
+
+            if (MaxLeftHandResult.TestResult == "No Left Result") {
+                document.getElementById("gst-question1-radio1").disabled = true;
         }
         else {
             document.getElementById("gst-question1-radio2").disabled = true;
@@ -37,6 +39,7 @@ const GripStrength4 = () => {
         else {
             document.getElementById("gst-question2-radio2").disabled = true;
         }
+    }
     });
 
     function validateForm() {
