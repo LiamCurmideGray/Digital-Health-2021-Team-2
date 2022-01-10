@@ -1,10 +1,10 @@
-import './common/TemplatePage.css';
+import './common/CommonStyle.css';
 import CommonHeader from './common/CommonHeader';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './common/TemplatePage.css';
 import Fab from '@mui/material/Fab';
 import HelpIcon from '@mui/icons-material/Help';
+import { ArrowBack } from '@mui/icons-material';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 
@@ -25,21 +25,21 @@ const GripStrength4 = () => {
     // console.log("\n");
 
     useEffect(() => {
-        if(MaxLeftHandResult != null) {
+        if (MaxLeftHandResult != null) {
 
             if (MaxLeftHandResult.TestResult == "No Left Result") {
                 document.getElementById("gst-question1-radio1").disabled = true;
+            }
+            else {
+                document.getElementById("gst-question1-radio2").disabled = true;
+            }
+            if (MaxRightHandResult.TestResult == "No Right Result") {
+                document.getElementById("gst-question2-radio1").disabled = true;
+            }
+            else {
+                document.getElementById("gst-question2-radio2").disabled = true;
+            }
         }
-        else {
-            document.getElementById("gst-question1-radio2").disabled = true;
-        }
-        if (MaxRightHandResult.TestResult == "No Right Result") {
-            document.getElementById("gst-question2-radio1").disabled = true;
-        }
-        else {
-            document.getElementById("gst-question2-radio2").disabled = true;
-        }
-    }
     });
 
     function validateForm() {
@@ -100,13 +100,19 @@ const GripStrength4 = () => {
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
 
+    const goBack = () => {
+        navigate("/GripStrength3");
+    };
+
     return (
         <div className="screen">
             {CommonHeader()}
             <div className="buttons-section space-between">
-                <a href="/GripStrength3" className="back-button">&lt;</a>
+                <Fab variant="contained" className="mui-icons" onClick={goBack} aria-label="add" >
+                    <ArrowBack fontSize="large" />
+                </Fab>
                 <label className="title">Grip Strength Test</label>
-                <Fab className='help-button' aria-describedby={id} variant="contained" onClick={handleClick} aria-label="add" >
+                <Fab className="mui-icons" aria-describedby={id} variant="contained" onClick={handleClick} aria-label="add" >
                     <HelpIcon fontSize="large">
                     </HelpIcon>
                 </Fab>

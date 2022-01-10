@@ -1,18 +1,9 @@
-import { render } from "@testing-library/react";
-import React, { useState, useEffect } from "react";
-import ReactDOM from "react-dom";
 import { Component } from "react/cjs/react.production.min";
-import './common/TemplatePage.css';
+import './common/CommonStyle.css';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-
-import Fab from '@mui/material/Fab';
-import HelpIcon from '@mui/icons-material/Help';
-import Popover from '@mui/material/Popover';
-import Typography from '@mui/material/Typography';
-import Popup from './Popup'
-
-import TemplatePage from "./common/TemplatePage";
+import TimerHelpButton from './TimerHelpButton';
+import TimerBackButton from './TimerBackButton';
 import CommonHeader from "./common/CommonHeader";
 import ProtectedRoute from "./security/ProtectedRoute";
 
@@ -134,9 +125,9 @@ class Timer extends Component {
             <div className="screen">
                 {CommonHeader()}
                 <div className="buttons-section space-between">
-                    <a href="/Instructions" className="back-button">&lt;</a>
+                    <TimerBackButton/>
                     <label className="title">Timed Up and Go Test</label>
-                    <Popup/>
+                    <TimerHelpButton/>
                 </div>
                 <div className="main-section">
                     <label className="subtitle">Timer</label>
