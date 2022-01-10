@@ -2,6 +2,7 @@ import logo from '../logo.svg';
 import '../App.css';
 import './HomePage.css';
 import { useGripContext } from "./database/GripStrengthDatabase";
+import Button from "@mui/material/Button";
 
 function HomePage() {
   const { addnewGripEntry } = useGripContext();
@@ -23,7 +24,7 @@ function HomePage() {
         <a href='/GripStrength3' className='page-button'>Grip Strength 3</a>
         <a href='/GripStrength4' className='page-button'>Grip Strength 4</a>
         <a href='/Summary' className='page-button'>Summary</a>
-        <button className='page-button' onClick={addnewGripEntry}>Test Database</button>
+        <Button className='page-button' onClick={addnewGripEntry}>Test Database</Button>
       </header>
     </div>
   );

@@ -4,6 +4,7 @@ import Fab from '@mui/material/Fab';
 import HelpIcon from '@mui/icons-material/Help';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
+import Button from "@mui/material/Button";
 
 import CommonHeader from './common/CommonHeader';
 import React, { useState } from 'react';
@@ -149,7 +150,7 @@ const id = open ? 'simple-popover' : undefined;
                     </fieldset>
                 </form>
             </div>
-            <button className="next-button" onClick={validateForm}>Complete TUG Test</button>
+            <Button className="next-button" onClick={validateForm}>Complete TUG Test</Button>
         </div>
     );
 }

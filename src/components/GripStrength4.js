@@ -7,6 +7,7 @@ import Fab from '@mui/material/Fab';
 import HelpIcon from '@mui/icons-material/Help';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
+import Button from "@mui/material/Button";
 
 const GripStrength4 = () => {
     // console.log(sessionStorage.getItem("MaxLeftHandResult"));
@@ -227,7 +228,7 @@ const GripStrength4 = () => {
                     </fieldset>
                 </form>
             </div>
-            <button className="next-button" onClick={validateForm}>Submit Results</button>
+            <Button className="next-button" onClick={validateForm}>Submit Results</Button>
         </div>
     );
 };

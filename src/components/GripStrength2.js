@@ -8,6 +8,7 @@ import Fab from '@mui/material/Fab';
 import HelpIcon from '@mui/icons-material/Help';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
+import Button from "@mui/material/Button";
 
 const GripStrength2 = () => {
     const { GripStrengthResults2 } = useGripContext();
@@ -163,7 +164,7 @@ const GripStrength2 = () => {
                 <p>"I would like you to take this in your hand. I will ask you to do this two times, both hands. When I say '<b>GO</b>' press as hard as you can."</p>
                 <p><b>Remember</b> to set the dynamometer to zero (0) prior to each squeeze</p>
             </div>
-            <button className="next-button" onClick={validateForm}>Next</button>
+            <Button className="next-button" onClick={validateForm}>Next</Button>
         </div>
     );
 };

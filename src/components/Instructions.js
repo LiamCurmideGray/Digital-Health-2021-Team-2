@@ -4,6 +4,7 @@ import Fab from '@mui/material/Fab';
 import HelpIcon from '@mui/icons-material/Help';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
+import Button from "@mui/material/Button";
 import React from 'react'
 import CommonHeader from './common/CommonHeader';
 import { useNavigate } from 'react-router-dom';
@@ -74,7 +75,7 @@ function Instructions() {
                     </ol>
                 </div>
             </div>
-            <button className="next-button" onClick={navToNextPage}>Next</button>
+            <Button className="next-button" onClick={navToNextPage}>Next</Button>
         </div>
     );
 }

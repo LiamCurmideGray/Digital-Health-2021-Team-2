@@ -10,6 +10,7 @@ import Fab from '@mui/material/Fab';
 import HelpIcon from '@mui/icons-material/Help';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
+import Button from "@mui/material/Button";
 
 const GripStrength3 = () => {
   const [leftInput1, setLeftInput1] = useState(0);
@@ -428,9 +429,9 @@ useEffect(() => {
           {errorRight && <Alert variant="danger">{errorRight}</Alert>}
         </form>
       </div>
-      <button className="next-button" onClick={onSubmit}>
+      <Button className="next-button" onClick={onSubmit}>
         Next
-      </button>
+      </Button>
     </div>
   );
 };
