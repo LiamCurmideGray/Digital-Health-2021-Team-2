@@ -1,4 +1,4 @@
-import "./common/TemplatePage.css";
+import "./common/CommonStyle.css";
 import CommonHeader from "./common/CommonHeader";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -8,6 +8,7 @@ import { useGripContext } from "./database/GripStrengthDatabase";
 import { Alert } from "react-bootstrap";
 import Fab from '@mui/material/Fab';
 import HelpIcon from '@mui/icons-material/Help';
+import { ArrowBack } from '@mui/icons-material';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import Button from "@mui/material/Button";
@@ -33,10 +34,15 @@ const GripStrength3 = () => {
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-  
+
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const goBack = () => {
+    navigate("/GripStrength2");
+  };
+
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
 
@@ -49,13 +55,13 @@ const GripStrength3 = () => {
 
 
   const navigate = useNavigate();
-  
-async function retreiveGender(){
-  let gender = await getGenderFromDatabase();
-  return gender;
-}
 
-useEffect(() => {
+  async function retreiveGender() {
+    let gender = await getGenderFromDatabase();
+    return gender;
+  }
+
+  useEffect(() => {
     if (
       question2 == "recent pain right-hand" ||
       question3 == "yes recent surgery right-hand"
@@ -135,7 +141,7 @@ useEffect(() => {
   }
 
   async function onSubmit() {
- 
+
     let DatabaseGender = await retreiveGender();
     console.log("The patient gender: ", DatabaseGender);
 
@@ -197,7 +203,7 @@ useEffect(() => {
     let ActualObjectLeftResult = JSON.parse(SessionLeftResult);
     let ActualObjectRightResult = JSON.parse(SessionRightResult);
 
-    if (leftInput1 > 0 || leftInput2 > 0 || rightInput1 > 0 || rightInput2 > 0){
+    if (leftInput1 > 0 || leftInput2 > 0 || rightInput1 > 0 || rightInput2 > 0) {
       navigate("/GripStrength4");
     }
   }
@@ -207,9 +213,11 @@ useEffect(() => {
       {CommonHeader()}
 
       <div className="buttons-section space-between">
-        <a href="/GripStrength2" className="back-button">&lt;</a>
+        <Fab variant="contained" className="mui-icons" onClick={goBack} aria-label="add" >
+          <ArrowBack fontSize="large" />
+        </Fab>
         <label className="title">Grip Strength Test</label>
-        <Fab className='help-button' aria-describedby={id} variant="contained" onClick={handleClick} aria-label="add" >
+        <Fab className="mui-icons" aria-describedby={id} variant="contained" onClick={handleClick} aria-label="add" >
           <HelpIcon fontSize="large">
           </HelpIcon>
         </Fab>

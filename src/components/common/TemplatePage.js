@@ -1,4 +1,4 @@
-import './TemplatePage.css';
+import './CommonStyle.css';
 import Button from '@mui/material/Button';
 import Fab from '@mui/material/Fab';
 import HelpIcon from '@mui/icons-material/Help';
