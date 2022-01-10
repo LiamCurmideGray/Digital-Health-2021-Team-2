@@ -82,7 +82,8 @@ export function GripStrengthDatabaseProvider({ children }) {
     async function getPatientDocuments(){
       const query = await getDocs(collection(db, "patients", patientId.toString(),"SectionB"));
 
-      if(query.data != undefined) {
+      console.log(query.docs);
+      if(query.docs.length != 0) {
         query.forEach((doc) => {
           SessionsArray.push({id: doc.id, data: doc.data()});
         });
