@@ -104,33 +104,45 @@ const id = open ? 'simple-popover' : undefined;
 
                         <label className="radio-button-label" htmlFor="radio-button-no">No</label>
                     </div>
-                    <fieldset id="TUGTestCarriedOut" disabled={true}>
+                    <fieldset id="TUGTestCarriedOut" className="indented-radio-buttons" disabled={true}>
                         <div>
-                            <input type="radio" id="radio-button-att" name="group1-1" value="TUG Test Carried out: No, Reason: attempted-but-unable" style={{ marginLeft: "7.5em" }}
-                                onChange={(e) => setAnswerQuestion1(e.target.value)} />
+                            <input type="radio" id="radio-button-att" name="group1-1" value="TUG Test Carried out: No, Reason: attempted-but-unable" 
+                                onChange={(e) => {
+                                    setAnswerQuestion1(e.target.value);
+                                    document.getElementById("text-box").disabled = true;
+                                }} />
                             <label className="radio-button-label" htmlFor="radio-button-att">Attempted, but unable</label>
                         </div>
                         <div>
-                            <input type="radio" id="radio-button-unsafe" name="group1-1" value="TUG Test Carried out: No, Reason: unsafe" style={{ marginLeft: "7.5em" }}
-                                onChange={(e) => setAnswerQuestion1(e.target.value)} />
+                            <input type="radio" id="radio-button-unsafe" name="group1-1" value="TUG Test Carried out: No, Reason: unsafe" 
+                                onChange={(e) => {
+                                    setAnswerQuestion1(e.target.value);
+                                    document.getElementById("text-box").disabled = true;
+                                }} />
                             <label className="radio-button-label" htmlFor="radio-button-unsafe">Unsafe</label>
                         </div>
                         <div>
-                            <input type="radio" id="radio-button-unable" name="group1-1" value="TUG Test Carried out: No, Reason: unable" style={{ marginLeft: "7.5em" }}
-                                onChange={(e) => setAnswerQuestion1(e.target.value)} />
+                            <input type="radio" id="radio-button-unable" name="group1-1" value="TUG Test Carried out: No, Reason: unable" 
+                                onChange={(e) => {
+                                    setAnswerQuestion1(e.target.value);
+                                    document.getElementById("text-box").disabled = true;
+                                }} />
                             <label className="radio-button-label" htmlFor="radio-button-unable">Unable to understand command</label>
                         </div>
                         <div>
-                            <input type="radio" id="radio-button-refused" name="group1-1" value="TUG Test Carried out: No, Reason: refused" style={{ marginLeft: "7.5em" }}
-                                onChange={(e) => setAnswerQuestion1(e.target.value)} />
+                            <input type="radio" id="radio-button-refused" name="group1-1" value="TUG Test Carried out: No, Reason: refused" 
+                                onChange={(e) => {
+                                    setAnswerQuestion1(e.target.value);
+                                    document.getElementById("text-box").disabled = true;
+                                }} />
                             <label className="radio-button-label" htmlFor="radio-button-refused">Refused</label>
                         </div>
                         <div>
-                            <input type="radio" id="radio-button-prev-other" name="group1-1" value="other" style={{ marginLeft: "7.5em" }} onClick={function () {
-                                document.getElementById("left-hand-text-box").disabled = false;
-                            }} onChange={(e) => setAnswerQuestion1(e.target.value)} style={{ marginLeft: "7.5em" }} />
+                            <input type="radio" id="radio-button-prev-other" name="group1-1" value="other"  onClick={function () {
+                                document.getElementById("text-box").disabled = false;
+                            }} onChange={(e) => setAnswerQuestion1(e.target.value)}  />
                             <label className="radio-button-label" htmlFor="radio-button-prev-other">Other: </label>
-                            <input type="text" id="left-hand-text-box" disabled={true} onBlur={(e) => setAnswerQuestion1("TUG Test Carried out: No, Reason: " + e.target.value)} />
+                            <input type="text" id="text-box" disabled={true} onBlur={(e) => setAnswerQuestion1("TUG Test Carried out: No, Reason: " + e.target.value)} />
                             <h3 className="alert" id="question1-other-alert"></h3>
 
                         </div>

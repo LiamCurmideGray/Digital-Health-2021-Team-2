@@ -98,72 +98,70 @@ const GripStrength2 = () => {
             </div>
             <div className="main-section">
                 <label className="subtitle">Test Questions</label>
-                <ol>
-                    <form id="question1Form">
-                        <li>Which hand do you use to sign your name? (This is the <b><u>dominant hand</u></b>)</li>
-                        <h3 className="alert" id="question1-alert"></h3>
-                        <input type="radio" id="gst-question1-radio1" name="question1" value="sign name with right-hand" onChange={(e) => setAnswerQuestion1(e.target.value)} />
-                        <label className="radio-button-label" htmlFor="gst-question1-radio1">Right Hand</label>
+                <form id="question1Form">
+                    <p>1. Which hand do you use to sign your name? (This is the <b><u>dominant hand</u></b>)</p>
+                    <h3 className="alert" id="question1-alert"></h3>
+                    <input type="radio" id="gst-question1-radio1" name="question1" value="sign name with right-hand" onChange={(e) => setAnswerQuestion1(e.target.value)} />
+                    <label className="radio-button-label" htmlFor="gst-question1-radio1">Right Hand</label>
+                    <br />
+                    <input type="radio" id="gst-question1-radio2" name="question1" value="sign name with left-hand" onChange={(e) => setAnswerQuestion1(e.target.value)} />
+                    <label className="radio-button-label" htmlFor="gst-question1-radio2">Left Hand</label>
+                </form>
+
+                <form id="question2Form">
+                    <p>2. Have you had any recent pain in your hand or wrist or any acute flare-up in your hand or wrist from conditions like arthritis?</p>
+                    <h3 className="alert" id="question2-alert"></h3>
+                    <input type="radio" id="gst-question2-radio1" name="question2-yes-no" onChange={(e) => setAnswerQuestion2("")} onClick={function () {
+                        document.getElementById("recentPainFieldset").disabled = false;
+                    }} value="yes" />
+                    <label className="radio-button-label" htmlFor="gst-question2-radio1">Yes</label>
+                    <br />
+                    <fieldset id="recentPainFieldset" className="indented-radio-buttons" disabled={true}>
+                        <input type="radio" id="gst-question2-radio2" name="question2" value="recent pain right-hand" onChange={(e) => setAnswerQuestion2(e.target.value)} />
+                        <label className="radio-button-label" htmlFor="gst-question2-radio2">Right Hand</label>
                         <br />
-                        <input type="radio" id="gst-question1-radio2" name="question1" value="sign name with left-hand" onChange={(e) => setAnswerQuestion1(e.target.value)} />
-                        <label className="radio-button-label" htmlFor="gst-question1-radio2">Left Hand</label>
-                    </form>
-
-                    <form id="question2Form">
-                        <li>Have you had any recent pain in your hand or wrist or any acute flare-up in your hand or wrist from conditions like arthritis?</li>
-                        <h3 className="alert" id="question2-alert"></h3>
-                        <input type="radio" id="gst-question2-radio1" name="question2-yes-no" onChange={(e) => setAnswerQuestion2("")} onClick={function () {
-                            document.getElementById("recentPainFieldset").disabled = false;
-                        }} value="yes" />
-                        <label className="radio-button-label" htmlFor="gst-question2-radio1">Yes</label>
+                        <input type="radio" id="gst-question2-radio3" name="question2" value="recent pain left-hand" onChange={(e) => setAnswerQuestion2(e.target.value)} />
+                        <label className="radio-button-label" htmlFor="gst-question2-radio3">Left Hand</label>
                         <br />
-                        <fieldset id="recentPainFieldset" disabled={true}>
-                            <input type="radio" id="gst-question2-radio2" name="question2" value="recent pain right-hand" style={{ marginLeft: "7.5em" }} onChange={(e) => setAnswerQuestion2(e.target.value)} />
-                            <label className="radio-button-label" htmlFor="gst-question2-radio2">Right Hand</label>
-                            <br />
-                            <input type="radio" id="gst-question2-radio3" name="question2" value="recent pain left-hand" style={{ marginLeft: "7.5em" }} onChange={(e) => setAnswerQuestion2(e.target.value)} />
-                            <label className="radio-button-label" htmlFor="gst-question2-radio3">Left Hand</label>
-                            <br />
-                        </fieldset>
-                        <input type="radio" id="gst-question2-radio4" name="question2-yes-no" onClick={function () {
-                            document.getElementById("recentPainFieldset").disabled = true;
-                            document.getElementById("gst-question2-radio2").checked = false;
-                            document.getElementById("gst-question2-radio3").checked = false;
-                        }} value="no recent pain on either hand" onChange={(e) => setAnswerQuestion2(e.target.value)} />
-                        <label className="radio-button-label" htmlFor="gst-question2-radio4">No</label>
-                        <p><b>If yes to dominant hand, do not test.</b></p>
-                    </form>
+                    </fieldset>
+                    <input type="radio" id="gst-question2-radio4" name="question2-yes-no" onClick={function () {
+                        document.getElementById("recentPainFieldset").disabled = true;
+                        document.getElementById("gst-question2-radio2").checked = false;
+                        document.getElementById("gst-question2-radio3").checked = false;
+                    }} value="no recent pain on either hand" onChange={(e) => setAnswerQuestion2(e.target.value)} />
+                    <label className="radio-button-label" htmlFor="gst-question2-radio4">No</label>
+                    <p><b>If yes to dominant hand, do not test.</b></p>
+                </form>
 
 
-                    <form id="question3Form">
-                        <li>Have you had any surgery on your hands or arms duing the past 3 months?</li>
-                        <h3 className="alert" id="question3-alert"></h3>
-                        <input type="radio" id="gst-question3-radio1" name="question3-yes-no" onChange={(e) => setAnswerQuestion3("")} onClick={function () {
-                            document.getElementById("surgeryFieldset").disabled = false;
-                        }} value="yes" />
-                        <label className="radio-button-label" htmlFor="gst-question3-radio1">Yes</label>
+                <form id="question3Form">
+                    <p>3. Have you had any surgery on your hands or arms duing the past 3 months?</p>
+                    <h3 className="alert" id="question3-alert"></h3>
+                    <input type="radio" id="gst-question3-radio1" name="question3-yes-no" onChange={(e) => setAnswerQuestion3("")} onClick={function () {
+                        document.getElementById("surgeryFieldset").disabled = false;
+                    }} value="yes" />
+                    <label className="radio-button-label" htmlFor="gst-question3-radio1">Yes</label>
+                    <br />
+                    <fieldset id="surgeryFieldset" className="indented-radio-buttons" disabled={true}>
+                        <input type="radio" id="gst-question3-radio2" name="question3" value="yes recent surgery right-hand" onChange={(e) => setAnswerQuestion3(e.target.value)} />
+                        <label className="radio-button-label" htmlFor="gst-question3-radio2">Right Hand</label>
                         <br />
-                        <fieldset id="surgeryFieldset" disabled={true}>
-                            <input type="radio" id="gst-question3-radio2" name="question3" value="yes recent surgery right-hand" style={{ marginLeft: "7.5em" }} onChange={(e) => setAnswerQuestion3(e.target.value)} />
-                            <label className="radio-button-label" htmlFor="gst-question3-radio2">Right Hand</label>
-                            <br />
-                            <input type="radio" id="gst-question3-radio3" name="question3" value="yes recent surgery left-hand" style={{ marginLeft: "7.5em" }} onChange={(e) => setAnswerQuestion3(e.target.value)} />
-                            <label className="radio-button-label" htmlFor="gst-question3-radio3">Left Hand</label>
-                            <br />
-                        </fieldset>
-                        <input type="radio" id="gst-question3-radio4" name="question3-yes-no" onClick={function () {
-                            document.getElementById("surgeryFieldset").disabled = true;
-                            document.getElementById("gst-question3-radio2").checked = false;
-                            document.getElementById("gst-question3-radio3").checked = false;
-                        }} value="no recent surgery in either hand" onChange={(e) => setAnswerQuestion3(e.target.value)} />
-                        <label className="radio-button-label" htmlFor="gst-question3-radio4">No</label>
+                        <input type="radio" id="gst-question3-radio3" name="question3" value="yes recent surgery left-hand" onChange={(e) => setAnswerQuestion3(e.target.value)} />
+                        <label className="radio-button-label" htmlFor="gst-question3-radio3">Left Hand</label>
+                        <br />
+                    </fieldset>
+                    <input type="radio" id="gst-question3-radio4" name="question3-yes-no" onClick={function () {
+                        document.getElementById("surgeryFieldset").disabled = true;
+                        document.getElementById("gst-question3-radio2").checked = false;
+                        document.getElementById("gst-question3-radio3").checked = false;
+                    }} value="no recent surgery in either hand" onChange={(e) => setAnswerQuestion3(e.target.value)} />
+                    <label className="radio-button-label" htmlFor="gst-question3-radio4">No</label>
 
-                        <p><b>If yes to dominant hand, do not test.</b></p>
-                        <br /><br />
-                    </form>
-                    <p>"I would like you to take this in your hand. I will ask you to do this two times, both hands. When I say '<b>GO</b>' press as hard as you can."</p>
-                    <p><b>Remember</b> to set the dynamometer to zero (0) prior to each squeeze</p>
-                </ol>
+                    <p><b>If yes to dominant hand, do not test.</b></p>
+                    <br /><br />
+                </form>
+                <p>"I would like you to take this in your hand. I will ask you to do this two times, both hands. When I say '<b>GO</b>' press as hard as you can."</p>
+                <p><b>Remember</b> to set the dynamometer to zero (0) prior to each squeeze</p>
             </div>
             <button className="next-button" onClick={validateForm}>Next</button>
         </div>

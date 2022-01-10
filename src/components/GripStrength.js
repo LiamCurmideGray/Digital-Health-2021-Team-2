@@ -35,7 +35,7 @@ function GripStrength() {
     <div className="screen">
       {CommonHeader()}
       <div className="buttons-section space-between">
-        <a href="/" className="back-button">
+        <a href="/ReviewQuestion" className="back-button">
           &lt;
         </a>
         <label className="title">Grip Strength Test</label>
