@@ -1,5 +1,5 @@
 import './common/CommonStyle.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CommonHeader from './common/CommonHeader';
 import Fab from '@mui/material/Fab';
@@ -34,7 +34,29 @@ const Summary = () => {
   console.log(sessionStorage.getItem("TUGTestCarriedOut"));
 
   const navigate = useNavigate();
-  const { AllResults } = useGripContext();
+  const { AllResults, getPatientDocuments } = useGripContext();
+  
+  async function retrieveLastSession(){
+    const lastSession = await getPatientDocuments();
+    console.log("Last Session: ", lastSession);
+    return lastSession;
+}
+
+
+let lastGripResults = null;
+let lastTUGResults = null;
+  useEffect(() => {
+
+     const lastSession = retrieveLastSession();
+     if(lastSession != null) {
+      lastGripResults = lastSession.GripStrengthResults;
+      lastTUGResults = lastSession.TUGTestResults;
+   
+     console.log("Last Grip Results: ", lastGripResults);
+     console.log("Last TUG Results: ", lastTUGResults);
+   } 
+     
+   });
 
   //help poppup function
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -141,6 +163,7 @@ const Summary = () => {
           {finalRight}
           <ul> <li>Reason: {sessionStorage.getItem("question5")}</li> </ul>
         </ul>
+
       </div>
       <button className="next-button" onClick={validateForm}>Submit</button>
     </div>
