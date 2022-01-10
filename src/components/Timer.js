@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { Component } from "react/cjs/react.production.min";
 import './common/TemplatePage.css';
@@ -27,38 +27,48 @@ class Timer extends Component {
         this.state = { seconds: 0 };
     }
 
+    // useEffect=(()=>{
+    //     document.getElementById('stop-timer').disabled = true;
+    //     document.getElementById('clear-timer').disabled = true;
+    // });
+
     onStart = () => {
         this.setState({ seconds: this.state.seconds + 1 });
         if (this.state.seconds <= 10) {
             background = "green";
             console.log(background);
             document.getElementById("statusBox").backgroundColor = background;
+            document.getElementById("RiskStatus").innerHTML = "Low Risk";
         }
         if (this.state.seconds >= 11 && this.state.seconds <= 14) {
             background = "yellow";
             console.log(background);
             document.getElementById("statusBox").backgroundColor = background;
+            document.getElementById("RiskStatus").innerHTML = "Medium Risk";
         }
         if ((this.state.seconds > 14)) {
             background = "red";
             console.log(background);
             document.getElementById("statusBox").backgroundColor = background;
+            document.getElementById("RiskStatus").innerHTML = "High Risk";
         }
         document.getElementById("statusBox").backgroundColor = background;
         if (this.state.seconds >= 20) {
             this.stopTimer();
         }
+        document.getElementById('timer-btn').disabled = true;
+        document.getElementById('stop-timer').disabled = false;
+        document.getElementById('clear-timer').disabled = false;
         console.log(this.state.seconds);
     }
 
     timer = () => {
         trail++;
         this.f = setInterval(this.onStart, 1000);
-        if (trail === 2) {
+        if (trail >= 2) {
             document.getElementById("RiskStatus").innerHTML = "TRIAL: Press STOP to end the test ...";
         } else {
             document.getElementById("RiskStatus").innerHTML = "Press STOP to end the test ... ";
-            document.getElementById('timer-btn').disabled = true;
             console.log(this.state.seconds);
         }
     }
@@ -70,17 +80,14 @@ class Timer extends Component {
 
         if (time <= 10 && time !== 0) {
             //Low Risk
-            document.getElementById("RiskStatus").innerHTML = "Low Risk";
             status = "Low Risk";
         }
         if (time >= 11 && time <= 14) {
             //medium Risk
-            document.getElementById("RiskStatus").innerHTML = "Medium Risk";
             status = "Medium Risk";
         }
         if (time > 14) {
             //high risk
-            document.getElementById("RiskStatus").innerHTML = "High Risk";
             status = "High Risk";
         }
 
@@ -90,13 +97,14 @@ class Timer extends Component {
             status = "High Status";
         }
 
+        document.getElementById('stop-timer').disabled = true;
         sessionStorage.setItem("TUGTimer", time);
         sessionStorage.setItem("TUGStatus", status);
         console.log(status);
     }
 
     clear = () => {
-        if (trail === 2) {
+        if (trail >=2) {
             document.getElementById("RiskStatus").innerHTML = "The test cannot be redone as the test has already been done";
             document.getElementById('timer-btn').disabled = true;
             document.getElementById('stop-timer').disabled = true;
@@ -110,6 +118,8 @@ class Timer extends Component {
             document.getElementById("statusBox").backgroundColor = background;
             clearInterval(this.f);
             document.getElementById('timer-btn').disabled = false;
+            document.getElementById('stop-timer').disabled = true;
+            document.getElementById('clear-timer').disabled = true;
             this.setState({ seconds: 0 })
         }
     }
