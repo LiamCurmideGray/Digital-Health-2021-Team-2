@@ -1,7 +1,8 @@
 import  React  from  "react";
-import { useNavigate } from  "react-router-dom";
+import { Navigate, useNavigate } from  "react-router-dom";
 
-const ProtectedRoute = ({ children }) => {
+function ProtectedRoute() {
+  
 
   const navigate = useNavigate();
   console.log("\nGrip Strength Results");
@@ -34,11 +35,10 @@ const ProtectedRoute = ({ children }) => {
     console.log("THIS WAS FIRED");
     return <Navigate to="/LevelsOfMobility" />;
     // return navigate("/LevelsOfMobility");
-  }
-  
-  else {
+  } else {
     console.log("THIS WASN'T FIRED");
   }
-};
+
+}
 
 export default ProtectedRoute;

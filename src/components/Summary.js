@@ -1,9 +1,10 @@
-import './common/TemplatePage.css';
+import './common/CommonStyle.css';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CommonHeader from './common/CommonHeader';
 import Fab from '@mui/material/Fab';
 import HelpIcon from '@mui/icons-material/Help';
+import { ArrowBack } from '@mui/icons-material';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import { useGripContext } from './database/GripStrengthDatabase';
@@ -90,8 +91,8 @@ let lastTUGResults = null;
       finalLeft.push(<ul><li>Verdict: {ActualObjectLeftResult.Risk}</li></ul>)
     }
   }
-  else{
-    ActualObjectLeftResult = {TestResult: ""};
+  else {
+    ActualObjectLeftResult = { TestResult: "" };
   }
 
   if (ActualObjectRightResult != null) {
@@ -106,18 +107,24 @@ let lastTUGResults = null;
       finalRight.push(<ul><li>Verdict: {ActualObjectRightResult.Risk}</li></ul>)
     }
   }
-  else{
-    ActualObjectRightResult = {TestResult: ""};
+  else {
+    ActualObjectRightResult = { TestResult: "" };
   }
+
+  const goBack = () => {
+    navigate("/GripStrength4");
+  };
 
   return (
     <div className="screen">
       {CommonHeader()}
 
       <div className="buttons-section space-between">
-        <a href="/GripStrength4" className="back-button">&lt;</a>
+        <Fab variant="contained" className="mui-icons" onClick={goBack} aria-label="add" >
+          <ArrowBack fontSize="large" />
+        </Fab>
         <label className="title">Grip Strength Test</label>
-        <Fab className='help-button' aria-describedby={id} variant="contained" onClick={handleClick} aria-label="add" >
+        <Fab className="mui-icons" aria-describedby={id} variant="contained" onClick={handleClick} aria-label="add" >
           <HelpIcon fontSize="large">
           </HelpIcon>
         </Fab>

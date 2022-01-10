@@ -1,12 +1,11 @@
-import "./common/TemplatePage.css";
+import "./common/CommonStyle.css";
 import React from "react";
 import GripPhoto from "../resources/Grip Strength Test Equipment.png";
-
 import Fab from "@mui/material/Fab";
 import HelpIcon from "@mui/icons-material/Help";
+import { ArrowBack } from '@mui/icons-material';
 import Popover from "@mui/material/Popover";
 import Typography from "@mui/material/Typography";
-
 import { useNavigate } from "react-router-dom";
 import CommonHeader from "./common/CommonHeader";
 
@@ -22,6 +21,10 @@ function GripStrength() {
     setAnchorEl(null);
   };
 
+  const goBack = () => {
+    navigate("/ReviewQuestion");
+  };
+
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
 
@@ -35,13 +38,13 @@ function GripStrength() {
     <div className="screen">
       {CommonHeader()}
       <div className="buttons-section space-between">
-        <a href="/ReviewQuestion" className="back-button">
-          &lt;
-        </a>
+        <Fab variant="contained" className="mui-icons" onClick={goBack} aria-label="add" >
+          <ArrowBack fontSize="large" />
+        </Fab>
         <label className="title">Grip Strength Test</label>
 
         <Fab
-          className="help-button"
+          className="mui-icons"
           aria-describedby={id}
           variant="contained"
           onClick={handleClick}

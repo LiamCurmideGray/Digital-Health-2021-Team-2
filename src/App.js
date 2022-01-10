@@ -16,7 +16,6 @@ import {GripStrengthDatabaseProvider} from './components/database/GripStrengthDa
 import { Container, Row, Col } from 'react-bootstrap';
 import { Route, Routes } from "react-router-dom";
 import React, { useState } from "react";
-import ProtectedRoute from './components/security/ProtectedRoute';
 
 
 function App() {
@@ -26,7 +25,6 @@ function App() {
       <Row>
         <Col>
         <GripStrengthDatabaseProvider>
-            <ProtectedRoute>
           <Routes>
             <Route path="/TemplatePage" element={<TemplatePage/>}></Route>
             <Route path="/" element={<HomePage/>}></Route>
@@ -45,7 +43,6 @@ function App() {
                 <Route path="/Summary" element={<Summary/>}></Route>
 
           </Routes>
-            </ProtectedRoute>
         </GripStrengthDatabaseProvider>
         </Col>
       </Row>

@@ -1,32 +1,32 @@
-import './common/TemplatePage.css';
-
+import './common/CommonStyle.css';
 import Fab from '@mui/material/Fab';
 import HelpIcon from '@mui/icons-material/Help';
+import { ArrowBack } from '@mui/icons-material';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
-
 import CommonHeader from './common/CommonHeader';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
 function ReviewQuestion() {
-
     //help poppup function
-const [anchorEl, setAnchorEl] = React.useState(null);
+    const [anchorEl, setAnchorEl] = React.useState(null);
 
-const handleClick = (event) => {
-  setAnchorEl(event.currentTarget);
-};
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
 
-const handleClose = () => {
-  setAnchorEl(null);
-};
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
 
-const open = Boolean(anchorEl);
-const id = open ? 'simple-popover' : undefined;
+    const open = Boolean(anchorEl);
+    const id = open ? 'simple-popover' : undefined;
 
-
+    const goBack = () => {
+        navigate("/RiskOfFallStatus");
+    };
 
     const [question1, setAnswerQuestion1] = useState("");
     const navigate = useNavigate();
@@ -59,25 +59,27 @@ const id = open ? 'simple-popover' : undefined;
         <div className="screen">
             {CommonHeader()}
             <div className="buttons-section space-between">
-                <a href="/RiskOfFallStatus" className="back-button">&lt;</a>
+                <Fab variant="contained" className="mui-icons" onClick={goBack} aria-label="add" >
+                    <ArrowBack fontSize="large" />
+                </Fab>
                 <label className="title">Timed Up and Go Test</label>
-                <Fab className='help-button' aria-describedby={id} variant="contained" onClick={handleClick} aria-label="add" >
-                <HelpIcon fontSize="large">
-                </HelpIcon>
-                </Fab>   
+                <Fab className="mui-icons" aria-describedby={id} variant="contained" onClick={handleClick} aria-label="add" >
+                    <HelpIcon fontSize="large">
+                    </HelpIcon>
+                </Fab>
                 <Popover
                     id={id}
                     open={open}
                     anchorEl={anchorEl}
                     onClose={handleClose}
                     anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'left',
+                        vertical: 'bottom',
+                        horizontal: 'left',
                     }}
                 >
 
-        <Typography sx={{ p: 5, fontSize:'1.5em' }}>This page consists of a question regarding how the test was carried out by the patient</Typography>
-      </Popover> 
+                    <Typography sx={{ p: 5, fontSize: '1.5em' }}>This page consists of a question regarding how the test was carried out by the patient</Typography>
+                </Popover>
             </div>
 
             <div className="main-section">
@@ -106,7 +108,7 @@ const id = open ? 'simple-popover' : undefined;
                     </div>
                     <fieldset id="TUGTestCarriedOut" className="indented-radio-buttons" disabled={true}>
                         <div>
-                            <input type="radio" id="radio-button-att" name="group1-1" value="TUG Test Carried out: No, Reason: attempted-but-unable" 
+                            <input type="radio" id="radio-button-att" name="group1-1" value="TUG Test Carried out: No, Reason: attempted-but-unable"
                                 onChange={(e) => {
                                     setAnswerQuestion1(e.target.value);
                                     document.getElementById("text-box").disabled = true;
@@ -114,7 +116,7 @@ const id = open ? 'simple-popover' : undefined;
                             <label className="radio-button-label" htmlFor="radio-button-att">Attempted, but unable</label>
                         </div>
                         <div>
-                            <input type="radio" id="radio-button-unsafe" name="group1-1" value="TUG Test Carried out: No, Reason: unsafe" 
+                            <input type="radio" id="radio-button-unsafe" name="group1-1" value="TUG Test Carried out: No, Reason: unsafe"
                                 onChange={(e) => {
                                     setAnswerQuestion1(e.target.value);
                                     document.getElementById("text-box").disabled = true;
@@ -122,7 +124,7 @@ const id = open ? 'simple-popover' : undefined;
                             <label className="radio-button-label" htmlFor="radio-button-unsafe">Unsafe</label>
                         </div>
                         <div>
-                            <input type="radio" id="radio-button-unable" name="group1-1" value="TUG Test Carried out: No, Reason: unable" 
+                            <input type="radio" id="radio-button-unable" name="group1-1" value="TUG Test Carried out: No, Reason: unable"
                                 onChange={(e) => {
                                     setAnswerQuestion1(e.target.value);
                                     document.getElementById("text-box").disabled = true;
@@ -130,7 +132,7 @@ const id = open ? 'simple-popover' : undefined;
                             <label className="radio-button-label" htmlFor="radio-button-unable">Unable to understand command</label>
                         </div>
                         <div>
-                            <input type="radio" id="radio-button-refused" name="group1-1" value="TUG Test Carried out: No, Reason: refused" 
+                            <input type="radio" id="radio-button-refused" name="group1-1" value="TUG Test Carried out: No, Reason: refused"
                                 onChange={(e) => {
                                     setAnswerQuestion1(e.target.value);
                                     document.getElementById("text-box").disabled = true;
@@ -138,9 +140,9 @@ const id = open ? 'simple-popover' : undefined;
                             <label className="radio-button-label" htmlFor="radio-button-refused">Refused</label>
                         </div>
                         <div>
-                            <input type="radio" id="radio-button-prev-other" name="group1-1" value="other"  onClick={function () {
+                            <input type="radio" id="radio-button-prev-other" name="group1-1" value="other" onClick={function () {
                                 document.getElementById("text-box").disabled = false;
-                            }} onChange={(e) => setAnswerQuestion1(e.target.value)}  />
+                            }} onChange={(e) => setAnswerQuestion1(e.target.value)} />
                             <label className="radio-button-label" htmlFor="radio-button-prev-other">Other: </label>
                             <input type="text" id="text-box" disabled={true} onBlur={(e) => setAnswerQuestion1("TUG Test Carried out: No, Reason: " + e.target.value)} />
                             <h3 className="alert" id="question1-other-alert"></h3>
