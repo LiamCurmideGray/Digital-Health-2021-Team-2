@@ -14,19 +14,7 @@ import { Alert } from "react-bootstrap";
 
 
 function GetPatientData() {
-  sessionStorage.setItem("TUGQuestion1", "");
-  sessionStorage.setItem("TUGQuestion2", "");
-  sessionStorage.setItem("TUGTimer", 0);
-  sessionStorage.setItem("TUGStatus", "");
-  sessionStorage.setItem("TUGTestCarriedOut", "");
-  sessionStorage.setItem("question1", "");
-  sessionStorage.setItem("question2", "");
-  sessionStorage.setItem("question3", "");
-  sessionStorage.setItem("question4", "");
-  sessionStorage.setItem("question5", "");
-  sessionStorage.setItem("Instructions", false);
-  sessionStorage.setItem("Timer", false);
-  sessionStorage.setItem("GripStrength2", false);
+  sessionStorage.setItem("PatientData" , 0);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   let [patientId, setPatientId] = useState("");
