@@ -82,7 +82,7 @@ export function GripStrengthDatabaseProvider({ children }) {
     async function getPatientDocuments(){
       const query = await getDocs(collection(db, "patients", patientId.toString(),"SectionB"));
 
-      console.log(query.docs);
+      // console.log(query.docs);
       if(query.docs.length != 0) {
         query.forEach((doc) => {
           SessionsArray.push({id: doc.id, data: doc.data()});
@@ -90,10 +90,10 @@ export function GripStrengthDatabaseProvider({ children }) {
         
         SessionsArray.sort(function (a,b) {return parseInt(b.id) - parseInt(a.id) });
         let latestSession = SessionsArray[0].data;
-        
-        return latestSession;
+        sessionStorage.setItem("PreviousResult", JSON.stringify(latestSession));
+        // return latestSession;
       } else {
-        return null;
+        return  sessionStorage.setItem("PreviousResult", null);
       }
     }
 
