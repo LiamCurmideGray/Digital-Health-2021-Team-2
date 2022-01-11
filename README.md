@@ -1,5 +1,6 @@
 # Digital-Health 2021 Team 2
 
+Kindly clone the repository into your local machine firstly
 
 ## Dependencies
 
@@ -7,9 +8,8 @@ To make use for the full functionality of our React App, we will need to install
 
     npm install
 
-The following dependencies that we will make the most use of get installed in this process:
+Once the dependencies have been installed you can run the command:
 
- - `npm firebase`
- - `npm react-bootstrap`
-- `npm react-router-dom`
-- `npm react-google-button`
+    npm start
+  
+To run the application
