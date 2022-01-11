@@ -30,7 +30,7 @@ function GetPatientData() {
     };
   
     const goBack = () => {
-      navigate("/GetPatientData");
+      navigate("/");
     };
   
     const open = Boolean(anchorEl);
@@ -45,6 +45,7 @@ function GetPatientData() {
       if(patientId == "") {
         patientId = "blank";
       }
+      console.log("The inputted patient id: ",patientId);
         await getPatientFromDatabase(patientId);
         await getPatientDocuments();
 
