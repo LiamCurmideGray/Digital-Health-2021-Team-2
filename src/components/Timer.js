@@ -1,157 +1,183 @@
-import { Component } from "react/cjs/react.production.min";
+import React, { useEffect, useState } from "react";
 import './common/CommonStyle.css';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import TimerHelpButton from './TimerHelpButton';
-import TimerBackButton from './TimerBackButton';
-import CommonHeader from "./common/CommonHeader";
+import Fab from '@mui/material/Fab';
+import HelpIcon from '@mui/icons-material/Help';
+import { ArrowBack } from '@mui/icons-material';
+import Popover from '@mui/material/Popover';
+import Typography from '@mui/material/Typography';
+import CommonHeader from './common/CommonHeader';
+import { useNavigate } from 'react-router-dom';
 import ProtectedRoute from "./security/ProtectedRoute";
 
-var status = "";
-var trail = "0";
-var background = "#8db0f7";
-var protectRoute = 0;
+const Timer = () => {
+    const navigate = useNavigate();
+    function navToNextPage() {
+        navigate("/RiskOfFallStatus")
+    }
+    const goBack = () => {
+        navigate("/Instructions");
+    };
+    //help poppup function
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+    const open = Boolean(anchorEl);
+    const id = open ? 'simple-popover' : undefined;
 
-class Timer extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { seconds: 0 };
+    const [seconds, setSeconds] = useState(0);
+    const [isActive, setIsActive] = useState(false);
+    const [trial, setTrial] = useState(true);
+    const [clicks, setClicks] = useState(0);
+    let [status, setStatus] = useState("Low Risk");
+
+    function toggle() {
+        setClicks(clicks + 1);
+        setIsActive(!isActive);
     }
 
-    // useEffect=(()=>{
-    //     document.getElementById('stop-timer').disabled = true;
-    //     document.getElementById('clear-timer').disabled = true;
-    // });
-
-    onStart = () => {
-        this.setState({ seconds: this.state.seconds + 1 });
-        if (this.state.seconds <= 10) {
-            background = "green";
-            console.log(background);
-            document.getElementById("statusBox").backgroundColor = background;
-            document.getElementById("RiskStatus").innerHTML = "Low Risk";
-        }
-        if (this.state.seconds >= 11 && this.state.seconds <= 14) {
-            background = "yellow";
-            console.log(background);
-            document.getElementById("statusBox").backgroundColor = background;
-            document.getElementById("RiskStatus").innerHTML = "Medium Risk";
-        }
-        if ((this.state.seconds > 14)) {
-            background = "red";
-            console.log(background);
-            document.getElementById("statusBox").backgroundColor = background;
-            document.getElementById("RiskStatus").innerHTML = "High Risk";
-        }
-        document.getElementById("statusBox").backgroundColor = background;
-        if (this.state.seconds >= 20) {
-            this.stopTimer();
-        }
-        document.getElementById('timer-btn').disabled = true;
-        document.getElementById('stop-timer').disabled = false;
-        document.getElementById('clear-timer').disabled = false;
-        console.log(this.state.seconds);
+    function reset() {
+        setSeconds(0);
+        status = "Low Risk";
+        setIsActive(false);
+        setTrial(false);
     }
 
-    timer = () => {
-        trail++;
-        this.f = setInterval(this.onStart, 1000);
-        if (trail >= 2) {
-            document.getElementById("RiskStatus").innerHTML = "TRIAL: Press STOP to end the test ...";
-        } else {
-            document.getElementById("RiskStatus").innerHTML = "Press STOP to end the test ... ";
-            console.log(this.state.seconds);
+    useEffect(() => {
+        try {
+            let interval = null;
+            // console.log("clicks: ", clicks);
+            document.getElementById("status").innerHTML = seconds + " seconds - " + status;
+            if (clicks < 2) {
+                document.getElementById("main-button").disabled = false;
+                document.getElementById("reset-button").disabled = true;
+                document.getElementById("next-button").disabled = true;
+            }
+            else {
+                document.getElementById("next-button").disabled = false;
+                document.getElementById("main-button").disabled = true;
+                if (trial) {
+                    document.getElementById("reset-button").disabled = false;
+                }
+                setClicks(0);
+            }
+            if (trial && !isActive) {
+                document.getElementById("main-button").innerHTML = "TRIAL:<br/>Press Here to begin ...";
+                document.getElementById("main-button").className = "TimerLayoutBtnStart";
+            }
+            else if (trial && isActive) {
+                if (seconds <= 10) {
+                    status = "Low Risk";
+                    document.getElementById("main-button").className = "TimerLayoutBtnStart";
+                }
+                else if (seconds >= 11 && seconds <= 14) {
+                    status = "Medium Risk";
+                    document.getElementById("main-button").className = "TimerLayoutBtnMed";
+                }
+                else if (seconds > 14 && seconds < 20) {
+                    status = "High Risk";
+                    document.getElementById("main-button").className = "TimerLayoutBtnStop";
+                }
+                else if (seconds >= 20) {
+                    status = "High Risk";
+                    document.getElementById("main-button").className = "TimerLayoutBtnStop";
+                    document.getElementById("main-button").click();
+                }
+                document.getElementById("main-button").innerHTML = "" + seconds + "<br/>" + status + "<br/>" + "Press here to Stop";
+                document.getElementById("status").innerHTML = seconds + " seconds - " + status;
+            }
+            else if (!trial && !isActive) {
+                document.getElementById("main-button").innerHTML = "Press here to begin ...";
+                document.getElementById("main-button").className = "TimerLayoutBtnStart";
+            }
+            else if (!trial && isActive) {
+                if (seconds <= 10) {
+                    status = "Low Risk";
+                    document.getElementById("main-button").className = "TimerLayoutBtnStart";
+                }
+                else if (seconds >= 11 && seconds <= 14) {
+                    status = "Medium Risk";
+                    document.getElementById("main-button").className = "TimerLayoutBtnMed";
+                }
+                else if (seconds > 14 && seconds < 20) {
+                    status = "High Risk";
+                    document.getElementById("main-button").className = "TimerLayoutBtnStop";
+                }
+                else if (seconds >= 20) {
+                    status = "High Risk";
+                    document.getElementById("main-button").className = "TimerLayoutBtnStop";
+                    document.getElementById("main-button").click();
+                }
+                document.getElementById("main-button").innerHTML = "" + seconds + "<br/>" + status + "<br/>" + "Press here to Stop";
+                document.getElementById("status").innerHTML = seconds + " seconds - " + status;
+            }
+
+            if (isActive) {
+                interval = setInterval(() => {
+                    setSeconds(seconds => seconds + 1);
+                }, 1000);
+            } else if (!isActive && seconds !== 0) {
+                clearInterval(interval);
+            }
+
+            sessionStorage.setItem("TUGTimer", seconds);
+            sessionStorage.setItem("TUGStatus", status);
+            console.log(seconds + " " + status);
+            setStatus(status)
+            return () => clearInterval(interval);
         }
+        catch { }
+    }, [isActive, seconds]);
+    if (sessionStorage.getItem("Timer") === 'false') {
+        return ProtectedRoute();
     }
+    return (
+        <div className="screen">
+            {CommonHeader()}
+            <div className="buttons-section space-between">
+                <Fab variant="contained" className="mui-icons" onClick={goBack} aria-label="add" >
+                    <ArrowBack fontSize="large" />
+                </Fab>
+                <label className="title">Timed Up and Go Test</label>
+                <Fab className='help-button' className="mui-icons" aria-describedby={id} variant="contained" onClick={handleClick} aria-label="add" >
+                    <HelpIcon fontSize="large">
+                    </HelpIcon>
+                </Fab>
+                <Popover
+                    id={id}
+                    open={open}
+                    anchorEl={anchorEl}
+                    onClose={handleClose}
+                    anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'left',
+                    }}
+                >
 
-    stopTimer = () => {
-        clearInterval(this.f);
-        var time = this.state.seconds;
-        console.log(time);
-
-        if (time <= 10 && time !== 0) {
-            //Low Risk
-            status = "Low Risk";
-        }
-        if (time >= 11 && time <= 14) {
-            //medium Risk
-            status = "Medium Risk";
-        }
-        if (time > 14) {
-            //high risk
-            status = "High Risk";
-        }
-
-        if(time >= 20) {
-            document.getElementById("statusBox").backgroundColor = "red";
-            document.getElementById("RiskStatus").innerHTML = "Time Exceeded. Test Automatically Failed";
-            status = "High Status";
-        }
-
-        document.getElementById('stop-timer').disabled = true;
-        sessionStorage.setItem("TUGTimer", time);
-        sessionStorage.setItem("TUGStatus", status);
-        console.log(status);
-    }
-
-    clear = () => {
-        if (trail >=2) {
-            document.getElementById("RiskStatus").innerHTML = "The test cannot be redone as the test has already been done";
-            document.getElementById('timer-btn').disabled = true;
-            document.getElementById('stop-timer').disabled = true;
-            document.getElementById('clear-timer').disabled = true;
-            background = "#8db0f7";
-            document.getElementById("statusBox").backgroundColor = background;
-        } else {
-            document.getElementById("RiskStatus").innerHTML = "OFFICIAL TEST: Press Start to begin ...";
-            document.getElementById("timer-btn").innerHTML = "Start Official Test";
-            background = "#8db0f7";
-            document.getElementById("statusBox").backgroundColor = background;
-            clearInterval(this.f);
-            document.getElementById('timer-btn').disabled = false;
-            document.getElementById('stop-timer').disabled = true;
-            document.getElementById('clear-timer').disabled = true;
-            this.setState({ seconds: 0 })
-        }
-    }
-
-
-    render() {
-        return (
-            <div className="screen">
-                {CommonHeader()}
-                <div className="buttons-section space-between">
-                    <TimerBackButton/>
-                    <label className="title">Timed Up and Go Test</label>
-                    <TimerHelpButton/>
-                </div>
-                <div className="main-section">
-                    <label className="subtitle">Timer</label>
-                    <div className="TimerLayoutWords">
-                        <Box id='statusBox' className="status Display" backgroundColor={background}>
-                            <h1 style={{ textAlignHorizontal: "center", textAlign: "center", }}>{this.state.seconds}</h1>
-                            <div className="TimerDiv">
-
-                                <h3 id="RiskStatus" style={{ textAlignHorizontal: "center", textAlign: "center", }}>TRIAL: Press Start to begin ... </h3>
-
-                            </div>
-
-                            </Box> 
-                        <div style={{ textAlignHorizontal: "center",textAlign: "center",}}>
-                            
-
-                            <Button class='TimerLayoutBtnStart' id='timer-btn' onClick={this.timer}>Start Trial</Button>
-                            <Button id='stop-timer' class='TimerLayoutBtnStop' onClick={this.stopTimer}>Stop</Button>
-                            <Button id='clear-timer' class='TimerLayoutBtnReset' onClick={this.clear}>Reset</Button>
-
-                        </div>
-                    </div>
-                </div>
-                <a href="/RiskOfFallStatus"><button className="next-button">Next</button></a>
+                    <Typography sx={{ p: 5, fontSize: '1.5em' }}>This page consists of the timer that should be used to conduct the test. The test consists of one trial test and one official test. No retests can be done after these two sessions are finished. The Timer automatically stops at 20 seconds.</Typography>
+                </Popover>
             </div>
 
-        )
-    }
+            <div className="main-section">
+                <label className="subtitle">Timer</label>
+                <div className="TimerLayoutWords">
+                    <div className="TimerDiv" style={{ textAlignHorizontal: "center", textAlign: "center" }}>
+                        <button id="main-button" className='TimerLayoutBtnStart' onClick={toggle}>
+                        </button>
+                        <br />
+                        <button id="reset-button" className='TimerLayoutBtnReset' onClick={reset}>
+                            Reset
+                        </button>
+                        <h3 id="status"></h3>
+                    </div>
+                </div>
+            </div>
+            <button id="next-button" className="next-button" onClick={navToNextPage}>Next</button>
+        </div>
+    );
 }
 
 export default Timer;
