@@ -59,7 +59,7 @@ function LevelsOfMobility() {
     }
 
     const goBack = () => {
-        navigate("/GetPatientData");
+        navigate("/");
     };
 
     //help poppup function

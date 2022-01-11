@@ -39,7 +39,7 @@ const Summary = () => {
   function validateForm() {
     console.log("Results are to be submitted after the SUBMIT is pressed");
     AllResults();
-    navigate("/GetPatientData");
+    navigate("/");
   }
 
   let finalLeft = null;

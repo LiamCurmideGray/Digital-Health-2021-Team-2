@@ -70,6 +70,7 @@ export function GripStrengthDatabaseProvider({ children }) {
     let SessionsArray = [];
     async function getPatientDocuments(){
 
+      console.log("the Patient ID:", patientId);
       const query = await getDocs(collection(db, "patients", patientId,"SectionB"));
 
       if(query.docs.length != 0) {
@@ -85,7 +86,9 @@ export function GripStrengthDatabaseProvider({ children }) {
     }
 
     async function getPatientFromDatabase(inputtedPatientId){
-      const docRef = doc(db, "patients", inputtedPatientId.toString());
+
+      console.log("Getting if patient id exists:", inputtedPatientId);
+      const docRef = doc(db, "patients", inputtedPatientId);
       const docSnap = await getDoc(docRef);
   
       if (docSnap.data()) {
@@ -95,6 +98,8 @@ export function GripStrengthDatabaseProvider({ children }) {
         sessionStorage.setItem("PatientData", 0);
         console.log("No such document!");
       }
+
+      patientId = inputtedPatientId;
     }
 
   return (
