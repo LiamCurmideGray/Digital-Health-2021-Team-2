@@ -25,15 +25,6 @@ const Summary = () => {
   let PreviousResult = sessionStorage.getItem("PreviousResult");
   let ActualPreviousResult = JSON.parse(PreviousResult);
 
-
-  
-
-  async function retrieveLastSession() {
-    const lastSession = await getPatientDocuments();
-  }
-
-  
-
   //help poppup function
   const [anchorEl, setAnchorEl] = React.useState(null);
   const handleClick = (event) => {
@@ -48,7 +39,7 @@ const Summary = () => {
   function validateForm() {
     console.log("Results are to be submitted after the SUBMIT is pressed");
     AllResults();
-    navigate("/");
+    navigate("/GetPatientData");
   }
 
   let finalLeft = null;
@@ -62,8 +53,6 @@ const Summary = () => {
 
  
   useEffect(() => {
-    retrieveLastSession();
-    
     finalLeft = returnGripStrenghtRiskLeft(finalLeft, ActualObjectLeftResult);
     finalRight = returnGripStrenghtRiskLeft(finalRight, ActualObjectRightResult);
     
@@ -76,11 +65,8 @@ const Summary = () => {
       actualPreviousRight = returnGripStrenghtRiskLeft(actualPreviousRight, ActualPreviousResult.GripStrengthResults.MaxRightHandResult);
       document.getElementById("actualPreviousLeft").innerHTML= actualPreviousLeft;
       document.getElementById("actualPreviousRight").innerHTML= actualPreviousRight;
-
     }
-
-
-  },[]);
+  });
 
 
 function returnGripStrenghtRiskLeft(thisHand, ActualObjectHandResult){
@@ -122,7 +108,7 @@ let count = null;
 if(ActualPreviousResult == null) {
   pageRender = `
   <div>
-  <label class="subtitle"><center>Current Session </center></label>
+  <label class="subtitle"><center>Current Session </center></label> 
   </br>
   <label class="subtitle">Levels of Mobility</label>
   <ul>
@@ -156,7 +142,6 @@ if(ActualPreviousResult == null) {
 } else {
 
   pageRender = `
-  <div>
   <table>
   <tbody>
   <tr>
@@ -193,7 +178,6 @@ if(ActualPreviousResult == null) {
 </ul>
     </td>
     <td>
-    </br>
     <label class="subtitle">Levels of Mobility</label>
 <ul>
   <li>${sessionStorage.getItem("TUGQuestion1")}</li>
@@ -208,7 +192,6 @@ if(ActualPreviousResult == null) {
 <ul>
   <li>${ActualObjectLeftResult.TestResult}</li>
   <div id="finalLeft"></div>
-
   <ul>
   ${" "}
     <li>Reason: ${sessionStorage.getItem("question4")}</li>${" "}
@@ -225,8 +208,6 @@ if(ActualPreviousResult == null) {
   </tr>
   </tbody>
 </table>
-</div>
-  
   `;
 
 }
