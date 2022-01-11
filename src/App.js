@@ -30,7 +30,6 @@ function App() {
             <Route path="/TemplatePage" element={<TemplatePage/>}></Route>
             <Route path="/HomePage" element={<HomePage/>}></Route>
             <Route path="/" element={<GetPatientData/>}></Route>
-
             
                 <Route path="/LevelsOfMobility" element={<LevelsOfMobility/>}></Route>
                 <Route path="/ListOfEquipment" element={<ListOfEquipment/>}></Route>

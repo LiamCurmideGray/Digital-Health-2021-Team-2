@@ -31,8 +31,10 @@ function ProtectedRoute() {
   console.log("CHECKING \n");
   console.log( question1);
   console.log(question2);
-  if (question1 == "" || question2 == "") {
-    console.log("THIS WAS FIRED");
+  if (sessionStorage.getItem("PatientData") === '0' || sessionStorage.getItem("PatientData") === null){
+    return <Navigate to="/" />
+  }
+  else if (question1 == "" || question2 == "") {
     return <Navigate to="/LevelsOfMobility" />;
   }
   else if (sessionStorage.getItem("Instructions") === 'false'){
