@@ -48,66 +48,69 @@ const Summary = () => {
   let actualPreviousLeft = null;
   let actualPreviousRight = null;
 
-  if(ActualPreviousResult != null) {
+  if (ActualPreviousResult != null) {
 
   }
 
- 
+
   useEffect(() => {
-    finalLeft = returnGripStrenghtRiskLeft(finalLeft, ActualObjectLeftResult);
-    finalRight = returnGripStrenghtRiskLeft(finalRight, ActualObjectRightResult);
-    
-    renderPage();
-    document.getElementById("finalLeft").innerHTML= finalLeft;
-    document.getElementById("finalRight").innerHTML= finalRight;
-    
-    if(ActualPreviousResult != null) {
-      actualPreviousLeft = returnGripStrenghtRiskLeft(actualPreviousLeft, ActualPreviousResult.GripStrengthResults.MaxLeftHandResult);
-      actualPreviousRight = returnGripStrenghtRiskLeft(actualPreviousRight, ActualPreviousResult.GripStrengthResults.MaxRightHandResult);
-      document.getElementById("actualPreviousLeft").innerHTML= actualPreviousLeft;
-      document.getElementById("actualPreviousRight").innerHTML= actualPreviousRight;
+    try {
+      finalLeft = returnGripStrenghtRiskLeft(finalLeft, ActualObjectLeftResult);
+      finalRight = returnGripStrenghtRiskLeft(finalRight, ActualObjectRightResult);
+
+      renderPage();
+      document.getElementById("finalLeft").innerHTML = finalLeft;
+      document.getElementById("finalRight").innerHTML = finalRight;
+
+      if (ActualPreviousResult != null) {
+        actualPreviousLeft = returnGripStrenghtRiskLeft(actualPreviousLeft, ActualPreviousResult.GripStrengthResults.MaxLeftHandResult);
+        actualPreviousRight = returnGripStrenghtRiskLeft(actualPreviousRight, ActualPreviousResult.GripStrengthResults.MaxRightHandResult);
+        document.getElementById("actualPreviousLeft").innerHTML = actualPreviousLeft;
+        document.getElementById("actualPreviousRight").innerHTML = actualPreviousRight;
+      }
     }
+    catch {}
   });
 
 
-function returnGripStrenghtRiskLeft(thisHand, ActualObjectHandResult){
+  function returnGripStrenghtRiskLeft(thisHand, ActualObjectHandResult) {
 
-  if (ActualObjectHandResult != null) {
-    if (
-      typeof ActualObjectHandResult.Risk === "object" &&
-      !Array.isArray(ActualObjectHandResult.Risk) &&
-      ActualObjectHandResult.Risk !== null
-    ) {
-      for (var k in ActualObjectHandResult.Risk) {
-        thisHand = `
+    if (ActualObjectHandResult != null) {
+      if (
+        typeof ActualObjectHandResult.Risk === "object" &&
+        !Array.isArray(ActualObjectHandResult.Risk) &&
+        ActualObjectHandResult.Risk !== null
+      ) {
+        for (var k in ActualObjectHandResult.Risk) {
+          thisHand = `
           <ul>
             <li>
               ${k} Verdict: ${ActualObjectHandResult.Risk[k]}
             </li>
           </ul>
         `;
-      }
-    } else {
-      thisHand = `
+        }
+      } else {
+        thisHand = `
         <ul>
           <li>Verdict: ${ActualObjectHandResult.Risk}</li>
         </ul>
       `;
+      }
+    } else {
+      ActualObjectHandResult = { TestResult: "" };
     }
-  } else {
-    ActualObjectHandResult = { TestResult: "" };
+
+    return thisHand;
   }
 
-  return thisHand;
-}
 
+  let pageRender = "";
+  function renderPage() {
+    let count = null;
 
-let pageRender = "";
-function renderPage(){
-let count = null;
-
-if(ActualPreviousResult == null) {
-  pageRender = `
+    if (ActualPreviousResult == null) {
+      pageRender = `
   <div>
   <label class="subtitle"><center>Current Session </center></label> 
   </br>
@@ -140,9 +143,9 @@ if(ActualPreviousResult == null) {
   </ul>
   </div>`;
 
-} else {
+    } else {
 
-  pageRender = `
+      pageRender = `
   <table>
   <tbody>
   <tr>
@@ -211,17 +214,17 @@ if(ActualPreviousResult == null) {
 </table>
   `;
 
-}
+    }
 
-document.getElementById("pageRender").innerHTML = pageRender;
-}
+    document.getElementById("pageRender").innerHTML = pageRender;
+  }
 
-  
+
   const goBack = () => {
     navigate("/GripStrength4");
   };
 
-  if (sessionStorage.getItem("question4") === '' || sessionStorage.getItem("question5") === '' ) {
+  if (sessionStorage.getItem("question4") === '' || sessionStorage.getItem("question5") === '') {
     console.log("ASDFGASGSDFZ");
     return ProtectedRoute();
   }

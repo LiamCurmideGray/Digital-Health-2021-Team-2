@@ -7,24 +7,13 @@ import Typography from '@mui/material/Typography';
 import CommonHeader from './common/CommonHeader';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ProtectedRoute from './security/ProtectedRoute';
 function LevelsOfMobility() {
 
 
     const [question1, setAnswerQuestion1] = useState("");
     const [question2, setAnswerQuestion2] = useState("");
-    sessionStorage.setItem("TUGQuestion1", question1);
-    sessionStorage.setItem("TUGQuestion2", question2);
-    sessionStorage.setItem("TUGTimer", 0);
-    sessionStorage.setItem("TUGStatus", "");
-    sessionStorage.setItem("TUGTestCarriedOut", "");
-    sessionStorage.setItem("question1", "");
-    sessionStorage.setItem("question2", "");
-    sessionStorage.setItem("question3", "");
-    sessionStorage.setItem("question4", "");
-    sessionStorage.setItem("question5", "");
-    sessionStorage.setItem("Instructions", false);
-    sessionStorage.setItem("Timer", false);
-    sessionStorage.setItem("GripStrength2", false);
+    
     const navigate = useNavigate();
 
     console.log("Previous Level of Mobility ", sessionStorage.getItem("TUGQuestion1"));
@@ -97,6 +86,11 @@ function LevelsOfMobility() {
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
 
+    console.log("Patient Data: " + sessionStorage.getItem("PatientData"))
+    if (sessionStorage.getItem("PatientData") === '0' || sessionStorage.getItem("PatientData") === null){
+        return ProtectedRoute();
+    }
+    
     return (
         <div className="screen">
             {CommonHeader()}
