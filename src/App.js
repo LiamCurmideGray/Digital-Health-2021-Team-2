@@ -16,6 +16,7 @@ import {GripStrengthDatabaseProvider} from './components/database/GripStrengthDa
 import { Container, Row, Col } from 'react-bootstrap';
 import { Route, Routes } from "react-router-dom";
 import React, { useState } from "react";
+import GetPatientData from './components/GetPatientData';
 
 
 function App() {
@@ -27,7 +28,9 @@ function App() {
         <GripStrengthDatabaseProvider>
           <Routes>
             <Route path="/TemplatePage" element={<TemplatePage/>}></Route>
-            <Route path="/" element={<HomePage/>}></Route>
+            <Route path="/HomePage" element={<HomePage/>}></Route>
+            <Route path="/" element={<GetPatientData/>}></Route>
+
             
                 <Route path="/LevelsOfMobility" element={<LevelsOfMobility/>}></Route>
                 <Route path="/ListOfEquipment" element={<ListOfEquipment/>}></Route>

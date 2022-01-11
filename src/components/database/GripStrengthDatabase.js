@@ -23,23 +23,11 @@ export function GripStrengthDatabaseProvider({ children }) {
     const date = `${current.getDate()}-${current.getMonth()+1}-${current.getFullYear()} at ${current.getHours()}:${current.getMinutes()}`;
     const dateString = date.toString();
     // const dateString = todaysSession.toString();
-    let patientId = 1234;
+    let patientId = sessionStorage.getItem("PatientID");
+    
    
     //1234 can be changed accordingly via patientID
     function AllResults(){
-      console.log("\nGrip Strength Results");
-      console.log(sessionStorage.getItem("question1"));
-      console.log(sessionStorage.getItem("question2"));
-      console.log(sessionStorage.getItem("question3"));
-      console.log(sessionStorage.getItem("question4"));
-      console.log(sessionStorage.getItem("question5"));
-
-      console.log("\nTUG Test Results");
-      console.log(sessionStorage.getItem("TUGQuestion1"));
-      console.log(sessionStorage.getItem("TUGQuestion2"));
-      console.log(sessionStorage.getItem("TUGTimer"));
-      console.log(sessionStorage.getItem("TUGStatus"));
-      console.log(sessionStorage.getItem("TUGTestCarriedOut"));
       addNewEntry();
     }
 
@@ -52,7 +40,8 @@ export function GripStrengthDatabaseProvider({ children }) {
       let ActualObjectLeftResult = JSON.parse(SessionLeftResult);
       let ActualObjectRightResult = JSON.parse(SessionRightResult);
 
-      await setDoc(doc(db, "patients", patientId.toString(),"SectionB", todaysSession.toString()), {
+
+      await setDoc(doc(db, "patients", patientId,"SectionB", todaysSession.toString()), {
         DateofSession: dateString,
         GripStrengthResults: {
          Question1: sessionStorage.getItem("question1"),
@@ -80,38 +69,41 @@ export function GripStrengthDatabaseProvider({ children }) {
 
     let SessionsArray = [];
     async function getPatientDocuments(){
-      const query = await getDocs(collection(db, "patients", patientId.toString(),"SectionB"));
 
-      if(query.data != undefined) {
+      console.log("the Patient ID:", patientId);
+      const query = await getDocs(collection(db, "patients", patientId,"SectionB"));
+
+      if(query.docs.length != 0) {
         query.forEach((doc) => {
           SessionsArray.push({id: doc.id, data: doc.data()});
         });
-        
-        SessionsArray.sort(function (a,b) {return parseInt(b.id) - parseInt(a.id) });
-        let latestSession = SessionsArray[0].data;
-        
-        return latestSession;
+        let arraySize = SessionsArray.length;
+        let latestSession = SessionsArray[arraySize-1].data;
+        sessionStorage.setItem("PreviousResult", JSON.stringify(latestSession));
       } else {
-        return null;
+       sessionStorage.setItem("PreviousResult", null);
       }
     }
 
-    async function getGenderFromDatabase(){
-      const docRef = doc(db, "patients", patientId.toString());
+    async function getPatientFromDatabase(inputtedPatientId){
+
+      console.log("Getting if patient id exists:", inputtedPatientId);
+      const docRef = doc(db, "patients", inputtedPatientId);
       const docSnap = await getDoc(docRef);
   
-      if (docSnap) {
+      if (docSnap.data()) {
         const patientObject = docSnap.data();
-        console.log(patientObject.gender);
-        
-        return await patientObject.gender;
+        sessionStorage.setItem("PatientData", JSON.stringify(patientObject));
       } else {
+        sessionStorage.setItem("PatientData", 0);
         console.log("No such document!");
       }
+
+      patientId = inputtedPatientId;
     }
 
   return (
-    <gripStrengthContext.Provider value={{addNewEntry, AllResults, getGenderFromDatabase, getPatientDocuments}}>
+    <gripStrengthContext.Provider value={{addNewEntry, AllResults, getPatientFromDatabase, getPatientDocuments}}>
       {children}
     </gripStrengthContext.Provider>
   );

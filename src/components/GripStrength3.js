@@ -21,7 +21,7 @@ const GripStrength3 = () => {
   const [errorLeft, setErrorLeft] = useState("");
   const [errorRight, setErrorRight] = useState("");
   const [errorConfirm, setErrorConfirm] = useState(false);
-  const { getGenderFromDatabase } = useGripContext();
+  const { getPatientFromDatabase } = useGripContext();
 
 
   const question1 = sessionStorage.getItem("question1");
@@ -55,10 +55,6 @@ const GripStrength3 = () => {
 
   const navigate = useNavigate();
 
-  async function retreiveGender() {
-    let gender = await getGenderFromDatabase();
-    return gender;
-  }
 
   useEffect(() => {
     if (
@@ -142,7 +138,11 @@ const GripStrength3 = () => {
 
   async function onSubmit() {
 
-    let DatabaseGender = await retreiveGender();
+    let patientData = sessionStorage.getItem("PatientData");
+    let actualPatientData = JSON.parse(patientData);
+
+    console.log("The Patients object: " , actualPatientData);
+    let DatabaseGender = actualPatientData.gender;
     console.log("The patient gender: ", DatabaseGender);
 
     if (errorConfirm == true) {
