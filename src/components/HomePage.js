@@ -12,6 +12,7 @@ function HomePage() {
         <h1>Home Page</h1>
         <p>Click any button to access the respective page</p>
         <a href='/TemplatePage' className='page-button'>Template Page</a>
+        <a href='/GetPatientData' className='page-button'>Get Patient Data</a>
         <a href='/LevelsOfMobility' className='page-button'>Levels Of Mobility</a>
         <a href='/ListOfEquipment' className='page-button'>List Of Equipment</a>
         <a href='/Instructions' className='page-button'>Instructions</a>
