@@ -34,8 +34,32 @@ function ProtectedRoute() {
   if (question1 == "" || question2 == "") {
     console.log("THIS WAS FIRED");
     return <Navigate to="/LevelsOfMobility" />;
-    // return navigate("/LevelsOfMobility");
-  } else {
+  }
+  else if (sessionStorage.getItem("Instructions") === 'false'){
+    return <Navigate to="/ListOfEquipment" />;
+  }
+  else if (sessionStorage.getItem("Timer") === 'false'){
+    return <Navigate to="/Instructions" />;
+  }
+  else if (sessionStorage.getItem("TUGTimer") === '0'){
+    return <Navigate to="/Timer" />;
+  }
+  else if (sessionStorage.getItem("TUGStatus") === ''){
+    return <Navigate to="/RiskOfFallStatus" />;
+  }
+  else if (sessionStorage.getItem("TUGTestCarriedOut") === ''){
+    return <Navigate to="/ReviewQuestion" />;
+  }
+  else if (sessionStorage.getItem("GripStrength2") === 'false'){
+    return <Navigate to="/GripStrength" />;
+  }
+  else if (sessionStorage.getItem("question1") === '' || sessionStorage.getItem("question2") === ''){
+    return <Navigate to="/GripStrength2" />;
+  }
+  else if (sessionStorage.getItem("question4") === '' || sessionStorage.getItem("question5") === ''){
+    return <Navigate to="/GripStrength4" />;
+  }
+  else {
     console.log("THIS WASN'T FIRED");
   }
 

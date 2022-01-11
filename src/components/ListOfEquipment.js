@@ -15,14 +15,24 @@ function ListOfEquipment() {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const question1 = sessionStorage.getItem("TUGQuestion1");
     const question2 = sessionStorage.getItem("TUGQuestion2");
+    sessionStorage.setItem("TUGTimer", 0);
+    sessionStorage.setItem("TUGStatus", "");
+    sessionStorage.setItem("TUGTestCarriedOut", "");
+    sessionStorage.setItem("question1", "");
+    sessionStorage.setItem("question2", "");
+    sessionStorage.setItem("question3", "");
+    sessionStorage.setItem("question4", "");
+    sessionStorage.setItem("question5", "");
+    sessionStorage.setItem("Instructions", true);
     console.log(question1);
     console.log(question2);
-    
-    if (question1 == "" || question2 == "") { 
-        return ProtectedRoute();
-  }
+    console.log("AAA ",sessionStorage.getItem("Instructions"));
 
-     function navToNextPage(){
+    if (question1 == "" || question2 == "") {
+        return ProtectedRoute();
+    }
+
+    function navToNextPage() {
         navigate("/Instructions")
     }
 

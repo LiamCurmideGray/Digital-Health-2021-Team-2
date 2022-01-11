@@ -1,13 +1,14 @@
-import "./common/CommonStyle.css";
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import CommonHeader from "./common/CommonHeader";
-import Fab from "@mui/material/Fab";
-import HelpIcon from "@mui/icons-material/Help";
-import { ArrowBack } from "@mui/icons-material";
-import Popover from "@mui/material/Popover";
-import Typography from "@mui/material/Typography";
-import { useGripContext } from "./database/GripStrengthDatabase";
+import './common/CommonStyle.css';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import CommonHeader from './common/CommonHeader';
+import Fab from '@mui/material/Fab';
+import HelpIcon from '@mui/icons-material/Help';
+import { ArrowBack } from '@mui/icons-material';
+import Popover from '@mui/material/Popover';
+import Typography from '@mui/material/Typography';
+import { useGripContext } from './database/GripStrengthDatabase';
+import ProtectedRoute from './security/ProtectedRoute';
 
 const Summary = () => {
 
@@ -220,6 +221,10 @@ document.getElementById("pageRender").innerHTML = pageRender;
     navigate("/GripStrength4");
   };
 
+  if (sessionStorage.getItem("question4") === '' || sessionStorage.getItem("question5") === '' ) {
+    console.log("ASDFGASGSDFZ");
+    return ProtectedRoute();
+  }
   return (
     <div className="screen">
       {CommonHeader()}

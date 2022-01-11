@@ -8,8 +8,10 @@ import Popover from "@mui/material/Popover";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 import CommonHeader from "./common/CommonHeader";
+import ProtectedRoute from "./security/ProtectedRoute";
 
 function GripStrength() {
+  sessionStorage.setItem("GripStrength2", true);
   //help poppup function
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -34,6 +36,9 @@ function GripStrength() {
     navigate("/GripStrength2");
   }
 
+  if(sessionStorage.getItem("TUGTestCarriedOut") === ''){
+    return ProtectedRoute();
+  }
   return (
     <div className="screen">
       {CommonHeader()}
