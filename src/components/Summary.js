@@ -152,47 +152,66 @@ const Summary = () => {
     <th><label class="subtitle">Previous Session</label></th>
     <th><label class="subtitle">Current Session</label></th>
   </tr>
-  <tr>
-    <td>
-    <label class="subtitle">Levels of Mobility</label>
+  <tr >
+
+  <th colspan="2">  </br> <label class="subtitle">Levels of Mobility</label> </th>
+ </tr>
+      <tr >
+  <td style="border: 2px solid black">
 <ul>
   <li>${ActualPreviousResult.TUGTestResults.LevelsOfMobility.PreviousLevelofMobility}</li>
   <li>${ActualPreviousResult.TUGTestResults.LevelsOfMobility.CurrentLevelofMobility}</li>
 </ul>
-<label class="subtitle">Timed Up and Go Test</label>
-<ul>
-  <li>Time Taken: ${ActualPreviousResult.TUGTestResults.RiskOfFallStatus.TimeTakenInSeconds} seconds</li>
-  <li>Status: ${ActualPreviousResult.TUGTestResults.RiskOfFallStatus.Status}</li>
-</ul>
-<label class="subtitle">Grip Strength test</label>
-<ul>
-  <li>${ActualPreviousResult.GripStrengthResults.MaxLeftHandResult.TestResult}</li>
-  <div id="actualPreviousLeft"></div>
-  <ul>
-  ${" "}
-    <li>Reason: ${ActualPreviousResult.GripStrengthResults.Question4}</li>${" "}
-  </ul>
-  <br />
-  <li>${ActualPreviousResult.GripStrengthResults.MaxRightHandResult.TestResult}</li>
-  <div id="actualPreviousRight"></div>
-   <ul>
-   ${" "}
-    <li>Reason: ${ActualPreviousResult.GripStrengthResults.Question5}</li>${" "}
-  </ul>
-</ul>
-    </td>
-    <td>
-    <label class="subtitle">Levels of Mobility</label>
+
+</td>
+<td style="border: 2px solid black">
 <ul>
   <li>${sessionStorage.getItem("TUGQuestion1")}</li>
   <li>${sessionStorage.getItem("TUGQuestion2")}</li>
 </ul>
-<label class="subtitle">Timed Up and Go Test</label>
-<ul>
-  <li>Time Taken: ${sessionStorage.getItem("TUGTimer")} seconds</li>
-  <li>Status: ${sessionStorage.getItem("TUGStatus")}</li>
-</ul>
-<label class="subtitle">Grip Strength test</label>
+
+</td>
+  <tr>
+    <th colspan="2"> </br> <label class="subtitle">Timed Up and Go Test</label> </th>
+  </tr>
+  <tr>
+  <td style="border: 2px solid black">
+    <ul>
+      <li>Time Taken: ${ActualPreviousResult.TUGTestResults.RiskOfFallStatus.TimeTakenInSeconds} seconds</li>
+      <li>Status: ${ActualPreviousResult.TUGTestResults.RiskOfFallStatus.Status}</li>
+    </ul>
+  </td>
+  <td style="border: 2px solid black">
+    <ul>
+      <li>Time Taken: ${sessionStorage.getItem("TUGTimer")} seconds</li>
+      <li>Status: ${sessionStorage.getItem("TUGStatus")}</li>
+    </ul>
+  </td>
+</tr>
+<tr>
+  <th colspan="2">  </br>  </br> <label class="subtitle">Grip Strength test</label> </th>
+</tr>
+<tr>
+  <td style="border: 2px solid black">
+  <ul>
+    <li>${ActualPreviousResult.GripStrengthResults.MaxLeftHandResult.TestResult}</li>
+    <div id="actualPreviousLeft"></div>
+    <ul>
+    ${" "}
+      <li>Reason: ${ActualPreviousResult.GripStrengthResults.Question4}</li>${" "}
+    </ul>
+    <br />
+    <li>${ActualPreviousResult.GripStrengthResults.MaxRightHandResult.TestResult}</li>
+    <div id="actualPreviousRight"></div>
+    <ul>
+    ${" "}
+      <li>Reason: ${ActualPreviousResult.GripStrengthResults.Question5}</li>${" "}
+    </ul>
+  </ul>
+    </td>
+    <td style="border: 2px solid black">
+
+
 <ul>
   <li>${ActualObjectLeftResult.TestResult}</li>
   <div id="finalLeft"></div>
