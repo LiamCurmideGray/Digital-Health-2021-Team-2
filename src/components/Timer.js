@@ -137,7 +137,7 @@ const Timer = () => {
         catch { }
     }, [isActive, seconds]);
 
-    if (sessionStorage.getItem("TUGQuestion1") === 'false' || sessionStorage.getItem("TUGQuestion2") === 'false') {
+    if (sessionStorage.getItem("Timer") === 'false') {
         return ProtectedRoute();
     }
     return (

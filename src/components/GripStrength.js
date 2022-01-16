@@ -11,7 +11,6 @@ import CommonHeader from "./common/CommonHeader";
 import ProtectedRoute from "./security/ProtectedRoute";
 
 function GripStrength() {
-  sessionStorage.setItem("GripStrength2", true);
   //help poppup function
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -33,10 +32,11 @@ function GripStrength() {
   const navigate = useNavigate();
 
   function navToNextPage() {
+    sessionStorage.setItem("GripStrength2", true);
     navigate("/GripStrength2");
   }
 
-  if(sessionStorage.getItem("TUGTestCarriedOut") === 'false'){
+  if(sessionStorage.getItem("TUGTestCarriedOut") === ''){
     return ProtectedRoute();
   } 
   return (

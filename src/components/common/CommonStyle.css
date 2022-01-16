@@ -9,7 +9,7 @@ html {
 }
 
 .alert {
-  color: red;
+  color: rgb(195, 0, 0);
 }
 
 .buttons-section {
@@ -184,7 +184,7 @@ fieldset {
   }
 
   .TimerLayoutBtnStart {
-    /* padding: 32px 40px; */
+    padding: 32px 40px;
     display: inline-block;
     background-color: #4CAF50;
     font-size: 24px;
@@ -193,8 +193,8 @@ fieldset {
     border: 0em;
     border-radius: 100%;
     text-align: center;
-    /* padding-top: 2%;
-    padding-bottom: 4%; */
+    padding-top: 2%;
+    padding-bottom: 4%;
     cursor: pointer;
     text-decoration: none;
     margin-bottom: 1em;

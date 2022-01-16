@@ -35,7 +35,7 @@ function ProtectedRoute() {
   if (sessionStorage.getItem("PatientData") === '0' || sessionStorage.getItem("PatientData") === null){
     return <Navigate to="/" />
   }
-  else if (question1 === 'false' || question2 === 'false') {
+  else if (question1 === '' || question2 === '') {
     return <Navigate to="/LevelsOfMobility" />;
   }
   else if (sessionStorage.getItem("Instructions") === 'false'){
@@ -44,22 +44,22 @@ function ProtectedRoute() {
   else if (sessionStorage.getItem("Timer") === 'false'){
     return <Navigate to="/Instructions" />;
   }
-  else if (sessionStorage.getItem("TUGTimer") === 'false'){
+  else if (sessionStorage.getItem("TUGTimer") === ''){
     return <Navigate to="/Timer" />;
   }
-  else if (sessionStorage.getItem("TUGStatus") === 'false'){
+  else if (sessionStorage.getItem("RiskOfFallStatus") === 'false'){
     return <Navigate to="/RiskOfFallStatus" />;
   }
-  else if (sessionStorage.getItem("TUGTestCarriedOut") === 'false'){
+  else if (sessionStorage.getItem("TUGTestCarriedOut") === ''){
     return <Navigate to="/ReviewQuestion" />;
   }
   else if (sessionStorage.getItem("GripStrength2") === 'false'){
     return <Navigate to="/GripStrength" />;
   }
-  else if (sessionStorage.getItem("question1") === 'false' || sessionStorage.getItem("question2") === 'false'){
+  else if (sessionStorage.getItem("question1") === '' || sessionStorage.getItem("question2") === ''){
     return <Navigate to="/GripStrength2" />;
   }
-  else if (sessionStorage.getItem("question4") === 'false' || sessionStorage.getItem("question5") === 'false'){
+  else if (sessionStorage.getItem("question4") === '' || sessionStorage.getItem("question5") === ''){
     return <Navigate to="/GripStrength4" />;
   }
   else {

@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import React from 'react'
 import ProtectedRoute from './security/ProtectedRoute';
 
+
 function RiskOfFallStatus() {
     const navigate = useNavigate();
     //help poppup function
@@ -29,7 +30,12 @@ function RiskOfFallStatus() {
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
 
-    if (sessionStorage.getItem("TUGTimer") === 'false'){
+    function navNext(){
+        sessionStorage.setItem("RiskOfFallStatus", true);
+        navigate("/ReviewQuestion");
+    }
+
+    if (sessionStorage.getItem("TUGTimer") === '' || sessionStorage.getItem("TUGStatus") === ''){
         return ProtectedRoute();
     } else {
         console.log("TUGTimer: ", sessionStorage.getItem("TUGTimer"));
@@ -107,7 +113,7 @@ function RiskOfFallStatus() {
                     </table>
                 </div>
             </div>
-            <a href="/ReviewQuestion"><button className="next-button">Next</button></a>
+            <button className="next-button" onClick={navNext}>Next</button>
         </div>
     );
 }

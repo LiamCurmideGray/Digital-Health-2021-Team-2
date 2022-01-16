@@ -38,12 +38,12 @@ function ReviewQuestion() {
 
     useEffect(() => {
 
-        
-        let status = sessionStorage.getItem("TUGStatus");
-        console.log("Status: ", status);
-        if(status !== 'false'){
-        if (status === "Not Recorded") {
-            console.log("TIMER IS NULLL");
+        try {
+            let status = sessionStorage.getItem("TUGStatus");
+            console.log("Status: ", status);
+            if (status !== 'false') {
+                if (status === "Not Recorded") {
+                    console.log("TIMER IS NULLL");
                     document.getElementById("radio-button-yes").disabled = true;
                 }
                 else {
@@ -51,14 +51,16 @@ function ReviewQuestion() {
                     document.getElementById("radio-button-no").disabled = true;
                 }
             }
+        }
+        catch {}
     }, []);
 
-        if (sessionStorage.getItem("TUGStatus") === 'false'){
-            return ProtectedRoute();
-        } else {
-            console.log("TUG Status:",sessionStorage.getItem("TUGStatus"));
-        }
-  
+    if (sessionStorage.getItem("RiskOfFallStatus") === 'false') {
+        return ProtectedRoute();
+    } else {
+        console.log("TUG Status:", sessionStorage.getItem("TUGStatus"));
+    }
+
 
     function validateForm() {
         if (question1 == "") {

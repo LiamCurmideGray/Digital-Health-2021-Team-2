@@ -59,7 +59,7 @@ const GripStrength3 = () => {
 
 
   useEffect(() => {
-  if (sessionStorage.getItem("question1") === 'false' || sessionStorage.getItem("question2") === 'false' || sessionStorage.getItem("question3") === 'false') {
+  if (sessionStorage.getItem("question1") !== '' || sessionStorage.getItem("question2") !== '' || sessionStorage.getItem("question3") !== '') {
     if (
       question2 == "recent pain right-hand" ||
       question3 == "yes recent surgery right-hand"
@@ -103,9 +103,9 @@ const GripStrength3 = () => {
 });
   
 
-  if (sessionStorage.getItem("question1") === 'false' || sessionStorage.getItem("question2") === 'false' || sessionStorage.getItem("question3") === 'false') {
-    // return ProtectedRoute();
-    return <Navigate to="/GripStrength2" />;
+  if (sessionStorage.getItem("question1") === '' || sessionStorage.getItem("question2") === '' || sessionStorage.getItem("question3") === '') {
+    return ProtectedRoute();
+    // return <Navigate to="/GripStrength2" />;
   } else {
     console.log(sessionStorage.getItem("question1"));
     console.log(sessionStorage.getItem("question2"));

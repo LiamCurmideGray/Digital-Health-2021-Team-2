@@ -23,16 +23,16 @@ function ListOfEquipment() {
     sessionStorage.setItem("question3", "");
     sessionStorage.setItem("question4", "");
     sessionStorage.setItem("question5", "");
-    sessionStorage.setItem("Instructions", true);
     console.log(question1);
     console.log(question2);
-    console.log("AAA ",sessionStorage.getItem("Instructions"));
+    console.log("AAA ", sessionStorage.getItem("Instructions"));
 
     if (question1 == "" || question2 == "") {
         return ProtectedRoute();
     }
 
     function navToNextPage() {
+        sessionStorage.setItem("Instructions", true);
         navigate("/Instructions")
     }
 
@@ -52,11 +52,11 @@ function ListOfEquipment() {
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
 
-    if (sessionStorage.getItem("TUGQuestion1") === 'false' || sessionStorage.getItem("TUGQuestion2") === 'false'){
+    if (sessionStorage.getItem("TUGQuestion1") === '' || sessionStorage.getItem("TUGQuestion2") === '') {
         return ProtectedRoute();
     } else {
-        console.log("TUG: ",sessionStorage.getItem("TUGQuestion1"))
-        console.log("TUG: ",sessionStorage.getItem("TUGQuestion2"));
+        console.log("TUG: ", sessionStorage.getItem("TUGQuestion1"))
+        console.log("TUG: ", sessionStorage.getItem("TUGQuestion2"));
     }
 
     return (
