@@ -77,8 +77,12 @@ const GripStrength2 = () => {
 
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
-    if (sessionStorage.getItem("TUGTestCarriedOut") === 'false') {
+    if (sessionStorage.getItem("GripStrength2") === 'false') {
+        console.log("if");
         return ProtectedRoute();
+    }
+    else{
+        console.log("else ", sessionStorage.getItem("GripStrength2"));
     }
     return (
         <div className="screen">

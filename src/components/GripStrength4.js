@@ -60,7 +60,7 @@ const GripStrength4 = () => {
         }
     });
 
-    if (sessionStorage.getItem("question1") === 'false' || sessionStorage.getItem("question2") === 'false' || sessionStorage.getItem("question3") === 'false') {
+    if (sessionStorage.getItem("question1") === '' || sessionStorage.getItem("question2") === '' || sessionStorage.getItem("question3") === '') {
         console.log("ASDFGASGSDFZ");
         return ProtectedRoute();
     }

@@ -19,7 +19,7 @@ const Summary = () => {
   let ActualObjectRightResult = JSON.parse(SessionRightResult);
 
   const current = new Date();
-  const date = `${current.getDate()}-${current.getMonth()+1}-${current.getFullYear()} at ${current.getHours()}:${current.getMinutes()}`;
+  const date = `${current.getDate()}-${current.getMonth() + 1}-${current.getFullYear()} at ${current.getHours()}:${current.getMinutes()}`;
   const dateString = date.toString();
 
   const navigate = useNavigate();
@@ -73,7 +73,7 @@ const Summary = () => {
         document.getElementById("actualPreviousRight").innerHTML = actualPreviousRight;
       }
     }
-    catch {}
+    catch { }
   });
 
 
@@ -130,6 +130,9 @@ const Summary = () => {
     </ul> </br>
 
     <label class="subtitle">Grip Strength test</label> </br> </br> 
+    <ul>
+    <li>Dominant Hand: <b>${sessionStorage.getItem("question1")}</b></li> 
+    </ul> </br>
 
     <ul>
     <li>Dominant Hand: <b>${sessionStorage.getItem("question1")}</b></li> 
@@ -275,10 +278,10 @@ const Summary = () => {
     navigate("/GripStrength4");
   };
 
-  if (sessionStorage.getItem("question4") === 'false' || sessionStorage.getItem("question5") === 'false') {
-    console.log("ASDFGASGSDFZ");
+  if (sessionStorage.getItem("question4") === '' || sessionStorage.getItem("question5") === '') {
     return ProtectedRoute();
   }
+
   return (
     <div className="screen">
       {CommonHeader()}

@@ -10,7 +10,6 @@ import { useNavigate } from 'react-router-dom';
 import ProtectedRoute from './security/ProtectedRoute';
 
 function Instructions() {
-    sessionStorage.setItem("Timer", true);
     const goBack = () => {
         navigate("/ListOfEquipment");
     };
@@ -30,11 +29,11 @@ function Instructions() {
     const id = open ? 'simple-popover' : undefined;
     const navigate = useNavigate();
     function navToNextPage() {
+        sessionStorage.setItem("Timer", true);
         navigate("/Timer")
     }
 
-    if (sessionStorage.getItem("TUGQuestion1") === 'false'|| sessionStorage.getItem("TUGQuestion2") === 'false'){
-        // console.log("AAAAAAAA");
+    if (sessionStorage.getItem("Instructions") === 'false') {
         return ProtectedRoute();
     }
 

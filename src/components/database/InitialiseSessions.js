@@ -1,19 +1,21 @@
 
 function InitialiseSessions(){
 
-    sessionStorage.setItem("TUGQuestion1", false);
-    sessionStorage.setItem("TUGQuestion2", false);
-    sessionStorage.setItem("TUGTimer", false);
-    sessionStorage.setItem("TUGTestCarriedOut", false);
-    sessionStorage.setItem("TUGStatus", false);
+    sessionStorage.setItem("TUGQuestion1", '');
+    sessionStorage.setItem("TUGQuestion2", '');
+    sessionStorage.setItem("TUGTimer", '');
+    sessionStorage.setItem("TUGTestCarriedOut", '');
+    sessionStorage.setItem("GripStrength2", false);
+    sessionStorage.setItem("TUGStatus", '');
     sessionStorage.setItem("Timer", false);
     sessionStorage.setItem("Instructions", false);
+    sessionStorage.setItem("RiskOfFallStatus", false);
     
-    sessionStorage.setItem("question1", false);
-    sessionStorage.setItem("question2", false);
-    sessionStorage.setItem("question3", false);
-    sessionStorage.setItem("question4", false);
-    sessionStorage.setItem("question5", false);
+    sessionStorage.setItem("question1", '');
+    sessionStorage.setItem("question2", '');
+    sessionStorage.setItem("question3", '');
+    sessionStorage.setItem("question4", '');
+    sessionStorage.setItem("question5", '');
     sessionStorage.setItem("MaxLeftHandResult", false);
     sessionStorage.setItem("MaxRightHandResult", false);
 
@@ -24,6 +26,7 @@ function InitialiseSessions(){
     console.log("Question3: ",sessionStorage.getItem("question3"));
     console.log("Question4: ",sessionStorage.getItem("question4"));
     console.log("Question5: ",sessionStorage.getItem("question5"));
+    console.log("GST: ",sessionStorage.getItem("GripStrength2"));
 
     console.log("\nTUG Test Results");
     console.log("TUG Previous Mobility: ",sessionStorage.getItem("TUGQuestion1"));
