@@ -17,9 +17,9 @@ const GripStrength2 = () => {
     const [question1, setAnswerQuestion1] = useState("");
     const [question2, setAnswerQuestion2] = useState("");
     const [question3, setAnswerQuestion3] = useState("");
-    sessionStorage.setItem("question1", question1);
-    sessionStorage.setItem("question2", question2);
-    sessionStorage.setItem("question3", question3);
+    // sessionStorage.setItem("question1", question1);
+    // sessionStorage.setItem("question2", question2);
+    // sessionStorage.setItem("question3", question3);
 
     console.log("Question 1: ", question1);
     console.log("Question 2: ", question2);
@@ -77,7 +77,7 @@ const GripStrength2 = () => {
 
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
-    if (sessionStorage.getItem("GripStrength2") === 'false') {
+    if (sessionStorage.getItem("TUGTestCarriedOut") === 'false') {
         return ProtectedRoute();
     }
     return (
@@ -112,10 +112,10 @@ const GripStrength2 = () => {
                 <form id="question1Form">
                     <p>1. Which hand do you use to sign your name? (This is the <b><u>dominant hand</u></b>)</p>
                     <h3 className="alert" id="question1-alert"></h3>
-                    <input type="radio" id="gst-question1-radio1" name="question1" value="sign name with right-hand" onChange={(e) => setAnswerQuestion1(e.target.value)} />
+                    <input type="radio" id="gst-question1-radio1" name="question1" value="Right Hand" onChange={(e) => setAnswerQuestion1(e.target.value)} />
                     <label className="radio-button-label" htmlFor="gst-question1-radio1">Right Hand</label>
                     <br />
-                    <input type="radio" id="gst-question1-radio2" name="question1" value="sign name with left-hand" onChange={(e) => setAnswerQuestion1(e.target.value)} />
+                    <input type="radio" id="gst-question1-radio2" name="question1" value="Left Hand" onChange={(e) => setAnswerQuestion1(e.target.value)} />
                     <label className="radio-button-label" htmlFor="gst-question1-radio2">Left Hand</label>
                 </form>
 

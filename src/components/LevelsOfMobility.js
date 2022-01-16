@@ -37,7 +37,7 @@ function LevelsOfMobility() {
             document.getElementById("question2-alert").innerHTML = "Please select an option!";
             document.getElementById("question2Form").scrollIntoView();
         }
-        else if (question2 == "other" || question2 == "independent with walking aid: ") {
+        else if (question2 == "other" || question2 == "Independent with Walking Aid: Other: ") {
             document.getElementById("question2-alert").innerHTML = "";
             document.getElementById("question2-other-alert").innerHTML = "Please input a reason!";
             document.getElementById("question2Form").scrollIntoView();
@@ -51,7 +51,7 @@ function LevelsOfMobility() {
             document.getElementById("question1-alert").innerHTML = "Please select an option!";
             document.getElementById("question1Form").scrollIntoView();
         }
-        else if (question1 == "other" || question1 == "independent with walking aid: ") {
+        else if (question1 == "other" || question1 == "Independent with Walking Aid: Other: ") {
             document.getElementById("question1-alert").innerHTML = "";
             document.getElementById("question1-other-alert").innerHTML = "Please input a reason!";
             document.getElementById("question1Form").scrollIntoView();
@@ -61,9 +61,9 @@ function LevelsOfMobility() {
             document.getElementById("question1-other-alert").innerHTML = "";
         }
 
-        if ((question1 != "" && question2 != "") && (question1 != "other" && question2 != "other") && (question1 != "independent-with-walking-aid with " && question2 != "independent-with-walking-aid with ")) {
-            sessionStorage.setItem("TUGQuestion1", "Previous Level of Mobility " + question1);
-            sessionStorage.setItem("TUGQuestion2", "Current Level of Mobility " + question2);
+        if ((question1 != "" && question2 != "") && (question1 != "other" && question2 != "other") && (question1 != "Independent with Walking Aid: Other: " && question2 != "Independent with Walking Aid: Other: ")) {
+            sessionStorage.setItem("TUGQuestion1", question1);
+            sessionStorage.setItem("TUGQuestion2", question2);
             navigate("/ListOfEquipment");
         }
     }
@@ -122,7 +122,7 @@ function LevelsOfMobility() {
                     <label className="subtitle">1. Previous level of mobility (past six (6) months)</label>
                     <h3 className="alert" id="question1-alert"></h3>
                     <div>
-                        <input type="radio" id="radio-button1-prev-ind-and-unaid" name="group1" value="independent and unaided" onChange={(e) => setAnswerQuestion1(e.target.value)}
+                        <input type="radio" id="radio-button1-prev-ind-and-unaid" name="group1" value="Independent and Unaided" onChange={(e) => setAnswerQuestion1(e.target.value)}
                             onClick={function () {
                                 document.getElementById("PreviousLevelOfMobilityFieldset").disabled = true;
                                 document.getElementById("radio-button-prev-stick").checked = false;
@@ -134,7 +134,7 @@ function LevelsOfMobility() {
                             }} />
                         <label className="radio-button-label" htmlFor="radio-button1-prev-ind-and-unaid">Independent and Unaided</label>
                     </div>
-                    <input type="radio" id="radio-button1-prev-ind-and-walk-aid" name="group1" value="independent with walking aid" onChange={(e) => setAnswerQuestion1("")}
+                    <input type="radio" id="radio-button1-prev-ind-and-walk-aid" name="group1" value="Independent with Walking Aid" onChange={(e) => setAnswerQuestion1("")}
                         onClick={function () {
                             document.getElementById("PreviousLevelOfMobilityFieldset").disabled = false;
                         }} />
@@ -143,22 +143,22 @@ function LevelsOfMobility() {
 
                     <fieldset id="PreviousLevelOfMobilityFieldset" className="indented-radio-buttons" disabled={true}>
                         <div>
-                            <input type="radio" id="radio-button-prev-stick" name="group1-1" value="stick" onChange={(e) => {
-                                setAnswerQuestion1("independent with walking aid: " + e.target.value)
+                            <input type="radio" id="radio-button-prev-stick" name="group1-1" value="Stick" onChange={(e) => {
+                                setAnswerQuestion1("Independent with Walking Aid: " + e.target.value)
                                 document.getElementById("text-box1").disabled = true
                             }} />
                             <label className="radio-button-label" htmlFor="radio-button-prev-stick">Stick</label>
                         </div>
                         <div>
-                            <input type="radio" id="radio-button-prev-roll-frame" name="group1-1" value="rollator frame" onChange={(e) => {
-                                setAnswerQuestion1("independent with walking aid: " + e.target.value)
+                            <input type="radio" id="radio-button-prev-roll-frame" name="group1-1" value="Rollator Frame" onChange={(e) => {
+                                setAnswerQuestion1("Independent with Walking Aid: " + e.target.value)
                                 document.getElementById("text-box1").disabled = true
                             }} />
                             <label className="radio-button-label" htmlFor="radio-button-prev-roll-frame">Rollator Frame</label>
                         </div>
                         <div>
-                            <input type="radio" id="radio-button-prev-gutt-frame" name="group1-1" value="gutter frame" onChange={(e) => {
-                                setAnswerQuestion1("independent with walking aid: " + e.target.value)
+                            <input type="radio" id="radio-button-prev-gutt-frame" name="group1-1" value="Gutter Frame" onChange={(e) => {
+                                setAnswerQuestion1("Independent with Walking Aid: " + e.target.value)
                                 document.getElementById("text-box1").disabled = true
                             }} />
                             <label className="radio-button-label" htmlFor="radio-button-prev-gutt-frame">Gutter Frame</label>
@@ -168,32 +168,32 @@ function LevelsOfMobility() {
                                 document.getElementById("text-box1").disabled = false;
                             }} onChange={(e) => setAnswerQuestion1(e.target.value)} />
                             <label className="radio-button-label" htmlFor="radio-button-prev-other">Other: </label>
-                            <input type="text" id="text-box1" disabled={true} onBlur={(e) => setAnswerQuestion1("independent with walking aid: " + e.target.value)} />
+                            <input type="text" id="text-box1" disabled={true} onBlur={(e) => setAnswerQuestion1("Independent with Walking Aid: Other: " + e.target.value)} />
                             <h3 className="alert" id="question1-other-alert"></h3>
                         </div>
                     </fieldset>
                     <div>
-                        <input type="radio" id="radio-button-prev-req-help" name="group1" value="requires help of 1 person" onClick={function () {
+                        <input type="radio" id="radio-button-prev-req-help" name="group1" value="Requires Help of 1 Person" onClick={function () {
                             document.getElementById("PreviousLevelOfMobilityFieldset").disabled = true;
                             document.getElementById("radio-button-prev-stick").checked = false;
                             document.getElementById("radio-button-prev-roll-frame").checked = false;
                             document.getElementById("radio-button-prev-gutt-frame").checked = false;
                             document.getElementById("radio-button-prev-other").checked = false;
                         }} onChange={(e) => {
-                            setAnswerQuestion1("independent with walking aid: " + e.target.value)
+                            setAnswerQuestion1("Independent with Walking Aid: " + e.target.value)
                             document.getElementById("text-box1").disabled = true
                         }} />
                         <label className="radio-button-label" htmlFor="radio-button-prev-req-help">Requires Help of 1 Person</label>
                     </div>
                     <div>
-                        <input type="radio" id="radio-button-prev-dependant" name="group1" value="dependant, chair user or bedbound" onClick={function () {
+                        <input type="radio" id="radio-button-prev-dependant" name="group1" value="Dependant, Chair User or Bedbound" onClick={function () {
                             document.getElementById("PreviousLevelOfMobilityFieldset").disabled = true;
                             document.getElementById("radio-button-prev-stick").checked = false;
                             document.getElementById("radio-button-prev-roll-frame").checked = false;
                             document.getElementById("radio-button-prev-gutt-frame").checked = false;
                             document.getElementById("radio-button-prev-other").checked = false;
                         }} onChange={(e) => {
-                            setAnswerQuestion1("independent with walking aid: " + e.target.value);
+                            setAnswerQuestion1("Independent with Walking Aid: " + e.target.value);
                             document.getElementById("text-box1").disabled = true;
                         }} />
                         <label className="radio-button-label" htmlFor="radio-button-prev-dependant">Dependant, Chair User or Bedbound</label>
@@ -203,7 +203,7 @@ function LevelsOfMobility() {
                     <label className="subtitle">2. Current level of mobility</label>
                     <h3 className="alert" id="question2-alert"></h3>
                     <div>
-                        <input type="radio" id="radio-button2-prev-ind-and-unaid" name="group2" value="independent and unaided" onChange={(e) => setAnswerQuestion2(e.target.value)}
+                        <input type="radio" id="radio-button2-prev-ind-and-unaid" name="group2" value="Independent and Unaided" onChange={(e) => setAnswerQuestion2(e.target.value)}
                             onClick={function () {
                                 document.getElementById("CurrentLevelofMobilityFieldset").disabled = true;
                                 document.getElementById("radio-button-prev-stick2").checked = false;
@@ -215,7 +215,7 @@ function LevelsOfMobility() {
                             }} />
                         <label className="radio-button-label" htmlFor="radio-button2-prev-ind-and-unaid">Independent and Unaided</label>
                     </div>
-                    <input type="radio" id="radio-button2-prev-ind-and-walk-aid" name="group2" value="independent with walking aid" onChange={(e) => setAnswerQuestion2("")}
+                    <input type="radio" id="radio-button2-prev-ind-and-walk-aid" name="group2" value="Independent with Walking Aid" onChange={(e) => setAnswerQuestion2("")}
                         onClick={function () {
                             document.getElementById("CurrentLevelofMobilityFieldset").disabled = false;
                         }} />
@@ -224,22 +224,22 @@ function LevelsOfMobility() {
 
                     <fieldset id="CurrentLevelofMobilityFieldset" className="indented-radio-buttons" disabled={true}>
                         <div>
-                            <input type="radio" id="radio-button-prev-stick2" name="group2-1" value="stick" onChange={(e) => {
-                                setAnswerQuestion2("independent with walking aid: " + e.target.value)
+                            <input type="radio" id="radio-button-prev-stick2" name="group2-1" value="Stick" onChange={(e) => {
+                                setAnswerQuestion2("Independent with Walking Aid: " + e.target.value)
                                 document.getElementById("text-box2").disabled = true
                             }} />
                             <label className="radio-button-label" htmlFor="radio-button-prev-stick2">Stick</label>
                         </div>
                         <div>
-                            <input type="radio" id="radio-button-prev-roll-frame2" name="group2-1" value="rollator frame" onChange={(e) => {
-                                setAnswerQuestion2("independent with walking aid: " + e.target.value)
+                            <input type="radio" id="radio-button-prev-roll-frame2" name="group2-1" value="Rollator Frame" onChange={(e) => {
+                                setAnswerQuestion2("Independent with Walking Aid: " + e.target.value)
                                 document.getElementById("text-box2").disabled = true
                             }} />
                             <label className="radio-button-label" htmlFor="radio-button-prev-roll-frame2">Rollator Frame</label>
                         </div>
                         <div>
-                            <input type="radio" id="radio-button-prev-gutt-frame2" name="group2-1" value="gutter frame" onChange={(e) => {
-                                setAnswerQuestion2("independent with walking aid: " + e.target.value)
+                            <input type="radio" id="radio-button-prev-gutt-frame2" name="group2-1" value="Gutter Frame" onChange={(e) => {
+                                setAnswerQuestion2("Independent with Walking Aid: " + e.target.value)
                                 document.getElementById("text-box2").disabled = true
                             }} />
                             <label className="radio-button-label" htmlFor="radio-button-prev-gutt-frame2">Gutter Frame</label>
@@ -249,15 +249,15 @@ function LevelsOfMobility() {
                                 document.getElementById("text-box2").disabled = false;
                             }} onChange={(e) => setAnswerQuestion2(e.target.value)} />
                             <label className="radio-button-label" htmlFor="radio-button-prev-other2">Other: </label>
-                            <input type="text" id="text-box2" disabled={true} onBlur={(e) => setAnswerQuestion2("independent with walking aid: " + e.target.value)} />
+                            <input type="text" id="text-box2" disabled={true} onBlur={(e) => setAnswerQuestion2("Independent with Walking Aid: Other: " + e.target.value)} />
                             <h3 className="alert" id="question2-other-alert"></h3>
                         </div>
                     </fieldset>
                     <div>
-                        <input type="radio" id="radio-button-prev-req-help2" name="group2" value="requires help of 1 person" onClick={function () {
+                        <input type="radio" id="radio-button-prev-req-help2" name="group2" value="Requires Help of 1 Person" onClick={function () {
                             document.getElementById("CurrentLevelofMobilityFieldset").disabled = true;
                         }} onChange={(e) => {
-                            setAnswerQuestion2("independent with walking aid: " + e.target.value)
+                            setAnswerQuestion2("Independent with Walking Aid: " + e.target.value)
                             document.getElementById("CurrentLevelofMobilityFieldset").disabled = true;
                             document.getElementById("radio-button-prev-stick2").checked = false;
                             document.getElementById("radio-button-prev-roll-frame2").checked = false;
@@ -267,10 +267,10 @@ function LevelsOfMobility() {
                         <label className="radio-button-label" htmlFor="radio-button-prev-req-help2">Requires Help of 1 Person</label>
                     </div>
                     <div>
-                        <input type="radio" id="radio-button-prev-dependant2" name="group2" value="dependant, chair user or bedbound" onClick={function () {
+                        <input type="radio" id="radio-button-prev-dependant2" name="group2" value="Dependant, Chair User or Bedbound" onClick={function () {
                             document.getElementById("CurrentLevelofMobilityFieldset").disabled = true;
                         }} onChange={(e) => {
-                            setAnswerQuestion2("independent with walking aid: " + e.target.value)
+                            setAnswerQuestion2("Independent with Walking Aid: " + e.target.value)
                             document.getElementById("CurrentLevelofMobilityFieldset").disabled = true;
                             document.getElementById("radio-button-prev-stick2").checked = false;
                             document.getElementById("radio-button-prev-roll-frame2").checked = false;

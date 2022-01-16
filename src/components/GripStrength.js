@@ -36,9 +36,9 @@ function GripStrength() {
     navigate("/GripStrength2");
   }
 
-  if(sessionStorage.getItem("TUGTestCarriedOut") === ''){
+  if(sessionStorage.getItem("TUGTestCarriedOut") === 'false'){
     return ProtectedRoute();
-  }
+  } 
   return (
     <div className="screen">
       {CommonHeader()}

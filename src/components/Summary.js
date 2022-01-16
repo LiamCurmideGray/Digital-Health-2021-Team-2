@@ -18,6 +18,10 @@ const Summary = () => {
   let ActualObjectLeftResult = JSON.parse(SessionLeftResult);
   let ActualObjectRightResult = JSON.parse(SessionRightResult);
 
+  const current = new Date();
+  const date = `${current.getDate()}-${current.getMonth()+1}-${current.getFullYear()} at ${current.getHours()}:${current.getMinutes()}`;
+  const dateString = date.toString();
+
   const navigate = useNavigate();
   const { AllResults, getPatientDocuments } = useGripContext();
 
@@ -83,18 +87,15 @@ const Summary = () => {
       ) {
         for (var k in ActualObjectHandResult.Risk) {
           thisHand = `
-          <ul>
-            <li>
-              ${k} Verdict: ${ActualObjectHandResult.Risk[k]}
-            </li>
-          </ul>
+            <p>
+              ${k} Verdict: <b>${ActualObjectHandResult.Risk[k]}</b>
+            </p>
         `;
         }
       } else {
         thisHand = `
-        <ul>
-          <li>Verdict: ${ActualObjectHandResult.Risk}</li>
-        </ul>
+          <p>Verdict: <b>${ActualObjectHandResult.Risk}</b>
+          </p>
       `;
       }
     } else {
@@ -112,123 +113,150 @@ const Summary = () => {
     if (ActualPreviousResult == null) {
       pageRender = `
   <div>
-  <label class="subtitle"><center>Current Session </center></label> 
-  </br>
-  <label class="subtitle">Levels of Mobility</label>
-  <ul>
-    <li>${sessionStorage.getItem("TUGQuestion1")}</li>
-    <li>${sessionStorage.getItem("TUGQuestion2")}</li>
-  </ul>
-  <label class="subtitle">Timed Up and Go Test</label>
-  <ul>
-    <li>Time Taken: ${sessionStorage.getItem("TUGTimer")} seconds</li>
-    <li>Status: ${sessionStorage.getItem("TUGStatus")}</li>
-  </ul>
-  <label class="subtitle">Grip Strength test</label>
-  <ul>
-    <li>${ActualObjectLeftResult.TestResult}</li>
-    <div id="finalLeft"></div>
+    <label class="subtitle"><center>Current Session </center></label> </br>
+    <label class="subtitle">Levels of Mobility</label> </br> </br> 
 
     <ul>
-      ${" "}
-      <li>Reason: ${sessionStorage.getItem("question4")}</li>${" "}
-    </ul>
-    <br />
-    <li>${ActualObjectRightResult.TestResult}</li>
-    <div id="finalRight"></div>
+      <li>Previous Level: <b>${sessionStorage.getItem("TUGQuestion1")}</b></li>
+      <li>Current Level: <b>${sessionStorage.getItem("TUGQuestion2")}</b></li>
+    </ul> </br>
+
+    <label class="subtitle">Timed Up and Go Test</label> </br> </br> 
+
     <ul>
-      ${" "}
-      <li>Reason: ${sessionStorage.getItem("question5")}</li>${" "}
+      <li>Time Taken: <b>${sessionStorage.getItem("TUGTimer")} seconds</b></li>
+      <li>Status: <b>${sessionStorage.getItem("TUGStatus")}</b></li>
+    </ul> </br>
+
+    <label class="subtitle">Grip Strength test</label> </br> </br> 
+
+    <ul>
+      <li>Left Hand: <b>${ActualObjectLeftResult.TestResult}</b></li>
+      <div id="finalLeft"></div>
+
+      <ul>
+        <li>Reason: <b>${sessionStorage.getItem("question4")}</b></li>
+      </ul> </br> </br> </br>
+
+      <li>Right Hand: <b>${ActualObjectRightResult.TestResult}</b></li>
+      <div id="finalRight"></div>
+      
+      <ul>
+        <li>Reason: <b>${sessionStorage.getItem("question5")}</b></li>
+      </ul>
+
     </ul>
-  </ul>
   </div>`;
 
     } else {
 
       pageRender = `
-  <table>
+  <table style="border-collapse: collapse;">
   <tbody>
+
+    <tr>
+      <th><label class="subtitle">Previous Session</label></th>
+      <th><label class="subtitle">Current Session</label></th>
+    </tr>
+
+    <tr>
+      <th colspan="2"> </br> </br> <label class="subtitle">Session Conducted at</label> </th>
+    </tr>
+    
+    <tr>
+      <td style="border: 2px solid black">
+        <label class="subtitle"><center>${ActualPreviousResult.DateofSession}</center></label>
+      </td>
+
+      <td style="border: 2px solid black">
+        <label class="subtitle"><center>${dateString}</center></label>
+      </td>
+    </tr>
+
+    <tr>
+      <th colspan="2"> </br> </br> <label class="subtitle">Levels of Mobility</label> </th>
+    </tr>
+
+    <tr>
+      <td style="border: 2px solid black">
+        <p>Previous Level: <b>${ActualPreviousResult.TUGTestResults.LevelsOfMobility.PreviousLevelofMobility}</b></p>
+      </td>
+
+      <td style="border: 2px solid black">
+        <p>Previous Level: <b>${sessionStorage.getItem("TUGQuestion1")}</b></p>
+      </td>
+    </tr>
+
+    <tr>
+      <td style="border: 2px solid black">
+      <p>Current Level: <b>${ActualPreviousResult.TUGTestResults.LevelsOfMobility.CurrentLevelofMobility}</b></p>
+      </td>
+
+      <td style="border: 2px solid black">
+        <p>Current Level: <b>${sessionStorage.getItem("TUGQuestion2")}</b></p>
+      </td>
+    </tr>
+
+    <tr>
+      <th colspan="2"> </br> </br> <label class="subtitle">Timed Up and Go Test</label> </th>
+    </tr>
+
+    <tr>
+      <td style="border: 2px solid black">
+          <p>Time Taken: <b>${ActualPreviousResult.TUGTestResults.RiskOfFallStatus.TimeTakenInSeconds} seconds</b></p>
+          <p>Status: <b>${ActualPreviousResult.TUGTestResults.RiskOfFallStatus.Status}</b></p>
+          <p>Carried Out?: <b>${ActualPreviousResult.TUGTestResults.TUGTestCarriedOut}</b></p>
+      </td>
+
+      <td style="border: 2px solid black">
+        <p>Time Taken: <b>${sessionStorage.getItem("TUGTimer")} seconds</b></p>
+        <p>Status: <b>${sessionStorage.getItem("TUGStatus")}</b></p>
+        <p>Carried Out?: <b>${sessionStorage.getItem("TUGTestCarriedOut")}</b></p>
+      </td>
+    </tr>
+
   <tr>
-    <th><label class="subtitle">Previous Session</label></th>
-    <th><label class="subtitle">Current Session</label></th>
+    <th colspan="2">  </br>  </br> <label class="subtitle">Grip Strength test</label> </th>
   </tr>
-  <tr >
 
-  <th colspan="2">  </br> <label class="subtitle">Levels of Mobility</label> </th>
- </tr>
-      <tr >
-  <td style="border: 2px solid black">
-<ul>
-  <li>${ActualPreviousResult.TUGTestResults.LevelsOfMobility.PreviousLevelofMobility}</li>
-  <li>${ActualPreviousResult.TUGTestResults.LevelsOfMobility.CurrentLevelofMobility}</li>
-</ul>
-
-</td>
-<td style="border: 2px solid black">
-<ul>
-  <li>${sessionStorage.getItem("TUGQuestion1")}</li>
-  <li>${sessionStorage.getItem("TUGQuestion2")}</li>
-</ul>
-
-</td>
   <tr>
-    <th colspan="2"> </br> <label class="subtitle">Timed Up and Go Test</label> </th>
-  </tr>
-  <tr>
-  <td style="border: 2px solid black">
-    <ul>
-      <li>Time Taken: ${ActualPreviousResult.TUGTestResults.RiskOfFallStatus.TimeTakenInSeconds} seconds</li>
-      <li>Status: ${ActualPreviousResult.TUGTestResults.RiskOfFallStatus.Status}</li>
-    </ul>
-  </td>
-  <td style="border: 2px solid black">
-    <ul>
-      <li>Time Taken: ${sessionStorage.getItem("TUGTimer")} seconds</li>
-      <li>Status: ${sessionStorage.getItem("TUGStatus")}</li>
-    </ul>
-  </td>
-</tr>
-<tr>
-  <th colspan="2">  </br>  </br> <label class="subtitle">Grip Strength test</label> </th>
-</tr>
-<tr>
-  <td style="border: 2px solid black">
-  <ul>
-    <li>${ActualPreviousResult.GripStrengthResults.MaxLeftHandResult.TestResult}</li>
-    <div id="actualPreviousLeft"></div>
-    <ul>
-    ${" "}
-      <li>Reason: ${ActualPreviousResult.GripStrengthResults.Question4}</li>${" "}
-    </ul>
-    <br />
-    <li>${ActualPreviousResult.GripStrengthResults.MaxRightHandResult.TestResult}</li>
-    <div id="actualPreviousRight"></div>
-    <ul>
-    ${" "}
-      <li>Reason: ${ActualPreviousResult.GripStrengthResults.Question5}</li>${" "}
-    </ul>
-  </ul>
-    </td>
     <td style="border: 2px solid black">
+      <p>Dominant Hand: <b>${ActualPreviousResult.GripStrengthResults.Question1}</b></p>
+    </td>
 
-
-<ul>
-  <li>${ActualObjectLeftResult.TestResult}</li>
-  <div id="finalLeft"></div>
-  <ul>
-  ${" "}
-    <li>Reason: ${sessionStorage.getItem("question4")}</li>${" "}
-  </ul>
-  <br />
-  <li>${ActualObjectRightResult.TestResult}</li>
-  <div id="finalRight"></div>
-  <ul>
-  ${" "}
-    <li>Reason: ${sessionStorage.getItem("question5")}</li>${" "}
-  </ul>
-</ul>
+    <td style="border: 2px solid black">
+      <p>Dominant Hand: <b>${sessionStorage.getItem("question1")}</b></p> 
     </td>
   </tr>
+
+  <tr>
+    <td style="border: 2px solid black">
+      <p>Left Hand: <b>${ActualPreviousResult.GripStrengthResults.MaxLeftHandResult.TestResult}</b></p>
+      <div id="actualPreviousLeft"></div>
+      <p>Reason: <b>${ActualPreviousResult.GripStrengthResults.Question4}</b></p>
+    </td>
+
+    <td style="border: 2px solid black;">
+      <p>Left Hand: <b>${ActualObjectLeftResult.TestResult}</b></p>
+      <div id="finalLeft"></div>
+      <p>Reason: <b>${sessionStorage.getItem("question4")}</b></p>
+    </td>
+  </tr>
+
+  <tr>    
+    <td style="border: 2px solid black">
+      <p>Right Hand: <b>${ActualPreviousResult.GripStrengthResults.MaxRightHandResult.TestResult}</b></p>
+      <div id="actualPreviousRight"></div>
+      <p>Reason: <b>${ActualPreviousResult.GripStrengthResults.Question5}</b></p>
+    </td>
+
+    <td style="border: 2px solid black">
+      <p>Right Hand: <b>${ActualObjectRightResult.TestResult}</b></p>
+      <div id="finalRight"></div>
+      <p>Reason: <b>${sessionStorage.getItem("question5")}</b></p>
+    </td>
+  </tr>
+
   </tbody>
 </table>
   `;
@@ -243,7 +271,7 @@ const Summary = () => {
     navigate("/GripStrength4");
   };
 
-  if (sessionStorage.getItem("question4") === '' || sessionStorage.getItem("question5") === '') {
+  if (sessionStorage.getItem("question4") === 'false' || sessionStorage.getItem("question5") === 'false') {
     console.log("ASDFGASGSDFZ");
     return ProtectedRoute();
   }

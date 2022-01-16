@@ -59,7 +59,8 @@ const GripStrength4 = () => {
             catch {}
         }
     });
-    if (sessionStorage.getItem("question1") === '' || sessionStorage.getItem("question2") === '' || sessionStorage.getItem("question3") === '') {
+
+    if (sessionStorage.getItem("question1") === 'false' || sessionStorage.getItem("question2") === 'false' || sessionStorage.getItem("question3") === 'false') {
         console.log("ASDFGASGSDFZ");
         return ProtectedRoute();
     }
@@ -69,7 +70,7 @@ const GripStrength4 = () => {
             document.getElementById("question2-alert").innerHTML = "Please select an option!";
             document.getElementById("question2Form").scrollIntoView();
         }
-        else if (question5 == "no, other" || question5 == "no, reason: ") {
+        else if (question5 == "no, other" || question5 == "Other: ") {
             document.getElementById("question2-alert").innerHTML = "";
             document.getElementById("question2-other-alert").innerHTML = "Please input a reason!";
             document.getElementById("question2Form").scrollIntoView();
@@ -82,7 +83,7 @@ const GripStrength4 = () => {
             document.getElementById("question1-alert").innerHTML = "Please select an option!";
             document.getElementById("question1Form").scrollIntoView();
         }
-        else if (question4 == "no, other" || question4 == "no, reason: ") {
+        else if (question4 == "no, other" || question4 == "Other: ") {
             document.getElementById("question1-alert").innerHTML = "";
             document.getElementById("question1-other-alert").innerHTML = "Please input a reason!";
             document.getElementById("question1Form").scrollIntoView();
@@ -93,7 +94,7 @@ const GripStrength4 = () => {
         }
         if (question4 != "" && question5 != "") {
             if (question4 != "no, other" && question5 != "no, other") {
-                if (question4 != "no, reason: " && question5 != "no, reason: ") {
+                if (question4 != "Other: " && question5 != "Other: ") {
 
                     console.log("Passing results to GripStrength");
                     sessionStorage.setItem("question4", question4);
@@ -153,7 +154,7 @@ const GripStrength4 = () => {
                         document.getElementById("gst-question1-radio5").checked = false;
                         document.getElementById("gst-question1-radio6").checked = false;
                         document.getElementById("gst-question1-radio7").checked = false;
-                    }} onChange={(e) => setAnswerQuestion1(e.target.value)} value="grip strength test carried out on left hand" />
+                    }} onChange={(e) => setAnswerQuestion1(e.target.value)} value="Left Hand was carried out" />
                     <label className="radio-button-label" htmlFor="gst-question1-radio1">Yes</label>
                     <br />
                     <input type="radio" id="gst-question1-radio2" name="question1-yes-no" onClick={function () {
@@ -163,31 +164,31 @@ const GripStrength4 = () => {
                     <br />
 
                     <fieldset id="leftHandFieldset" className="indented-radio-buttons" disabled={true}>
-                        <input type="radio" id="gst-question1-radio3" name="question1-sub-questions" value="no, attempted but unable" onClick={function () {
+                        <input type="radio" id="gst-question1-radio3" name="question1-sub-questions" value="No, Attempted but unable" onClick={function () {
                             document.getElementById("left-hand-text-box").disabled = true;
                         }} onChange={(e) => setAnswerQuestion1(e.target.value)} />
                         <label className="radio-button-label" htmlFor="gst-question1-radio3">Attempted but unable</label>
                         <br />
-                        <input type="radio" id="gst-question1-radio4" name="question1-sub-questions" value="no, unsafe" onClick={function () {
+                        <input type="radio" id="gst-question1-radio4" name="question1-sub-questions" value="No, Unsafe" onClick={function () {
                             document.getElementById("left-hand-text-box").disabled = true;
                         }} onChange={(e) => setAnswerQuestion1(e.target.value)} />
                         <label className="radio-button-label" htmlFor="gst-question1-radio4">Unsafe</label>
                         <br />
-                        <input type="radio" id="gst-question1-radio5" name="question1-sub-questions" value="no, unable to understand" onClick={function () {
+                        <input type="radio" id="gst-question1-radio5" name="question1-sub-questions" value="No, Unable to understand command" onClick={function () {
                             document.getElementById("left-hand-text-box").disabled = true;
                         }} onChange={(e) => setAnswerQuestion1(e.target.value)} />
-                        <label className="radio-button-label" htmlFor="gst-question1-radio5">Unable to understand</label>
+                        <label className="radio-button-label" htmlFor="gst-question1-radio5">Unable to understand command</label>
                         <br />
-                        <input type="radio" id="gst-question1-radio6" name="question1-sub-questions" value="no, refused" onClick={function () {
+                        <input type="radio" id="gst-question1-radio6" name="question1-sub-questions" value="No, Refused" onClick={function () {
                             document.getElementById("left-hand-text-box").disabled = true;
                         }} onChange={(e) => setAnswerQuestion1(e.target.value)} />
                         <label className="radio-button-label" htmlFor="gst-question1-radio6">Refused</label>
                         <br />
                         <input type="radio" id="gst-question1-radio7" name="question1-sub-questions" value="no, other" onClick={function () {
                             document.getElementById("left-hand-text-box").disabled = false;
-                        }} onChange={(e) => setAnswerQuestion1(e.target.value)} />
+                        }} onChange={(e) => setAnswerQuestion1(e.target.value)}/>
                         <label className="radio-button-label" htmlFor="gst-question1-radio7">Other:  </label>
-                        <input type="text" id="left-hand-text-box" disabled={true} onBlur={(e) => setAnswerQuestion1("no, reason: " + e.target.value)} />
+                        <input type="text" id="left-hand-text-box" disabled={true} onBlur={(e) => setAnswerQuestion1("Other: " + e.target.value)} />
                         <h3 className="alert" id="question1-other-alert"></h3>
                     </fieldset>
                 </form>
@@ -203,7 +204,7 @@ const GripStrength4 = () => {
                             document.getElementById("gst-question2-radio5").checked = false;
                             document.getElementById("gst-question2-radio6").checked = false;
                             document.getElementById("gst-question2-radio7").checked = false;
-                        }} onChange={(e) => setAnswerQuestion2(e.target.value)} value="grip strength test carried out on right hand" />
+                        }} onChange={(e) => setAnswerQuestion2(e.target.value)} value="Right hand was carried out" />
                         <label className="radio-button-label" htmlFor="gst-question2-radio1">Yes</label>
                         <br />
                         <input type="radio" id="gst-question2-radio2" name="question2-yes-no" onClick={function () {
@@ -214,32 +215,32 @@ const GripStrength4 = () => {
                     <br />
 
                     <fieldset id="rightHandFieldset" className="indented-radio-buttons" disabled={true}>
-                        <input type="radio" id="gst-question2-radio3" name="question2-sub-questions" value="attempted-unable" onClick={function () {
+                        <input type="radio" id="gst-question2-radio3" name="question2-sub-questions" value="Attempted but unable" onClick={function () {
                             document.getElementById("right-hand-text-box").disabled = true;
                         }} onChange={(e) => setAnswerQuestion2(e.target.value)} />
                         <label className="radio-button-label" htmlFor="gst-question2-radio3">Attempted but unable</label>
                         <br />
-                        <input type="radio" id="gst-question2-radio4" name="question2-sub-questions" value="unsafe" onClick={function () {
+                        <input type="radio" id="gst-question2-radio4" name="question2-sub-questions" value="Unsafe" onClick={function () {
                             document.getElementById("right-hand-text-box").disabled = true;
                         }} onChange={(e) => setAnswerQuestion2(e.target.value)} />
                         <label className="radio-button-label" htmlFor="gst-question2-radio4">Unsafe</label>
                         <br />
-                        <input type="radio" id="gst-question2-radio5" name="question2-sub-questions" value="unable-to-understand" onClick={function () {
+                        <input type="radio" id="gst-question2-radio5" name="question2-sub-questions" value="Unable to understand command" onClick={function () {
                             document.getElementById("right-hand-text-box").disabled = true;
                         }} onChange={(e) => setAnswerQuestion2(e.target.value)} />
-                        <label className="radio-button-label" htmlFor="gst-question2-radio5">Unable to understand</label>
+                        <label className="radio-button-label" htmlFor="gst-question2-radio5">Unable to understand command</label>
                         <br />
-                        <input type="radio" id="gst-question2-radio6" name="question2-sub-questions" value="refused" onClick={function () {
+                        <input type="radio" id="gst-question2-radio6" name="question2-sub-questions" value="Refused" onClick={function () {
                             document.getElementById("right-hand-text-box").disabled = true;
                         }} onChange={(e) => setAnswerQuestion2(e.target.value)} />
 
                         <label className="radio-button-label" htmlFor="gst-question2-radio6">Refused</label>
                         <br />
-                        <input type="radio" id="gst-question2-radio7" name="question2-sub-questions" onClick={function () {
+                        <input type="radio" id="gst-question2-radio7" name="question2-sub-questions" value="no, other" onClick={function () {
                             document.getElementById("right-hand-text-box").disabled = false;
-                        }} onChange={(e) => setAnswerQuestion2(e.target.value)} value="no, other" />
+                        }} onChange={(e) => setAnswerQuestion2(e.target.value)}/>
                         <label className="radio-button-label" htmlFor="gst-question2-radio7">Other:  </label>
-                        <input type="text" id="right-hand-text-box" disabled={true} onBlur={(e) => setAnswerQuestion2("no, reason: " + e.target.value)} />
+                        <input type="text" id="right-hand-text-box" disabled={true} onBlur={(e) => setAnswerQuestion2("Other: " + e.target.value)} />
                         <h3 className="alert" id="question2-other-alert"></h3>
                     </fieldset>
                 </form>

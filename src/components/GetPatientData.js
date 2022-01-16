@@ -1,5 +1,5 @@
 import "./common/CommonStyle.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Fab from "@mui/material/Fab";
 import HelpIcon from "@mui/icons-material/Help";
 import { ArrowBack } from '@mui/icons-material';
@@ -11,10 +11,15 @@ import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import { useGripContext } from "./database/GripStrengthDatabase";
 import { Alert } from "react-bootstrap";
+import InitialiseSessions from "./database/InitialiseSessions";
 
 
 function GetPatientData() {
-  sessionStorage.setItem("PatientData" , 0);
+
+  useEffect(() => {
+    sessionStorage.setItem("PatientData" , 0);
+    InitialiseSessions();
+  }, []);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   let [patientId, setPatientId] = useState("");
