@@ -59,7 +59,7 @@ const GripStrength3 = () => {
 
 
   useEffect(() => {
-  if (sessionStorage.getItem("question1") === 'false' || sessionStorage.getItem("question2") === 'false' || sessionStorage.getItem("question3") === 'false') {
+  if (sessionStorage.getItem("question1") !== 'false' || sessionStorage.getItem("question2") !== 'false' || sessionStorage.getItem("question3") !== 'false') {
     if (
       question2 == "recent pain right-hand" ||
       question3 == "yes recent surgery right-hand"
@@ -99,7 +99,7 @@ const GripStrength3 = () => {
         );
       }
     }
-  }
+  } 
 });
   
 
