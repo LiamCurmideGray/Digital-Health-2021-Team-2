@@ -99,7 +99,7 @@ const GripStrength3 = () => {
         );
       }
     }
-  }
+  } 
 });
   
 

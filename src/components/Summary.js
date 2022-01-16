@@ -125,14 +125,18 @@ const Summary = () => {
 
     <ul>
       <li>Time Taken: <b>${sessionStorage.getItem("TUGTimer")} seconds</b></li>
+      <li>Status: <b>${sessionStorage.getItem("TUGStatus")}</b></li>
       <li>Carried Out?: <b>${sessionStorage.getItem("TUGTestCarriedOut")}</b></li>
-      </ul> </br>
+    </ul> </br>
 
     <label class="subtitle">Grip Strength test</label> </br> </br> 
     <ul>
     <li>Dominant Hand: <b>${sessionStorage.getItem("question1")}</b></li> 
     </ul> </br>
 
+    <ul>
+    <li>Dominant Hand: <b>${sessionStorage.getItem("question1")}</b></li> 
+    </ul> </br>
     <ul>
       <li>Left Hand: <b>${ActualObjectLeftResult.TestResult}</b></li>
       <div id="finalLeft"></div>
