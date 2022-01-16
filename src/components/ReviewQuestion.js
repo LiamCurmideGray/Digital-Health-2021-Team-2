@@ -5,7 +5,7 @@ import { ArrowBack } from '@mui/icons-material';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import CommonHeader from './common/CommonHeader';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProtectedRoute from './security/ProtectedRoute';
 
@@ -35,9 +35,30 @@ function ReviewQuestion() {
 
     console.log(question1);
 
-    if (sessionStorage.getItem("TUGStatus") === ''){
-        return ProtectedRoute();
-    }
+
+    useEffect(() => {
+
+        
+        let status = sessionStorage.getItem("TUGStatus");
+        console.log("Status: ", status);
+        if(status !== 'false'){
+        if (status === "Not Recorded") {
+            console.log("TIMER IS NULLL");
+                    document.getElementById("radio-button-yes").disabled = true;
+                }
+                else {
+                    console.log("TIMER IS NOT NULLL");
+                    document.getElementById("radio-button-no").disabled = true;
+                }
+            }
+    }, []);
+
+        if (sessionStorage.getItem("TUGStatus") === 'false'){
+            return ProtectedRoute();
+        } else {
+            console.log("TUG Status:",sessionStorage.getItem("TUGStatus"));
+        }
+  
 
     function validateForm() {
         if (question1 == "") {
@@ -45,7 +66,7 @@ function ReviewQuestion() {
             document.getElementById("question1-alert").innerHTML = "Please select an option!";
             document.getElementById("question1Form").scrollIntoView();
         }
-        else if (question1 == "other" || question1 == "TUG Test Carried out: No, Reason: ") {
+        else if (question1 == "other" || question1 == "No, Other: ") {
             document.getElementById("question1-alert").innerHTML = "";
             document.getElementById("question1-other-alert").innerHTML = "Please input a reason!";
             document.getElementById("question1Form").scrollIntoView();
@@ -55,11 +76,12 @@ function ReviewQuestion() {
             document.getElementById("question1-other-alert").innerHTML = "";
         }
 
-        if (question1 != "" && question1 != "other" && question1 != "TUG Test Carried out: No, Reason: ") {
+        if (question1 != "" && question1 != "other" && question1 != "No, Other: ") {
             sessionStorage.setItem("TUGTestCarriedOut", question1);
             navigate("/GripStrength");
         }
     }
+
     return (
         <div className="screen">
             {CommonHeader()}
@@ -92,7 +114,7 @@ function ReviewQuestion() {
                 <h3 className="alert" id="question1-alert"></h3>
                 <form id="question1Form">
                     <div>
-                        <input type="radio" id="radio-button-yes" name="group1" value="TUG Test Carried out: Yes" onChange={(e) => setAnswerQuestion1(e.target.value)}
+                        <input type="radio" id="radio-button-yes" name="group1" value="Yes" onChange={(e) => setAnswerQuestion1(e.target.value)}
                             onClick={function () {
                                 document.getElementById("TUGTestCarriedOut").disabled = true;
                                 document.getElementById("radio-button-att").checked = false;
@@ -113,7 +135,7 @@ function ReviewQuestion() {
                     </div>
                     <fieldset id="TUGTestCarriedOut" className="indented-radio-buttons" disabled={true}>
                         <div>
-                            <input type="radio" id="radio-button-att" name="group1-1" value="TUG Test Carried out: No, Reason: attempted-but-unable"
+                            <input type="radio" id="radio-button-att" name="group1-1" value="No, Attempted but unable"
                                 onChange={(e) => {
                                     setAnswerQuestion1(e.target.value);
                                     document.getElementById("text-box").disabled = true;
@@ -121,7 +143,7 @@ function ReviewQuestion() {
                             <label className="radio-button-label" htmlFor="radio-button-att">Attempted, but unable</label>
                         </div>
                         <div>
-                            <input type="radio" id="radio-button-unsafe" name="group1-1" value="TUG Test Carried out: No, Reason: unsafe"
+                            <input type="radio" id="radio-button-unsafe" name="group1-1" value="No, Unsafe"
                                 onChange={(e) => {
                                     setAnswerQuestion1(e.target.value);
                                     document.getElementById("text-box").disabled = true;
@@ -129,7 +151,7 @@ function ReviewQuestion() {
                             <label className="radio-button-label" htmlFor="radio-button-unsafe">Unsafe</label>
                         </div>
                         <div>
-                            <input type="radio" id="radio-button-unable" name="group1-1" value="TUG Test Carried out: No, Reason: unable"
+                            <input type="radio" id="radio-button-unable" name="group1-1" value="No, Unable to understand command"
                                 onChange={(e) => {
                                     setAnswerQuestion1(e.target.value);
                                     document.getElementById("text-box").disabled = true;
@@ -137,7 +159,7 @@ function ReviewQuestion() {
                             <label className="radio-button-label" htmlFor="radio-button-unable">Unable to understand command</label>
                         </div>
                         <div>
-                            <input type="radio" id="radio-button-refused" name="group1-1" value="TUG Test Carried out: No, Reason: refused"
+                            <input type="radio" id="radio-button-refused" name="group1-1" value="No, Refused"
                                 onChange={(e) => {
                                     setAnswerQuestion1(e.target.value);
                                     document.getElementById("text-box").disabled = true;
@@ -149,7 +171,7 @@ function ReviewQuestion() {
                                 document.getElementById("text-box").disabled = false;
                             }} onChange={(e) => setAnswerQuestion1(e.target.value)} />
                             <label className="radio-button-label" htmlFor="radio-button-prev-other">Other: </label>
-                            <input type="text" id="text-box" disabled={true} onBlur={(e) => setAnswerQuestion1("TUG Test Carried out: No, Reason: " + e.target.value)} />
+                            <input type="text" id="text-box" disabled={true} onBlur={(e) => setAnswerQuestion1("No, Other: " + e.target.value)} />
                             <h3 className="alert" id="question1-other-alert"></h3>
 
                         </div>

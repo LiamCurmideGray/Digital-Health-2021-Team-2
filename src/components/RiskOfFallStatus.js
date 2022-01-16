@@ -29,8 +29,10 @@ function RiskOfFallStatus() {
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
 
-    if (sessionStorage.getItem("TUGTimer") === '0'){
+    if (sessionStorage.getItem("TUGTimer") === 'false'){
         return ProtectedRoute();
+    } else {
+        console.log("TUGTimer: ", sessionStorage.getItem("TUGTimer"));
     }
     return (
         <div className="screen">
@@ -95,7 +97,7 @@ function RiskOfFallStatus() {
                             </tr>
                             <tr>
                                 <td className="style">
-                                    Hight Risk
+                                    High Risk
                                 </td>
                                 <td className="style">
                                     &gt;15 seconds

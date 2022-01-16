@@ -123,15 +123,21 @@ const Timer = () => {
                 clearInterval(interval);
             }
 
+            if(seconds <= 1) {
+            sessionStorage.setItem("TUGTimer", 0);
+            sessionStorage.setItem("TUGStatus", "Not Recorded");
+            } else {
             sessionStorage.setItem("TUGTimer", seconds);
             sessionStorage.setItem("TUGStatus", status);
+            }
             console.log(seconds + " " + status);
             setStatus(status)
             return () => clearInterval(interval);
         }
         catch { }
     }, [isActive, seconds]);
-    if (sessionStorage.getItem("Timer") === 'false') {
+
+    if (sessionStorage.getItem("TUGQuestion1") === 'false' || sessionStorage.getItem("TUGQuestion2") === 'false') {
         return ProtectedRoute();
     }
     return (
@@ -157,7 +163,10 @@ const Timer = () => {
                     }}
                 >
 
-                    <Typography sx={{ p: 5, fontSize: '1.5em' }}>This page consists of the timer that should be used to conduct the test. The test consists of one trial test and one official test. No retests can be done after these two sessions are finished. The Timer automatically stops at 20 seconds.</Typography>
+                    <Typography sx={{ p: 5, fontSize: '1.5em' }}>This page consists of the timer that should be used to conduct the test. 
+                    The test consists of one trial test and one official test. No retests can be done after these two sessions are finished. 
+                    The Timer automatically stops at 20 seconds.
+                    If patient is unable to conduct the test, start and stop the timer immediately before pressing Next Button</Typography>
                 </Popover>
             </div>
 

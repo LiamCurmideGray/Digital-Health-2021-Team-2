@@ -39,7 +39,7 @@ function CommonHeader(Title) {
                         width: '33%'
                     }}>
                         <label className="details">
-                            [MR Name]
+                           Doctor: Who
                         </label>
                     </td>
                 </tr>

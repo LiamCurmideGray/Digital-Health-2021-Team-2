@@ -33,7 +33,7 @@ function Instructions() {
         navigate("/Timer")
     }
 
-    if (sessionStorage.getItem("Instructions") === 'false'){
+    if (sessionStorage.getItem("TUGQuestion1") === 'false'|| sessionStorage.getItem("TUGQuestion2") === 'false'){
         // console.log("AAAAAAAA");
         return ProtectedRoute();
     }

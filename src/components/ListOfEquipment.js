@@ -52,6 +52,13 @@ function ListOfEquipment() {
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
 
+    if (sessionStorage.getItem("TUGQuestion1") === 'false' || sessionStorage.getItem("TUGQuestion2") === 'false'){
+        return ProtectedRoute();
+    } else {
+        console.log("TUG: ",sessionStorage.getItem("TUGQuestion1"))
+        console.log("TUG: ",sessionStorage.getItem("TUGQuestion2"));
+    }
+
     return (
         <div className="screen">
             {CommonHeader()}

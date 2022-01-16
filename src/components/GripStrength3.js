@@ -11,6 +11,8 @@ import HelpIcon from '@mui/icons-material/Help';
 import { ArrowBack } from '@mui/icons-material';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
+import ProtectedRoute from './security/ProtectedRoute';
+
 
 const GripStrength3 = () => {
   const [leftInput1, setLeftInput1] = useState(0);
@@ -57,6 +59,7 @@ const GripStrength3 = () => {
 
 
   useEffect(() => {
+  if (sessionStorage.getItem("question1") === 'false' || sessionStorage.getItem("question2") === 'false' || sessionStorage.getItem("question3") === 'false') {
     if (
       question2 == "recent pain right-hand" ||
       question3 == "yes recent surgery right-hand"
@@ -72,7 +75,7 @@ const GripStrength3 = () => {
         "Results disabled due to recent pain or surgery in left hand"
       );
     }
-    if (question1 == "sign name with right-hand") {
+    if (question1 == "Right Hand") {
       if (question2 == "recent pain right-hand" || question3 == "yes recent surgery right-hand") {
         document.getElementById("rightHandFieldset").hidden = true;
         document.getElementById("leftHandFieldset").hidden = true;
@@ -84,7 +87,7 @@ const GripStrength3 = () => {
         );
       }
     }
-    if (question1 == "sign name with left-hand") {
+    if (question1 == "Left Hand") {
       if (question2 == "recent pain left-hand" || question3 == "yes recent surgery left-hand") {
         document.getElementById("rightHandFieldset").hidden = true;
         document.getElementById("leftHandFieldset").hidden = true;
@@ -96,11 +99,18 @@ const GripStrength3 = () => {
         );
       }
     }
-  });
+  }
+});
   
 
-  if (question1 == "" || question2 == "" || question3 == "") {
+  if (sessionStorage.getItem("question1") === 'false' || sessionStorage.getItem("question2") === 'false' || sessionStorage.getItem("question3") === 'false') {
+    // return ProtectedRoute();
     return <Navigate to="/GripStrength2" />;
+  } else {
+    console.log(sessionStorage.getItem("question1"));
+    console.log(sessionStorage.getItem("question2"));
+    console.log(sessionStorage.getItem("question3"));
+
   }
 
   function calculateRisk(result, gender) {
