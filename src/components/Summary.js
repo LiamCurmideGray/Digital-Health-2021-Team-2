@@ -295,7 +295,7 @@ const Summary = () => {
         >
           <ArrowBack fontSize="large" />
         </Fab>
-        <label className="title">Grip Strength Test</label>
+        <label className="title">Summary</label>
         <Fab
           className="mui-icons"
           aria-describedby={id}
